@@ -1,0 +1,111 @@
+{
+    "name": "medicalmundi/marketplace-accounts",
+    "type": "project",
+    "description": "Accounts service for oe-modules.com",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.1",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "corley/maintenance-bundle": "^0.5",
+        "doctrine/doctrine-bundle": "^2.10",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/orm": "^2.16",
+        "ecotone/dbal": "^1.105",
+        "ecotone/jms-converter": "^1.105",
+        "ecotone/pdo-event-sourcing": "^1.105",
+        "ecotone/symfony-bundle": "^1.105",
+        "knplabs/packagist-api": "^2.0",
+        "nyholm/psr7": "^1.8",
+        "psr/http-client": "^1.0",
+        "sentry/sentry-symfony": "^4.11",
+        "symfony/apache-pack": "^1.0",
+        "symfony/asset": "6.2.*",
+        "symfony/console": "6.2.*",
+        "symfony/dotenv": "6.2.*",
+        "symfony/flex": "^2",
+        "symfony/framework-bundle": "6.2.*",
+        "symfony/http-client": "^6.0",
+        "symfony/monolog-bundle": "^3.8",
+        "symfony/runtime": "6.2.*",
+        "symfony/security-bundle": "6.2.*",
+        "symfony/twig-bundle": "6.2.*",
+        "symfony/yaml": "6.2.*",
+        "twig/extra-bundle": "^2.12 || ^3.0",
+        "twig/twig": "^2.12 || ^3.0"
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*"
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.8",
+        "php-http/mock-client": "^1.6",
+        "phpunit/phpunit": "^9.5",
+        "symfony/browser-kit": "6.2.*",
+        "symfony/css-selector": "6.2.*",
+        "symfony/debug-bundle": "6.2.*",
+        "symfony/maker-bundle": "^1.50",
+        "symfony/phpunit-bridge": "^6.3",
+        "symfony/stopwatch": "6.2.*",
+        "symfony/web-profiler-bundle": "6.2.*"
+    },
+    "config": {
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true,
+            "composer/package-versions-deprecated": true,
+            "php-http/discovery": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "bamarni-bin": {
+            "bin-links": true,
+            "forward-command": false,
+            "target-directory": "tools"
+        },
+        "symfony": {
+            "allow-contrib": false,
+            "require": "6.2.*"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/",
+            "IdentityAccess\\": "_iam/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/",
+            "IdentityAccess\\Tests\\": "_iam/tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts": {
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
+    }
+}

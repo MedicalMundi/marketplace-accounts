@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
+  <file src="src/Adapter/Http/WebApi/SearchModuleController.php">
+    <UndefinedInterfaceMethod>
+      <code>searchModule</code>
+    </UndefinedInterfaceMethod>
+    <UnusedClass>
+      <code>SearchModuleController</code>
+    </UnusedClass>
+  </file>
+  <file src="src/Adapter/PackagistModuleFinder/PackagistModuleFinder.php">
+    <MixedArgument>
+      <code>$itemsFromResponse</code>
+    </MixedArgument>
+    <MixedArrayAccess>
+      <code><![CDATA[$decodedResponse['results']]]></code>
+    </MixedArrayAccess>
+    <MixedAssignment>
+      <code>$decodedResponse</code>
+      <code>$itemsFromResponse</code>
+    </MixedAssignment>
+    <UnusedClass>
+      <code>PackagistModuleFinder</code>
+    </UnusedClass>
+  </file>
+  <file src="src/Application/PackagistItem.php">
+    <PossiblyUnusedMethod>
+      <code>getDescription</code>
+      <code>getDownloads</code>
+      <code>getName</code>
+      <code>getRepository</code>
+      <code>getUrl</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Application/PackagistItemCollection.php">
+    <InvalidArgument>
+      <code><![CDATA[$this->items]]></code>
+    </InvalidArgument>
+    <PossiblyUnusedMethod>
+      <code>count</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Controller/HomeController.php">
+    <UnusedClass>
+      <code>HomeController</code>
+    </UnusedClass>
+  </file>
+</files>

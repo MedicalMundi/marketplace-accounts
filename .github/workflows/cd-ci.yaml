@@ -1,0 +1,19 @@
+name: CD/CI
+
+on: [ push ]
+
+jobs:
+  commit-stage-workflow:
+    name: Commit Stage
+    uses: medicalmundi/marketplace-accounts/.github/workflows/commit-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
+
+
+  acceptance-stage-workflow:
+    name: Acceptance Stage
+    needs:
+      - commit-stage-workflow
+    uses: medicalmundi/marketplace-accounts/.github/workflows/acceptance-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
