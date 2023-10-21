@@ -97,12 +97,6 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
-        "cs": "./vendor/bin/ecs",
-        "cs:fix": "./vendor/bin/ecs --fix",
-        "rc": "./vendor/bin/rector  process --dry-run",
-        "rc:fix": "./vendor/bin/rector",
-        "sa": "./vendor/bin/psalm",
-        "tu": "./vendor/bin/phpunit --testdox tests/Unit",
         "post-install-cmd": [
             "@auto-scripts"
         ],
@@ -112,7 +106,13 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        }
+        },
+        "cs": "./vendor/bin/ecs",
+        "cs:fix": "./vendor/bin/ecs --fix",
+        "rc": "./vendor/bin/rector  process --dry-run",
+        "rc:fix": "./vendor/bin/rector",
+        "sa": "./vendor/bin/psalm",
+        "tu": "./vendor/bin/phpunit --testdox tests/Unit"
     },
     "scripts-descriptions": {
         "cs": "Check php coding style",
