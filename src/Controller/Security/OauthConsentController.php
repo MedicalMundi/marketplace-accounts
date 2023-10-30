@@ -29,7 +29,7 @@ use function ctype_alnum;
 class OauthConsentController extends AbstractController
 {
     public function __construct(
-        private readonly ManagerRegistry $doctrine
+        private readonly ManagerRegistry $em
     ) {
     }
 
