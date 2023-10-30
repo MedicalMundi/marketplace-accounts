@@ -29,19 +29,14 @@ class AuthorizationCodeSubscriber implements EventSubscriberInterface
 {
     use TargetPathTrait;
 
-    private Security $security;
-
-    private UrlGeneratorInterface $urlGenerator;
-
-    private RequestStack $requestStack;
-
     private string $firewallName;
 
-    public function __construct(Security $security, UrlGeneratorInterface $urlGenerator, RequestStack $requestStack, FirewallMapInterface $firewallMap)
-    {
-        $this->security = $security;
-        $this->urlGenerator = $urlGenerator;
-        $this->requestStack = $requestStack;
+    public function __construct(
+        private readonly Security $security,
+        private readonly UrlGeneratorInterface $urlGenerator,
+        private readonly RequestStack $requestStack,
+        private readonly FirewallMapInterface $firewallMap
+    ) {
         $this->firewallName = (string) $firewallMap->getFirewallConfig($requestStack->getCurrentRequest())->getName();
     }
 
