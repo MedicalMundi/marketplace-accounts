@@ -40,32 +40,6 @@
       <code>count</code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="src/Command/BootstrapCommand.php">
-    <ArgumentTypeCoercion>
-      <code>$clientDemo</code>
-    </ArgumentTypeCoercion>
-    <InvalidStringClass>
-      <code><![CDATA[new $this->clientFqcn($name, $identifier, $secret)]]></code>
-    </InvalidStringClass>
-    <LessSpecificReturnStatement>
-      <code><![CDATA[$client
-            ->setRedirectUris(...array_map(static function (string $redirectUri): RedirectUri {
-                return new RedirectUri($redirectUri);
-            }, $redirectUriStrings))
-            ->setGrants(...array_map(static function (string $grant): Grant {
-                return new Grant($grant);
-            }, $grantStrings))
-            ->setScopes(...array_map(static function (string $scope): Scope {
-                return new Scope($scope);
-            }, $scopeStrings))]]></code>
-    </LessSpecificReturnStatement>
-    <MoreSpecificReturnType>
-      <code>AbstractClient</code>
-    </MoreSpecificReturnType>
-    <UnusedParam>
-      <code>$clientDescription</code>
-    </UnusedParam>
-  </file>
   <file src="src/Command/SecurityAddAdministratorCommand.php">
     <PossiblyNullOperand>
       <code><![CDATA[$adminUser->getEmail()]]></code>
@@ -117,6 +91,9 @@
       <code>getClient</code>
       <code>getDescription</code>
       <code>getId</code>
+      <code>setClient</code>
+      <code>setDescription</code>
+      <code>setName</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="src/Entity/OAuth2UserConsent.php">
