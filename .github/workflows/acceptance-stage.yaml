@@ -10,8 +10,8 @@ on:
 
 env:
   # PHP SETTINGS
-  PHP_EXTENSIONS: json
-  PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v1
+  PHP_EXTENSIONS: ctype, iconv, openssl
+  PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v2
 
 jobs:
   acceptance-checks:
