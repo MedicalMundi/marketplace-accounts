@@ -15,7 +15,29 @@
         <ignoreFiles>
             <directory name="vendor"/>
         </ignoreFiles>
+
     </projectFiles>
+
+    <issueHandlers>
+        <UnusedClass>
+            <errorLevel type="suppress">
+                <file name="src/Controller/**/*Controller.php" />
+                <file name="src/Command/**/*Command.php" />
+                <file name="src/Repository/**/*Repository.php" />
+            </errorLevel>
+        </UnusedClass>
+        <PossiblyUnusedParam>
+            <errorLevel type="suppress">
+                <directory name="src/Repository" />
+            </errorLevel>
+        </PossiblyUnusedParam>
+        <PossiblyUnusedMethod>
+            <errorLevel type="suppress">
+                <referencedMethod name="*::__construct" />
+                <directory name="src/Repository" />
+            </errorLevel>
+        </PossiblyUnusedMethod>
+    </issueHandlers>
 
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>

@@ -3,8 +3,10 @@
 docs/wip/
 /tools/**/vendor
 
+Dockerfile
 docker-compose.yml
 docker-compose.override.yml
+/docker
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -30,3 +32,10 @@ docker-compose.override.yml
 ###> corley/maintenance-bundle ###
 public/hard.lock
 ###< corley/maintenance-bundle ###
+
+###> league/oauth2-server-bundle ###
+/config/jwt/*.pem
+###< league/oauth2-server-bundle ###
+
+
+/src/Command/BootstrapCommand.php

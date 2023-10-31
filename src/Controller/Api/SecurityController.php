@@ -13,17 +13,25 @@
  * @license https://github.com/MedicalMundi/marketplace-accounts/blob/main/LICENSE MIT
  */
 
-namespace App\Controller;
+namespace App\Controller\Api;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-class HomeController extends AbstractController
+class SecurityController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/api/security/test', name: 'app_api_security_index')]
+    #[isGranted('security_console')]
     public function index(): Response
     {
-        return $this->render('home/index.html.twig');
+        /** @var User $user */
+        $user = $this->getUser();
+        return $this->json([
+            'message' => 'You successfully authenticated!',
+            'email' => $user->getEmail(),
+        ]);
     }
 }

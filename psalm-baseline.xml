@@ -40,9 +40,117 @@
       <code>count</code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="src/Controller/HomeController.php">
+  <file src="src/Command/SecurityAddAdministratorCommand.php">
+    <PossiblyNullOperand>
+      <code><![CDATA[$adminUser->getEmail()]]></code>
+    </PossiblyNullOperand>
+  </file>
+  <file src="src/Controller/Security/LogoutController.php">
+    <MissingReturnType>
+      <code>logout</code>
+    </MissingReturnType>
+  </file>
+  <file src="src/Controller/Security/OauthConsentController.php">
+    <MixedArrayOffset>
+      <code>$scopeNames[$scope]</code>
+    </MixedArrayOffset>
+    <PossiblyNullArgument>
+      <code><![CDATA[$request->query->get('scope')]]></code>
+    </PossiblyNullArgument>
+    <PossiblyNullReference>
+      <code>getName</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/Controller/Security/WellKnownJwksController.php">
+    <MixedArgument>
+      <code><![CDATA[$details['rsa']['e']]]></code>
+      <code><![CDATA[$details['rsa']['n']]]></code>
+    </MixedArgument>
+    <MixedArrayAccess>
+      <code><![CDATA[$details['rsa']['e']]]></code>
+      <code><![CDATA[$details['rsa']['n']]]></code>
+    </MixedArrayAccess>
+    <PossiblyNullOperand>
+      <code>$kernelDirectory</code>
+    </PossiblyNullOperand>
+  </file>
+  <file src="src/Entity/AccessToken.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$this->getClient()->getIdentifier()]]></code>
+      <code><![CDATA[(string) $this->getUserIdentifier()]]></code>
+    </ArgumentTypeCoercion>
+    <MissingReturnType>
+      <code>convertToJWT</code>
+    </MissingReturnType>
+    <MixedArgument>
+      <code><![CDATA[$this->getIdentifier()]]></code>
+    </MixedArgument>
+  </file>
+  <file src="src/Entity/OAuth2ClientProfile.php">
+    <PossiblyUnusedMethod>
+      <code>getClient</code>
+      <code>getDescription</code>
+      <code>getId</code>
+      <code>setClient</code>
+      <code>setDescription</code>
+      <code>setName</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Entity/OAuth2UserConsent.php">
+    <PossiblyNullPropertyAssignmentValue>
+      <code>$scopes</code>
+    </PossiblyNullPropertyAssignmentValue>
+    <PossiblyUnusedMethod>
+      <code>getCreated</code>
+      <code>getExpires</code>
+      <code>getId</code>
+      <code>getIpAddress</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Entity/User.php">
+    <InvalidNullableReturnType>
+      <code>string</code>
+    </InvalidNullableReturnType>
+    <MixedReturnTypeCoercion>
+      <code><![CDATA[$this->oAuth2UserConsents]]></code>
+      <code><![CDATA[Collection<int, OAuth2UserConsent>]]></code>
+      <code>array</code>
+      <code>array_unique($roles)</code>
+    </MixedReturnTypeCoercion>
+    <NullArgument>
+      <code>null</code>
+    </NullArgument>
+    <NullableReturnStatement>
+      <code><![CDATA[$this->password]]></code>
+    </NullableReturnStatement>
+    <PossiblyNullReference>
+      <code>toRfc4122</code>
+    </PossiblyNullReference>
+    <PossiblyUnusedMethod>
+      <code>getId</code>
+      <code>getSalt</code>
+      <code>getUuid</code>
+      <code>removeOAuth2UserConsent</code>
+    </PossiblyUnusedMethod>
+    <RedundantConditionGivenDocblockType>
+      <code><![CDATA[! $this->oAuth2UserConsents->contains($oAuth2UserConsent)]]></code>
+    </RedundantConditionGivenDocblockType>
+  </file>
+  <file src="src/EventSubscriber/AuthorizationCodeSubscriber.php">
+    <MixedArgument>
+      <code><![CDATA[$request->getSession()->get('consent_granted')]]></code>
+    </MixedArgument>
+    <MixedMethodCall>
+      <code>getName</code>
+    </MixedMethodCall>
+    <PossiblyNullReference>
+      <code>getSession</code>
+    </PossiblyNullReference>
+    <UndefinedInterfaceMethod>
+      <code>getFirewallConfig</code>
+    </UndefinedInterfaceMethod>
     <UnusedClass>
-      <code>HomeController</code>
+      <code>AuthorizationCodeSubscriber</code>
     </UnusedClass>
   </file>
 </files>

@@ -27,3 +27,14 @@ services:
     Enqueue\Dbal\DbalConnectionFactory:
         factory: ['Ecotone\Dbal\DbalConnection', 'create']
         arguments: ['@Doctrine\DBAL\Connection']
+
+
+    #
+    # Oauth2 bundle override
+    #
+    League\Bundle\OAuth2ServerBundle\Entity\AccessToken:
+        class: App\Entity\AccessToken
+
+    League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface:
+        class: App\Repository\AccessTokenRepository
+        decorates: 'League\Bundle\OAuth2ServerBundle\Repository\AccessTokenRepository'

@@ -14,4 +14,5 @@ return [
     Ecotone\SymfonyBundle\EcotoneSymfonyBundle::class => ['all' => true],
     Sentry\SentryBundle\SentryBundle::class => ['prod' => true],
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
+    League\Bundle\OAuth2ServerBundle\LeagueOAuth2ServerBundle::class => ['all' => true],
 ];
