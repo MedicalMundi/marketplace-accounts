@@ -40,6 +40,14 @@
       <code>count</code>
     </PossiblyUnusedMethod>
   </file>
+  <file src="src/Command/OauthGenerateKeyCommand.php">
+    <MixedArgument>
+      <code>$publicKey</code>
+    </MixedArgument>
+    <MixedAssignment>
+      <code>$publicKey</code>
+    </MixedAssignment>
+  </file>
   <file src="src/Command/SecurityAddAdministratorCommand.php">
     <PossiblyNullOperand>
       <code><![CDATA[$adminUser->getEmail()]]></code>
