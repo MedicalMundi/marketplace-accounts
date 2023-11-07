@@ -161,4 +161,9 @@
       <code>AuthorizationCodeSubscriber</code>
     </UnusedClass>
   </file>
+  <file src="src/Form/RegistrationFormType.php">
+    <MissingTemplateParam>
+      <code>RegistrationFormType</code>
+    </MissingTemplateParam>
+  </file>
 </files>
