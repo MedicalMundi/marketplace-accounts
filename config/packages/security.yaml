@@ -9,6 +9,9 @@ security:
             entity:
                 class: App\Entity\User
     firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
         api_token:
             pattern: ^/api/token$
             security: false
@@ -17,10 +20,6 @@ security:
             security: true
             stateless: true
             oauth2: true
-
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
         main:
 #            login_throttling:
 #                max_attempts: 3
@@ -58,6 +57,7 @@ security:
         - { path: ^/login, role: PUBLIC_ACCESS }
         - { path: ^/token, role: PUBLIC_ACCESS }
         - { path: ^/.well-known, roles: PUBLIC_ACCESS }
+        - { path: ^/register, roles: PUBLIC_ACCESS }
         - { path: ^/api, role: ROLE_OAUTH2_EMAIL }
         - { path: ^/, role: ROLE_USER }
 
