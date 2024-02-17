@@ -22,6 +22,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Uid\UuidV4;
@@ -31,7 +33,7 @@ use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, VerifyEmailHelperInterface $verifyEmailHelper): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, VerifyEmailHelperInterface $verifyEmailHelper, MailerInterface $mailer): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -60,13 +62,10 @@ class RegistrationController extends AbstractController
                 ]
             );
 
-            // TEMP: REMOVE LATER
-            $this->addFlash('success', 'Confirm your email at: ' . $signatureComponent->getSignedUrl());
+            $this->sendConfirmationEmail($mailer, $signatureComponent->getSignedUrl(), $user->getEmail());
+            $this->addFlash('info', 'Please check your mail and confirm your email address!');
 
-            // do anything else you need here, like send an email
-            //TODO SEND VERIFY MAIL
-
-            return $this->redirectToRoute('app_index');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [
@@ -105,8 +104,22 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/verify/resend', name: 'app_verify_resend_email')]
-    public function resendVerifyEmail(): Response
+    public function resendVerifyEmail(Request $request): Response
     {
+        //TODO: add form with email field
         return $this->render('registration/resend_verify_email.html.twig');
+    }
+
+    private function sendConfirmationEmail(MailerInterface $mailer, string $signedUrl, string $userEmail): void
+    {
+        $email = (new Email())
+            ->from('sys@stage.accounts.oe-modules.com')
+            ->to($userEmail)
+            ->priority(Email::PRIORITY_HIGH)
+            ->subject('Auth oe-modules.com: please confirm your registration')
+            ->text('Confirm your email at: ' . $signedUrl)
+            ->html('<p> Confirm your email at: ' . $signedUrl . '</p>');
+
+        $mailer->send($email);
     }
 }

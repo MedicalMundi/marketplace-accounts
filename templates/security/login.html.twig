@@ -33,6 +33,9 @@
 
 {% block body %}
     <main class="form-signin w-100 m-auto">
+
+        {% include 'common/_flash_messages.html.twig' %}
+
         <form action="{{ path('app_login') }}" method="post">
 {#            <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">#}
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>

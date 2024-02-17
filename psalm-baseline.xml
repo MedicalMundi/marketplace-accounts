@@ -39,6 +39,7 @@
     <PossiblyNullArgument>
       <code><![CDATA[$user->getEmail()]]></code>
       <code><![CDATA[$user->getEmail()]]></code>
+      <code><![CDATA[$user->getEmail()]]></code>
     </PossiblyNullArgument>
   </file>
   <file src="src/Controller/Security/LogoutController.php">
