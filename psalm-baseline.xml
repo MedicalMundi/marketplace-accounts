@@ -4,9 +4,6 @@
     <UndefinedInterfaceMethod>
       <code>searchModule</code>
     </UndefinedInterfaceMethod>
-    <UnusedClass>
-      <code>SearchModuleController</code>
-    </UnusedClass>
   </file>
   <file src="src/Adapter/PackagistModuleFinder/PackagistModuleFinder.php">
     <MixedArgument>
@@ -19,26 +16,11 @@
       <code>$decodedResponse</code>
       <code>$itemsFromResponse</code>
     </MixedAssignment>
-    <UnusedClass>
-      <code>PackagistModuleFinder</code>
-    </UnusedClass>
-  </file>
-  <file src="src/Application/PackagistItem.php">
-    <PossiblyUnusedMethod>
-      <code>getDescription</code>
-      <code>getDownloads</code>
-      <code>getName</code>
-      <code>getRepository</code>
-      <code>getUrl</code>
-    </PossiblyUnusedMethod>
   </file>
   <file src="src/Application/PackagistItemCollection.php">
     <InvalidArgument>
       <code><![CDATA[$this->items]]></code>
     </InvalidArgument>
-    <PossiblyUnusedMethod>
-      <code>count</code>
-    </PossiblyUnusedMethod>
   </file>
   <file src="src/Command/OauthGenerateKeyCommand.php">
     <MixedArgument>
@@ -52,6 +34,13 @@
     <PossiblyNullOperand>
       <code><![CDATA[$adminUser->getEmail()]]></code>
     </PossiblyNullOperand>
+  </file>
+  <file src="src/Controller/RegistrationController.php">
+    <PossiblyNullArgument>
+      <code><![CDATA[$user->getEmail()]]></code>
+      <code><![CDATA[$user->getEmail()]]></code>
+      <code><![CDATA[$user->getEmail()]]></code>
+    </PossiblyNullArgument>
   </file>
   <file src="src/Controller/Security/LogoutController.php">
     <MissingReturnType>
@@ -94,26 +83,10 @@
       <code><![CDATA[$this->getIdentifier()]]></code>
     </MixedArgument>
   </file>
-  <file src="src/Entity/OAuth2ClientProfile.php">
-    <PossiblyUnusedMethod>
-      <code>getClient</code>
-      <code>getDescription</code>
-      <code>getId</code>
-      <code>setClient</code>
-      <code>setDescription</code>
-      <code>setName</code>
-    </PossiblyUnusedMethod>
-  </file>
   <file src="src/Entity/OAuth2UserConsent.php">
     <PossiblyNullPropertyAssignmentValue>
       <code>$scopes</code>
     </PossiblyNullPropertyAssignmentValue>
-    <PossiblyUnusedMethod>
-      <code>getCreated</code>
-      <code>getExpires</code>
-      <code>getId</code>
-      <code>getIpAddress</code>
-    </PossiblyUnusedMethod>
   </file>
   <file src="src/Entity/User.php">
     <InvalidNullableReturnType>
@@ -134,12 +107,6 @@
     <PossiblyNullReference>
       <code>toRfc4122</code>
     </PossiblyNullReference>
-    <PossiblyUnusedMethod>
-      <code>getId</code>
-      <code>getSalt</code>
-      <code>getUuid</code>
-      <code>removeOAuth2UserConsent</code>
-    </PossiblyUnusedMethod>
     <RedundantConditionGivenDocblockType>
       <code><![CDATA[! $this->oAuth2UserConsents->contains($oAuth2UserConsent)]]></code>
     </RedundantConditionGivenDocblockType>
@@ -157,9 +124,6 @@
     <UndefinedInterfaceMethod>
       <code>getFirewallConfig</code>
     </UndefinedInterfaceMethod>
-    <UnusedClass>
-      <code>AuthorizationCodeSubscriber</code>
-    </UnusedClass>
   </file>
   <file src="src/Form/RegistrationFormType.php">
     <MissingTemplateParam>
