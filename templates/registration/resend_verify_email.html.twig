@@ -1,0 +1,38 @@
+{% extends 'layout-base.html.twig' %}
+
+{% block title %}Verify email{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            height: 100%;
+        }
+
+        .form-registration {
+            max-width: 330px;
+            padding: 1rem;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <main class="form-registration w-100 m-auto">
+    <h1>Verify your email</h1>
+
+        <p>A verification email was sent.</p>
+        <p>Please click it to enable your account before logging in.</p>
+
+{#    {{ form_errors(registrationForm) }}#}
+
+{#    {{ form_start(registrationForm) }}#}
+{#        {{ form_row(registrationForm.email) }}#}
+{#        {{ form_row(registrationForm.plainPassword, {#}
+{#            label: 'Password'#}
+{#        }) }}#}
+{#        {{ form_row(registrationForm.agreeTerms) }}#}
+
+        <button type="submit" class="btn btn-primary">Re-send Email</button>
+{#    {{ form_end(registrationForm) }}#}
+</main>
+{% endblock %}
