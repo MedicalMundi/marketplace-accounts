@@ -1,0 +1,75 @@
+# https://docs.github.com/en/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+
+updates:
+
+  ########################################################################################################################
+  #
+  #   Tools dependencies
+  #
+  ########################################################################################################################
+  - package-ecosystem: "composer"
+    target-branch: "main"
+    directory: "/tools/ecs"
+    versioning-strategy: "increase"
+    open-pull-requests-limit: 1
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "zerai"
+    commit-message:
+      include: "scope"
+      prefix: "Tools - ecs "
+    labels:
+      - "tool dependency"
+
+  - package-ecosystem: "composer"
+    target-branch: "main"
+    directory: "/tools/psalm"
+    versioning-strategy: "increase"
+    open-pull-requests-limit: 1
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "zerai"
+    commit-message:
+      include: "scope"
+      prefix: "Tools - psalm "
+    labels:
+      - "tool dependency"
+
+  - package-ecosystem: "composer"
+    target-branch: "main"
+    directory: "/tools/rector"
+    versioning-strategy: "increase"
+    open-pull-requests-limit: 1
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "zerai"
+    commit-message:
+      include: "scope"
+      prefix: "Tools - rector "
+    labels:
+      - "Tool dependency"
+
+
+  ########################################################################################################################
+  #
+  #   Github Actions dependencies
+  #
+  ########################################################################################################################
+  - package-ecosystem: "github-actions"
+    target-branch: "main"
+    directory: "/"
+    open-pull-requests-limit: 5
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "zerai"
+    commit-message:
+      include: "scope"
+      prefix: "github-actions"
+    labels:
+      - "GHA dependency"
