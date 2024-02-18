@@ -1,0 +1,32 @@
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Eleventh navbar example">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('app_index') }}">Auth oe-modules.com</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainTop" aria-controls="navbarMainTop" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMainTop">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{ path('app_index') }}">Home</a>
+                </li>
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link" href="#">Link</a>#}
+{#                </li>#}
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>#}
+{#                </li>#}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">OpenEMR</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="https://www.open-emr.org/" target="_blank">Website</a></li>
+                        <li><a class="dropdown-item" href="https://www.open-emr.org/wiki/index.php/OpenEMR_Wiki_Home_Page" target="_blank">Wiki</a></li>
+                        <li><a class="dropdown-item" href="https://community.open-emr.org/" target="_blank">Community</a></li>
+                        <li><a class="dropdown-item" href="https://github.com/openemr/openemr" target="_blank">Source code</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
