@@ -9,6 +9,9 @@ docker-compose.override.yml
 /docker
 psalm.xml
 
+.env.itroom.production
+.env.itroom.stage
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
