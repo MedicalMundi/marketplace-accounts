@@ -3,9 +3,3 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
-
-webapi_controllers:
-    resource:
-        path: ../src/Adapter/Http/WebApi
-        namespace: App\Adapter\Http\WebApi
-    type: attribute
