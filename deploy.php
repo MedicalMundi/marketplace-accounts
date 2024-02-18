@@ -36,6 +36,9 @@ set('application_path_production', 'auth.oe-modules.com');
 host('production')
     ->setHostname('auth.oe-modules.com')
     ->set('stage', 'production')
+    ->setLabels([
+        'env' => 'production',
+    ])
     ->set('deploy_path', '~/{{application_path_production}}')
     ->set('http_user', 'ekvwxsme')
     ->set('writable_use_sudo', false)
@@ -58,6 +61,9 @@ set('application_path_stage', 'stage.auth.oe-modules.com');
 host('stage')
     ->setHostname('stage.auth.oe-modules.com')
     ->set('stage', 'stage')
+    ->setLabels([
+        'env' => 'stage',
+    ])
     ->set('deploy_path', '~/{{application_path_stage}}')
     ->set('http_user', 'ekvwxsme')
     ->set('writable_use_sudo', false)
@@ -66,6 +72,7 @@ host('stage')
     ->setRemoteUser('ekvwxsme')
     ->setPort(3508)
     //->set('identityFile', '~/.ssh/id_rsa_oe_modules_php_deployer')
+    //->set('forwardAgent', true)
     ->set('ssh_multiplexing', false)
     /** git & composer settings */
     ->set('branch', 'main')
@@ -104,7 +111,8 @@ after('deploy:failed', 'deploy:unlock');
 after('deploy', 'envvars:dump');
 // Enable db migration
 // Migrate database before symlink new release.
-before('deploy:symlink', 'database:migrate');
+//before('deploy:symlink', 'database:migrate');
+after('deploy', 'database:migrate');
 
 
 /**
