@@ -1,0 +1,24 @@
+ecotone:
+    loadSrcNamespaces: true # bool (default: true)
+    failFast: true # bool (default: true, production: false)
+    namespaces: # string[] (default: [])
+      - 'IdentityAccess'
+    defaultSerializationMediaType: application/x-php-serialized # string (default: application/x-php-serialized) [application/json, application/xml]
+    defaultErrorChannel: null # string (default: null)
+    defaultMemoryLimit: 1024 # string (default: 1024)
+    defaultConnectionExceptionRetry:
+       initialDelay: 100 # int (default: 100, production: 1000)
+       maxAttempts: 3 # int (default: 3, production: 5)
+       multiplier: 3 # int (default: 3)
+    serviceName: # string (default: null)
+    skippedModulePackageNames: [] # string[] (default: [])
+    test: false # bool (default: false)
+
+when@prod:
+  ecotone:
+    loadSrcNamespaces: false
+    failFast: false
+    defaultConnectionExceptionRetry:
+      initialDelay: 1000 # int (default: 100, production: 1000)
+      maxAttempts: 5 # int (default: 3, production: 5)
+      multiplier: 3 # int (default: 3)
