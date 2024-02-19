@@ -9,8 +9,11 @@
         <div class="collapse navbar-collapse" id="navbarMainTop">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{ path('app_index') }}">Home</a>
+                    <a class="nav-link" aria-current="page" href="{{ path('iam_admin_index') }}">Admin</a>
                 </li>
+{#                <li class="nav-item">#}
+{#                    <a class="nav-link" aria-current="page" href="{{ path('app_index') }}">Accounts</a>#}
+{#                </li>#}
 {#                <li class="nav-item">#}
 {#                    <a class="nav-link" href="#">Link</a>#}
 {#                </li>#}
@@ -18,12 +21,10 @@
 {#                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>#}
 {#                </li>#}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">OpenEMR</a>
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Accounts</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="https://www.open-emr.org/" target="_blank">Website</a></li>
-                        <li><a class="dropdown-item" href="https://www.open-emr.org/wiki/index.php/OpenEMR_Wiki_Home_Page" target="_blank">Wiki</a></li>
-                        <li><a class="dropdown-item" href="https://community.open-emr.org/" target="_blank">Community</a></li>
-                        <li><a class="dropdown-item" href="https://github.com/openemr/openemr" target="_blank">Source code</a></li>
+                        <li><a class="dropdown-item" href="{{ path('iam_admin_accounts_index') }}">All</a></li>
+                        <li><a class="dropdown-item" href="{{ path('iam_admin_accounts_unverified') }}">Pending registrations</a></li>
                     </ul>
                 </li>
             </ul>
