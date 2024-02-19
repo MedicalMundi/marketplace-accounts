@@ -126,7 +126,9 @@
         "rc": "./vendor/bin/rector  process --dry-run",
         "rc:fix": "./vendor/bin/rector",
         "sa": "./vendor/bin/psalm",
-        "tu": "./vendor/bin/phpunit --testdox tests/Unit"
+        "tf": "./vendor/bin/phpunit --testsuite=functional --testdox",
+        "ti": "./vendor/bin/phpunit --testsuite=integration --testdox",
+        "tu": "./vendor/bin/phpunit --testsuite=unit --testdox"
     },
     "scripts-descriptions": {
         "cs": "Check php coding style",
@@ -134,6 +136,8 @@
         "rc": "Check rector roules",
         "rc:fix": "Fix rector issues",
         "sa": "Check static analysis (psalm)",
+        "tf": "Run functional testsuite",
+        "ti": "Run integration testsuite",
         "tu": "Run unit testsuite"
     }
 }
