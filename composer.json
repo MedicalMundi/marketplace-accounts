@@ -133,7 +133,7 @@
     "scripts-descriptions": {
         "cs": "Check php coding style",
         "cs:fix": "Fix php coding style",
-        "rc": "Check rector roules",
+        "rc": "Check rector rules",
         "rc:fix": "Fix rector issues",
         "sa": "Check static analysis (psalm)",
         "tf": "Run functional testsuite",
