@@ -17,17 +17,22 @@ namespace IdentityAccess\AdapterForWeb;
 
 use Ecotone\Modelling\QueryBus;
 use IdentityAccess\Core\ShowAllAccountsQuery;
-use IdentityAccess\Core\showUnverifiedAccounts;
+use IdentityAccess\Core\ShowUnverifiedAccounts;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AccountsController extends AbstractController
 {
+    public function __construct(
+        private readonly QueryBus $queryBus
+    ) {
+    }
+
     #[Route('/admin/accounts', name: 'iam_admin_accounts_index')]
-    public function index(QueryBus $queryBus): Response
+    public function index(): Response
     {
-        $allAccounts = (array) $queryBus->send(new ShowAllAccountsQuery());
+        $allAccounts = (array) $this->queryBus->send(new ShowAllAccountsQuery());
 
         return $this->render('@iam/administration/accounts/index.html.twig', [
             'allAccounts' => $allAccounts,
@@ -35,9 +40,9 @@ class AccountsController extends AbstractController
     }
 
     #[Route('/admin/accounts/unverified', name: 'iam_admin_accounts_unverified')]
-    public function unverifiedAccounts(QueryBus $queryBus): Response
+    public function unverifiedAccounts(): Response
     {
-        $pendingRegistrations = (array) $queryBus->send(new showUnverifiedAccounts());
+        $pendingRegistrations = (array) $this->queryBus->send(new ShowUnverifiedAccounts());
 
         return $this->render('@iam/administration/accounts/unverified_accounts.html.twig', [
             'pendingRegistrations' => $pendingRegistrations,
