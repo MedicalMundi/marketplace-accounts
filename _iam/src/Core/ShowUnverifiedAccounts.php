@@ -15,7 +15,7 @@
 
 namespace IdentityAccess\Core;
 
-class showUnverifiedAccounts
+class ShowUnverifiedAccounts
 {
     private int $limit = 1000;
 

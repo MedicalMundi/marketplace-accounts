@@ -2,7 +2,7 @@ ecotone:
     loadSrcNamespaces: true # bool (default: true)
     failFast: true # bool (default: true, production: false)
     namespaces: # string[] (default: [])
-      - 'IdentityAccess\Core'
+      - 'IdentityAccess'
     defaultSerializationMediaType: application/x-php-serialized # string (default: application/x-php-serialized) [application/json, application/xml]
     defaultErrorChannel: null # string (default: null)
     defaultMemoryLimit: 1024 # string (default: 1024)

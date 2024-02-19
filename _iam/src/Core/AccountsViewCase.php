@@ -26,13 +26,13 @@ class AccountsViewCase
     }
 
     #[QueryHandler]
-    public function showAllAccounts(ShowAllAccountsQuery $showAllAccountsQuery): array
+    public function showAllAccounts(ShowAllAccountsQuery $query): array
     {
         return $this->userRepository->findAll();
     }
 
     #[QueryHandler]
-    public function showUnverifiedAccounts(showUnverifiedAccounts $query): array
+    public function showUnverifiedAccounts(ShowUnverifiedAccounts $query): array
     {
         return $this->userRepository->findBy([
             'isVerified' => false,
