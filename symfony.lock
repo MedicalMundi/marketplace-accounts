@@ -1,4 +1,7 @@
 {
+    "babdev/pagerfanta-bundle": {
+        "version": "v4.4.0"
+    },
     "corley/maintenance-bundle": {
         "version": "0.5.1"
     },
@@ -49,6 +52,9 @@
             "version": "0.4",
             "ref": "4dd47013ecec8a158d186f63ec4b51f1defff897"
         }
+    },
+    "knplabs/knp-menu-bundle": {
+        "version": "v3.3.0"
     },
     "league/oauth2-server-bundle": {
         "version": "0.5",
