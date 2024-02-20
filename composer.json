@@ -117,6 +117,7 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
+        "ark": "./vendor/bin/phparkitect check",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
@@ -131,6 +132,7 @@
         "tu": "./vendor/bin/phpunit --testsuite=unit --testdox"
     },
     "scripts-descriptions": {
+        "ark": "Run Architectural checks",
         "cs": "Check php coding style",
         "cs:fix": "Fix php coding style",
         "rc": "Check rector rules",

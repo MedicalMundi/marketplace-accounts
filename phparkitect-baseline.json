@@ -1,0 +1,30 @@
+{
+    "violations": [
+        {
+            "fqcn": "App\\Controller\\RegistrationController",
+            "line": 77,
+            "error": "depends on App\\Repository\\UserRepository, but should not depend on these namespaces: App\\Repository\\* because of component architecture"
+        },
+        {
+            "fqcn": "App\\Entity\\OAuth2ClientProfile",
+            "line": 23,
+            "error": "depends on App\\Repository\\OAuth2ClientProfileRepository, but should not depend on these namespaces: App\\Controller\\*, App\\Service\\*, App\\Repository\\* because of component architecture"
+        },
+        {
+            "fqcn": "App\\Entity\\OAuth2UserConsent",
+            "line": 23,
+            "error": "depends on App\\Repository\\OAuth2UserConsentRepository, but should not depend on these namespaces: App\\Controller\\*, App\\Service\\*, App\\Repository\\* because of component architecture"
+        },
+        {
+            "fqcn": "App\\Entity\\User",
+            "line": 27,
+            "error": "depends on App\\Repository\\UserRepository, but should not depend on these namespaces: App\\Controller\\*, App\\Service\\*, App\\Repository\\* because of component architecture"
+        },
+        {
+            "fqcn": "IdentityAccess\\AdapterForReadingAccounts\\AccountsDataProvider",
+            "line": 26,
+            "error": "depends on App\\Repository\\UserRepository, but should not depend on classes outside namespace IdentityAccess\\Core because we want isolate our identity access Adapters from ever growing dependencies."
+        }
+    ],
+    "stopOnFailure": false
+}
