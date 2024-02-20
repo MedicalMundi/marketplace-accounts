@@ -201,12 +201,12 @@ jobs:
           - name: Run unit tests
             if: ${{ !matrix.generate-coverage-report }}
             run: |
-                vendor/bin/phpunit --testsuite=unit --testdox --no-interaction --colors=always
+                vendor/bin/phpunit --testsuite=unit --testdox --colors=always
 
           - name: Run unit tests WITH COVERAGE
             if: ${{ matrix.generate-coverage-report }}
             run: |
-                vendor/bin/phpunit --testsuite=unit --testdox --no-interaction --colors=always \
+                vendor/bin/phpunit --testsuite=unit --testdox --colors=always \
                 --coverage-clover ${{ vars.UNIT_TEST_CLOVER_FILENAME }} \
                 --testdox-text ${{ vars.UNIT_TEST_DOC_FILENAME }}
 
