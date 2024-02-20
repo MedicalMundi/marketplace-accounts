@@ -23,6 +23,8 @@
         "pagerfanta/doctrine-orm-adapter": "^4.3",
         "pagerfanta/twig": "^4.3",
         "psr/http-client": "^1.0",
+        "ramsey/uuid": "^4.7",
+        "ramsey/uuid-doctrine": "^2.0",
         "sentry/sentry-symfony": "^4.11",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "6.4.*",
