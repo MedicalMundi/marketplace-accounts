@@ -1,0 +1,137 @@
+{
+    "app_api_security_index": {
+        "path": "\/api\/security\/test",
+        "requirements": [],
+        "defaults": {
+            "_controller": "App\\Controller\\Api\\SecurityController::index"
+        },
+        "methods": []
+    },
+    "app_api_test": {
+        "path": "\/api\/test",
+        "requirements": [],
+        "defaults": {
+            "_controller": "App\\Controller\\FakeApiTestController::apiTest"
+        },
+        "methods": []
+    },
+    "app_consent": {
+        "path": "\/consent",
+        "requirements": [],
+        "defaults": {
+            "_controller": "App\\Controller\\Security\\OauthConsentController::consent"
+        },
+        "methods": [
+            "GET",
+            "POST"
+        ]
+    },
+    "app_index": {
+        "path": "\/",
+        "requirements": [],
+        "defaults": {
+            "_controller": "App\\Controller\\IndexController::index"
+        },
+        "methods": []
+    },
+    "app_jwks": {
+        "path": "\/.well-known\/jwks.json",
+        "requirements": [],
+        "defaults": {
+            "_controller": "App\\Controller\\Security\\WellKnownJwksController::jwks"
+        },
+        "methods": [
+            "GET"
+        ]
+    },
+    "app_login": {
+        "path": "\/login",
+        "requirements": [],
+        "defaults": {
+            "_controller": "App\\Controller\\Security\\LoginController::index"
+        },
+        "methods": []
+    },
+    "app_logout": {
+        "path": "\/logout",
+        "requirements": [],
+        "defaults": {
+            "_controller": "App\\Controller\\Security\\LogoutController::logout"
+        },
+        "methods": [
+            "GET"
+        ]
+    },
+    "app_register": {
+        "path": "\/register",
+        "requirements": [],
+        "defaults": {
+            "_controller": "App\\Controller\\RegistrationController::register"
+        },
+        "methods": []
+    },
+    "app_verify_email": {
+        "path": "\/verify",
+        "requirements": [],
+        "defaults": {
+            "_controller": "App\\Controller\\RegistrationController::verifyUserEmail"
+        },
+        "methods": []
+    },
+    "app_verify_resend_email": {
+        "path": "\/verify\/resend",
+        "requirements": [],
+        "defaults": {
+            "_controller": "App\\Controller\\RegistrationController::resendVerifyEmail"
+        },
+        "methods": []
+    },
+    "iam_admin_accounts_index": {
+        "path": "\/admin\/accounts",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\AccountsController::index"
+        },
+        "methods": []
+    },
+    "iam_admin_accounts_unverified": {
+        "path": "\/admin\/accounts\/unverified",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\AccountsController::unverifiedAccounts"
+        },
+        "methods": []
+    },
+    "iam_admin_index": {
+        "path": "\/admin",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\AdminIndexController::index"
+        },
+        "methods": []
+    },
+    "oauth2_authorize": {
+        "path": "\/authorize",
+        "requirements": [],
+        "defaults": {
+            "_controller": [
+                "league.oauth2_server.controller.authorization",
+                "indexAction"
+            ]
+        },
+        "methods": []
+    },
+    "oauth2_token": {
+        "path": "\/token",
+        "requirements": [],
+        "defaults": {
+            "_controller": [
+                "league.oauth2_server.controller.token",
+                "indexAction"
+            ]
+        },
+        "methods": [
+            "POST"
+        ]
+    }
+}
