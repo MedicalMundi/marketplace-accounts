@@ -100,6 +100,11 @@ jobs:
         run: |
           ./vendor/bin/rector process --dry-run
 
+      - name: Run architecture checks
+        if: always()
+        run: |
+          ./vendor/bin/phparkitect check --ansi
+
       #
       # Additional checks, they are precondition before
       # 'acceptance stage' fase of the CI
