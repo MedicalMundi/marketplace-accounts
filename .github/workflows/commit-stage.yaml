@@ -87,7 +87,7 @@ jobs:
       - name: Run ecs CODING STANDARDS
         if: always()
         run: |
-          ./vendor/bin/ecs
+          ./vendor/bin/ecs --ansi
 
       - name: Run psalm STATIC ANALYSIS
         if: always()
@@ -98,7 +98,7 @@ jobs:
       - name: Run rector MAINTENANCE
         if: always()
         run: |
-          ./vendor/bin/rector process --dry-run
+          ./vendor/bin/rector process --dry-run --ansi
 
       - name: Run architecture checks
         if: always()
