@@ -9,6 +9,7 @@ imports:
 parameters:
     release.version: 'v0.1.x'
     setting.is_user_registration_enabled: false
+    setting.is_user_password_recovery_enabled: false
 
 services:
     # default configuration for services in *this* file
