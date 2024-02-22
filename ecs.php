@@ -14,6 +14,7 @@ use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
 
 return function (ECSConfig $ecsConfig): void {
+    $ecsConfig->cacheDirectory(__DIR__ . '/var/cache_tools');
     $ecsConfig->paths([
         //__DIR__ . '/config',
         __DIR__ . '/src',
@@ -41,7 +42,7 @@ return function (ECSConfig $ecsConfig): void {
     ]);
 
     $docHeader = <<<'EOF'
-This file is part of the medicalmundi/marketplace-engine
+This file is part of the medicalmundi/marketplace-accounts
 
 @copyright (c) 2023 MedicalMundi
 
