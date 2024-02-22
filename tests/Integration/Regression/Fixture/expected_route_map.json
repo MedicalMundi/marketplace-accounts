@@ -110,6 +110,26 @@
         },
         "methods": []
     },
+    "iam_admin_oauth_client_index": {
+        "path": "\/admin\/oauth\/client\/",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\OauthClientController::showAllOauthClients"
+        },
+        "methods": [
+            "GET"
+        ]
+    },
+    "iam_admin_oauth_client_show": {
+        "path": "\/admin\/oauth\/client\/{clientIdentifier}",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\OauthClientController::showClient"
+        },
+        "methods": [
+            "GET"
+        ]
+    },
     "oauth2_authorize": {
         "path": "\/authorize",
         "requirements": [],

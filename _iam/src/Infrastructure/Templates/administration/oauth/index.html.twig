@@ -1,0 +1,67 @@
+{% extends '@iam/layout-base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block main %}
+<main class="flex-sm-shrink-1 flex-md-shrink-1 flex-lg-shrink-0 flex-xl-shrink-0">
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-6 text-center">
+                <h1>Oauth clients</h1>
+                <p class="text-muted">
+                </p>
+            </div>
+        </div>
+
+        <div class="row mt-5 justify-content-center">
+            <div class="col-sm-12 col-6 justify-content-center">
+
+            </div>
+        </div>
+
+        <div class="row mt-1 justify-content-center">
+            <div class="col-sm-12 col-6 justify-content-center border">
+                <div class="htmx-indicator spinner-border text-success col-1" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+                <div id="search-results">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Identifier</th>
+                                    <th>Name</th>
+                                    <th>Active</th>
+                                    <th>Grants</th>
+                                    <th>Scopes</th>
+                                    <th>Redirects</th>
+                                    <th>PKCE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for client in oauthClients %}
+                                <tr>
+                                    <td>{{ client.identifier}}</td>
+                                    <td>{{ client.name}}</td>
+                                    <td>{{ client.active }}</td>
+                                    <td>{{ client.grants }}</td>
+                                    <td>{{ client.scopes }}</td>
+                                    <td>{{ client.redirect_uris }}</td>
+                                    <td>{{ client.allow_plain_text_pkce }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="7">{{ 'common.no_record_found' }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

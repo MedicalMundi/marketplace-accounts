@@ -1,0 +1,37 @@
+{% extends '@iam/layout-base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block main %}
+<main class="flex-shrink-0">
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-6 text-center">
+                <h1>Oauth client details</h1>
+                <p class="text-muted">
+                </p>
+            </div>
+        </div>
+
+        <div class="row mt-5 justify-content-center">
+            <div class="col-6 justify-content-center">
+
+            </div>
+        </div>
+
+        <div class="row mt-1 justify-content-center">
+            <div class="col-6 justify-content-center border">
+                <div class="htmx-indicator spinner-border text-success col-1" role="status">
+                    <span class="visually-hidden"></span>
+                </div>
+                <div id="search-results">
+                    {{ dump(client) }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock %}
