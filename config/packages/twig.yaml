@@ -11,6 +11,7 @@ twig:
 
     globals:
         release_version: '%release.version%'
+        is_user_registration_enabled: '%setting.is_user_registration_enabled%'
 
 when@test:
     twig:

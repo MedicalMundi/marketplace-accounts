@@ -35,6 +35,14 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, VerifyEmailHelperInterface $verifyEmailHelper, MailerInterface $mailer): Response
     {
+        $isUserRegistrationEnabled = $this->getParameter('setting.is_user_registration_enabled');
+
+        if (false === $isUserRegistrationEnabled) {
+            $this->addFlash('info', 'Sorry!! Registration are disabled at the moment! Try later..');
+
+            return $this->redirectToRoute('app_index');
+        }
+
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
