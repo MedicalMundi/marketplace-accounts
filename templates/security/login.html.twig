@@ -64,7 +64,9 @@
 {#            </div>#}
             <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
         </form>
-        <p class="text-center">Need an account? <a href="{{ path('app_register') }}" class="" >Sign up</a></p>
+        {% if is_user_registration_enabled %}
+            <p class="text-center">Need an account? <a href="{{ path('app_register') }}" class="" >Sign up</a></p>
+        {% endif %}
         <p class="text-center"><a href="#" class="">Forgot your password?</a></p>
 
     </main>
