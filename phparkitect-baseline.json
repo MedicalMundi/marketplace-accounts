@@ -2,7 +2,7 @@
     "violations": [
         {
             "fqcn": "App\\Controller\\RegistrationController",
-            "line": 77,
+            "line": 85,
             "error": "depends on App\\Repository\\UserRepository, but should not depend on these namespaces: App\\Repository\\* because of component architecture"
         },
         {
