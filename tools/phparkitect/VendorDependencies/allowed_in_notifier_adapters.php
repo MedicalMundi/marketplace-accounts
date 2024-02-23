@@ -7,4 +7,10 @@ return [
 
     'Doctrine\DBAL\Connection',
 
+    'Symfony\Component\Mailer\MailerInterface',
+
+    'Symfony\Bridge\Twig\Mime\TemplatedEmail',
+
+    'Symfony\Component\Mime\Address',
+
 ];
