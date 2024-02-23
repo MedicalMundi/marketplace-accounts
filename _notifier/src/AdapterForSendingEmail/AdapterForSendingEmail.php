@@ -42,15 +42,17 @@ class AdapterForSendingEmail implements ForSendingEmail
         $email = (new TemplatedEmail())
             ->from($systemAddress)
             ->to($userAddress)
+            // TODO: configure a replyTo
             //->replyTo($visitorAddress)
             ->subject(
                 sprintf('%s: ' . self::REGISTRATION_VERIFICATION_MESSAGE_SUBJECT, $this->systemEmailName)
             )
             ->text($this->formatMessage($registrationSignedUrl))
+            // TODO: add HTML Template
             //->textTemplate('@mailer/for-oberdan/contact_message_from_visitor.txt.twig')
-//            ->context([
-//                'registration_signed_url' => $registrationSignedUrl,
-//            ])
+            //->context([
+            //'registration_signed_url' => $registrationSignedUrl,
+            //])
         ;
 
         try {

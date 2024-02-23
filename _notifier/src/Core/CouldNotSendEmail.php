@@ -22,6 +22,7 @@ class CouldNotSendEmail extends RuntimeException
     public static function withMessage(string $message): self
     {
         return new self(
+            //TODO: translate in eng, find better message
             sprintf(
                 'Errore nell\'invio mail: %s',
                 $message
