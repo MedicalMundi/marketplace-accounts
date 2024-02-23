@@ -14,13 +14,15 @@ use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
 
 return function (ECSConfig $ecsConfig): void {
-    $ecsConfig->cacheDirectory(__DIR__ . '/var/cache_tools');
+    $ecsConfig->cacheDirectory(__DIR__ . '/var/cache_tools/ecs');
     $ecsConfig->paths([
         //__DIR__ . '/config',
         __DIR__ . '/src',
         __DIR__ . '/tests',
         __DIR__ . '/_iam/src',
         __DIR__ . '/_iam/tests',
+        __DIR__ . '/_notifier/src',
+        __DIR__ . '/_notifier/tests',
         __DIR__ . '/rector.php',
     ]);
 
