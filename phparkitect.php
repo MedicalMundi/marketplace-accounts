@@ -43,7 +43,7 @@ return static function (Config $config): void {
     /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
      *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
      *
-     *      IdentityAccess
+     *      IdentityAccess Context
      *
      *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
      *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
@@ -82,4 +82,42 @@ return static function (Config $config): void {
 
     $config->add($identityAccessClassSet, $identityAccessCoreIsolationRule, $identityAccessAdaptersIsolationRule, ...$identityAccessPortAndAdapterArchitectureRules);
 
+
+    /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     *
+     *      Notifier Context
+     *
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     */
+
+    $notifierClassSet = ClassSet::fromDir(__DIR__ . '/_notifier/src');
+
+    $allowedVendorDependenciesInNotifierCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_notifier_core.php';
+    $allowedVendorDependenciesInNotifierAdapters = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_notifier_adapters.php';
+
+    $notifierPortAndAdapterArchitectureRules = Architecture::withComponents()
+        ->component('Core')->definedBy('Notifier\Core\*')
+        ->component('Adapters')->definedBy('Notifier\AdapterFor*')
+        ->component('Infrastructure')->definedBy('Notifier\Infrastructure\*')
+
+        ->where('Infrastructure')->shouldNotDependOnAnyComponent()
+        ->where('Adapters')->mayDependOnComponents('Core', 'Infrastructure')
+        ->where('Core')->shouldNotDependOnAnyComponent()
+        ->rules();
+
+    $allowedDependenciesInNotifierCore = array_merge($allowedPhpDependencies, $allowedVendorDependenciesInNotifierCore);
+    $notifierCoreIsolationRule = Rule::allClasses()
+        ->that(new ResideInOneOfTheseNamespaces('Notifier\Core'))
+        ->should(new NotHaveDependencyOutsideNamespace('Notifier\Core', $allowedDependenciesInNotifierCore))
+        ->because('we want isolate our notifier core domain from external world.');
+
+    $allowedDependenciesInNotifierAdapters = array_merge($allowedPhpDependencies, $allowedVendorDependenciesInNotifierAdapters);
+    $notifierAdaptersIsolationRule = Rule::allClasses()
+        ->that(new ResideInOneOfTheseNamespaces('Notifier\AdapterFor*'))
+        ->should(new NotHaveDependencyOutsideNamespace('Notifier\Core', $allowedDependenciesInNotifierAdapters))
+        ->because('we want isolate our notifier Adapters from ever growing dependencies.');
+
+    $config->add($notifierClassSet, $notifierCoreIsolationRule, $notifierAdaptersIsolationRule, ...$notifierPortAndAdapterArchitectureRules);
 };

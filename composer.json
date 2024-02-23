@@ -103,13 +103,15 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
-            "IdentityAccess\\": "_iam/src/"
+            "IdentityAccess\\": "_iam/src/",
+            "Notifier\\": "_notifier/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/",
-            "IdentityAccess\\Tests\\": "_iam/tests/"
+            "IdentityAccess\\Tests\\": "_iam/tests/",
+            "Notifier\\Tests\\": "_notifier/tests/"
         }
     },
     "minimum-stability": "stable",
