@@ -120,4 +120,32 @@ return static function (Config $config): void {
         ->because('we want isolate our notifier Adapters from ever growing dependencies.');
 
     $config->add($notifierClassSet, $notifierCoreIsolationRule, $notifierAdaptersIsolationRule, ...$notifierPortAndAdapterArchitectureRules);
+
+
+
+    /**++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     *
+     *      All Application
+     *
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
+     */
+
+    $allApplicationClassSet = ClassSet::fromDir(__DIR__)
+        ->excludePath('*tests*')
+        ->excludePath('*vendor*')
+        ->excludePath('*tools*')
+        ->excludePath('*var*')
+    ;
+
+    $applicationModuleArchitectureRules = Architecture::withComponents()
+        ->component('IdentityAccess')->definedBy('IdentityAccess\*')
+        ->component('Notifier')->definedBy('Notifier\*')
+        ->where('IdentityAccess')->shouldNotDependOnAnyComponent()
+        ->where('Notifier')->shouldNotDependOnAnyComponent()
+        ->rules();
+
+    $config->add($allApplicationClassSet, ...$applicationModuleArchitectureRules);
+
 };
