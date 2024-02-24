@@ -26,6 +26,26 @@ class ExternalSystemNotifier
     ) {
     }
 
+    /**
+     * Scopo:
+     *  ascoltare tutti gli eventi di dominio prodotti da
+     *  IdentityAccess BC, eventualmente rimappare e pubblicare esternamente gli eventi di rilevanza
+     *  strategica a livello globale di sistema.
+     *
+     *  Eventi interni:
+     *  user.* (ex: user.created, user.disabled/enabled)
+     *  oauth.* (ex: oauth.client.created, oauth.consent.revoked, oauth.client.scope.updated)
+     *
+     */
+    public function internalMessageListener(object $event): void
+    {
+        //TODO:
+        // ignora gli eventi non rilevanti
+        // rimappa gli eventi
+        // save for historical reason (replay?)
+        // publish to external context
+    }
+
     public function notifyNewUserRegistrationWasAccepted(): void
     {
         $this->eventBus->publishWithRouting(
@@ -34,6 +54,7 @@ class ExternalSystemNotifier
                 'userId' => Uuid::uuid4()->toString(),
                 'userEmail' => 'foobar@example.com',
             ],
+            //TODO:
             //MediaType::APPLICATION_JSON
         );
     }

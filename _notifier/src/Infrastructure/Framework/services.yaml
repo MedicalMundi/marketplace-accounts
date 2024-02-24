@@ -31,6 +31,15 @@ services:
   # please note that last definitions always *replace* previous ones
 
 
+#  cache.notifier:
+#    parent: 'cache.adapter.filesystem'
+#    public: true
+#    tags:
+#      - 'cache.pool'
+#  cache.notifier.taggable:
+#    class: Symfony\Component\Cache\Adapter\TagAwareAdapter
+#    arguments: ['cache.notifier']
+#    tags: [cache.taggable, ]
 
 
 
