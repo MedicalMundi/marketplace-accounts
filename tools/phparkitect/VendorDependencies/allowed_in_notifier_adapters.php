@@ -3,6 +3,8 @@
 return [
     'Notifier\Core',
 
+    'Psr\Log\LoggerInterface',
+
     'Ecotone\Modelling\QueryBus',
 
     'Doctrine\DBAL\Connection',
