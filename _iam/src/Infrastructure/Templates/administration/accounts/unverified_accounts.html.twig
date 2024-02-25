@@ -6,7 +6,7 @@
 
 {% block main %}
 <main class="flex-shrink-0">
-    <div class="container mt-3">
+    <div class="container mt-0">
         <div class="row justify-content-center">
             <div class="col-6 text-center">
                 <h1>Pending registrations</h1>
@@ -15,9 +15,9 @@
             </div>
         </div>
 
-        <div class="row mt-5 justify-content-center">
-            <div class="col-6 justify-content-center">
-
+        <div class="row mt-5 justify-content-end">
+            <div class="col-auto justify-content-center border">
+                HERE ACTION BAR
             </div>
         </div>
 
@@ -27,12 +27,36 @@
                     <span class="visually-hidden"></span>
                 </div>
                     <div id="search-results">
-
-                        {{ dump(pendingRegistrations) }}
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Email</th>
+                                    <th>Roles</th>
+                                    <th>Verified</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for account in pendingRegistrations %}
+                                    <tr>
+                                        <td>{{ account.id}}</td>
+                                        <td>{{ account.email}}</td>
+                                        <td>{{ account.roles ? account.roles|json_encode : '' }}</td>
+                                        {# TODO: UI for isVerified  icons #}
+                                        <td>{{ account.isVerified }}</td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="7">{{ 'common.no_record_found' }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
             </div>
         </div>
-
     </div>
 </main>
 {% endblock %}

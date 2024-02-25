@@ -29,6 +29,8 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
 
     public static function getGroups(): array
     {
-        return ['dev', 'dev-user'];
+        // TODO: fix Zenstruck error
+        //return ['dev', 'dev-user'];
+        return [];
     }
 }
