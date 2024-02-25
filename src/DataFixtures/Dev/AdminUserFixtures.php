@@ -45,7 +45,7 @@ class AdminUserFixtures extends Fixture implements FixtureGroupInterface
 
         $superAdminUser = (new User())
             ->setEmail('superadmin@example.com')
-            ->setRoles(['ROLE_ADMIN'])
+            ->setRoles(['ROLE_SUPER_ADMIN'])
             ->setUuid(new UuidV4())
             ->setIsVerified(true);
 
