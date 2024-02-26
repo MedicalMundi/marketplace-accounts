@@ -30,17 +30,33 @@ services:
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones
 
-
+#  cache.notifier_clearer: '@cache.default_clearer'
+#
 #  cache.notifier:
 #    parent: 'cache.adapter.filesystem'
 #    public: true
 #    tags:
-#      - 'cache.pool'
+#      - { name: 'cache.pool',  clearer: 'cache.notifier_clearer'  }
 #  cache.notifier.taggable:
 #    class: Symfony\Component\Cache\Adapter\TagAwareAdapter
 #    arguments: ['cache.notifier']
-#    tags: [cache.taggable, ]
-
+#    tags:
+#      - { name: 'cache.taggable', pool: 'cache.notifier' }
+#
+#  cache.adapter.filesystem.notifier:
+#    class: Symfony\Component\Cache\Adapter\FilesystemAdapter
+#    abstract: true
+#    public: false
+#    arguments:
+#      - ''
+#      - 0
+#      - '%kernel.cache_dir%/pools/notifier'
+#      - '@cache.default_marshaller'
+#    #calls:
+#      #- 'setLogger'
+#    tags:
+#      - { name: 'cache.pool', {clearer: 'cache.default_clearer', reset: 'reset' }
+#      #- { name: 'monolog', channel: 'cache'}
 
 
 when@test:
