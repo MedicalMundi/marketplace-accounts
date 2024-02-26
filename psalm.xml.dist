@@ -21,6 +21,11 @@
     </projectFiles>
 
     <issueHandlers>
+        <MissingConstructor>
+            <errorLevel type="suppress">
+                <directory name="_iam/src/AdapterForWeb/**/Form/Dto/" />
+            </errorLevel>
+        </MissingConstructor>
         <UnusedClass>
             <errorLevel type="suppress">
                 <file name="src/Controller/**/*Controller.php" />

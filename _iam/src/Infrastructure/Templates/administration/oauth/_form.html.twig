@@ -1,0 +1,48 @@
+
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+{{ form_errors(form) }}
+
+
+<div class="form-row">
+    <div class="col-sm-12 col-md-6">
+        {{ form_row(form.name) }}
+    </div>
+    <div class="col-sm-12 col-md-6">
+        {{ form_row(form.identifier) }}
+    </div>
+</div>
+<div class="form-row">
+    <div class="col-sm-12 col-md-6">
+        {{ form_row(form.secret) }}
+    </div>
+    <div class="col-sm-12 col-md-6">
+        {{ form_row(form.active) }}
+    </div>
+    <div class="col-sm-12 col-md-6">
+        {{ form_row(form.allowPlainTextPkce) }}
+    </div>
+
+
+
+</div>
+{# the data-index attribute is required for the JavaScript code below #}
+<ul class="redirect-uris"
+    data-index="{{ form.redirectUris|length  }}"
+    data-prototype="{{ form_widget(form.redirectUris.vars.prototype)|e('html_attr') }}"
+></ul>
+{#<button type="button" class="add_item_link" data-collection-holder-class="tags">Add a tag</button>#}
+
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+{#{{ form_end(form, {'render_rest': false}) }}#}
+
+
+
+
+{#{{ form_start(form) }}#}
+{#    {{ form_widget(form) }}#}
+{#    <button class="btn">{{ button_label|default('Save') }}</button>#}
+{#{{ form_end(form) }}#}

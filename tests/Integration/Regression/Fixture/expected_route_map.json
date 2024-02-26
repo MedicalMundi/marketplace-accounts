@@ -90,7 +90,7 @@
         "path": "\/admin\/accounts",
         "requirements": [],
         "defaults": {
-            "_controller": "IdentityAccess\\AdapterForWeb\\AccountsController::index"
+            "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\Account\\AccountsController::index"
         },
         "methods": []
     },
@@ -98,7 +98,7 @@
         "path": "\/admin\/accounts\/unverified",
         "requirements": [],
         "defaults": {
-            "_controller": "IdentityAccess\\AdapterForWeb\\AccountsController::unverifiedAccounts"
+            "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\Account\\AccountsController::unverifiedAccounts"
         },
         "methods": []
     },
@@ -114,17 +114,28 @@
         "path": "\/admin\/oauth\/client\/",
         "requirements": [],
         "defaults": {
-            "_controller": "IdentityAccess\\AdapterForWeb\\OauthClientController::showAllOauthClients"
+            "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\OauthClient\\OauthClientController::showAllOauthClients"
         },
         "methods": [
             "GET"
         ]
     },
-    "iam_admin_oauth_client_show": {
-        "path": "\/admin\/oauth\/client\/{clientIdentifier}",
+    "iam_admin_oauth_client_new": {
+        "path": "\/admin\/oauth\/client\/new",
         "requirements": [],
         "defaults": {
-            "_controller": "IdentityAccess\\AdapterForWeb\\OauthClientController::showClient"
+            "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\OauthClient\\OauthClientController::new"
+        },
+        "methods": [
+            "GET",
+            "POST"
+        ]
+    },
+    "iam_admin_oauth_client_show": {
+        "path": "\/admin\/oauth\/client\/details\/{clientIdentifier}",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\OauthClient\\OauthClientController::showClient"
         },
         "methods": [
             "GET"
