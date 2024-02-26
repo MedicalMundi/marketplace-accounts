@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-accounts/blob/main/LICENSE MIT
  */
 
-namespace IdentityAccess\AdapterForWeb;
+namespace IdentityAccess\AdapterForWeb\Administration\Account;
 
 use Ecotone\Modelling\QueryBus;
 use IdentityAccess\Core\ShowAllAccountsQuery;
