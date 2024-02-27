@@ -85,6 +85,22 @@ class OauthClientController extends AbstractController
         ]);
     }
 
+    #[Route('/delete/{clientIdentifier}', name: 'iam_admin_oauth_client_delete', methods: ['POST'])]
+    public function delete(Request $request, string $clientIdentifier, ClientManagerInterface $clientManager): Response
+    {
+        if (null === $client = $clientManager->find($clientIdentifier)) {
+            $this->addFlash('info', "The requested oAuth client not exist.");
+            return $this->redirectToRoute('iam_admin_oauth_client_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        if ($this->isCsrfTokenValid('delete' . $client->getIdentifier(), (string) $request->request->get('_token'))) {
+            $clientManager->remove($client);
+            $this->addFlash('success', "oAuth client (" . $client->getName() . ") was deleted.");
+        }
+
+        return $this->redirectToRoute('iam_admin_oauth_client_index', [], Response::HTTP_SEE_OTHER);
+    }
+
     private function buildOauthClientFromDto(OauthClientDto $dto): ClientInterface
     {
         $defaultGrants = ['authorization_code', 'refresh_token'];

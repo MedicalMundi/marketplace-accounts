@@ -39,6 +39,7 @@
                                     <th>Scopes</th>
                                     <th>Redirects</th>
                                     <th>PKCE</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,6 +52,9 @@
                                     <td>{{ client.scopes }}</td>
                                     <td>{{ client.redirect_uris }}</td>
                                     <td>{{ client.allow_plain_text_pkce }}</td>
+                                    <td>
+                                        {% include '@iam/administration/oauth/_delete_form.html.twig' %}
+                                    </td>
                                 </tr>
                             {% else %}
                                 <tr>
