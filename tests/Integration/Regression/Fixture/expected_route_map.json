@@ -110,6 +110,27 @@
         },
         "methods": []
     },
+    "iam_admin_oauth_client_delete": {
+        "path": "\/admin\/oauth\/client\/delete\/{clientIdentifier}",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\OauthClient\\OauthClientController::delete"
+        },
+        "methods": [
+            "POST"
+        ]
+    },
+    "iam_admin_oauth_client_edit": {
+        "path": "\/admin\/oauth\/client\/edit\/{clientIdentifier}",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\OauthClient\\OauthClientController::edit"
+        },
+        "methods": [
+            "GET",
+            "POST"
+        ]
+    },
     "iam_admin_oauth_client_index": {
         "path": "\/admin\/oauth\/client\/",
         "requirements": [],
