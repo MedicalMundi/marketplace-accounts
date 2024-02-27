@@ -33,7 +33,7 @@ use Symfony\Component\Routing\RouterInterface;
 #[Group('regression')]
 class RouterConfigurationSnapShotTest extends KernelTestCase
 {
-    public function testRouterConfigurationEndPoint(): void
+    public function testRouterConfigurationEndpoint(): void
     {
         /** @var ContainerInterface $container */
         $container = self::getContainer();
