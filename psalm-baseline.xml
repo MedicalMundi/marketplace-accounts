@@ -4,6 +4,9 @@
     <MixedArgument>
       <code><![CDATA[$form->getData()]]></code>
     </MixedArgument>
+    <PossiblyNullPropertyAssignmentValue>
+      <code><![CDATA[$client->getSecret()]]></code>
+    </PossiblyNullPropertyAssignmentValue>
   </file>
   <file src="src/Command/OauthGenerateKeyCommand.php">
     <MixedArgument>

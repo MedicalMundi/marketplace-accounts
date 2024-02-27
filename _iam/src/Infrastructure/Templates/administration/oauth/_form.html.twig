@@ -6,7 +6,6 @@
 
 
 <div class="form-row">
-
     {% if app.current_route == 'iam_admin_oauth_client_edit' %}
         <div class="col-sm-12 col-md-6">
             <div class="form-group  {% if form_errors(form.name) %}error{% endif %}">
@@ -34,13 +33,6 @@
             </div>
         </div>
     {% endif %}
-
-{#    <div class="col-sm-12 col-md-6">#}
-{#        {{ form_row(form.name) }}#}
-{#    </div>#}
-{#    <div class="col-sm-12 col-md-6">#}
-{#        {{ form_row(form.identifier) }}#}
-{#    </div>#}
 </div>
 <div class="form-row">
     <div class="col-sm-12 col-md-6">
@@ -52,9 +44,6 @@
     <div class="col-sm-12 col-md-6">
         {{ form_row(form.allowPlainTextPkce) }}
     </div>
-
-
-
 </div>
 {# the data-index attribute is required for the JavaScript code below #}
 <ul class="redirect-uris"

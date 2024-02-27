@@ -104,8 +104,6 @@ class OauthClientController extends AbstractController
         $clientDto->active = $client->isActive();
         $clientDto->allowPlainTextPkce = $client->isPlainTextPkceAllowed();
 
-        //dd($clientDto);
-
         $form = $this->createForm(OauthClientType::class, $clientDto);
         $form->handleRequest($request);
 
@@ -116,6 +114,7 @@ class OauthClientController extends AbstractController
             $client->setActive($formData->active);
             $client->setAllowPlainTextPkce($formData->allowPlainTextPkce);
             $client->setRedirectUris(...array_map(static fn (string $redirectUri): RedirectUri => new RedirectUri($redirectUri), $formData->redirectUris));
+            //TODO:
             //$client->setGrants($formData->grants);
             //$client->setScopes($formData->scopes);
 
