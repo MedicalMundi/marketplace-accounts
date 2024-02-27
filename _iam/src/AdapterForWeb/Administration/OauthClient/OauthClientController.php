@@ -85,6 +85,52 @@ class OauthClientController extends AbstractController
         ]);
     }
 
+    #[Route('/edit/{clientIdentifier}', name: 'iam_admin_oauth_client_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, string $clientIdentifier, ClientManagerInterface $clientManager): Response
+    {
+        if (null === $client = $clientManager->find($clientIdentifier)) {
+            $this->addFlash('info', "The requested oAuth client not exist.");
+            return $this->redirectToRoute('iam_admin_oauth_client_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        $clientDto = new OauthClientDto();
+        $clientDto->name = $client->getName();
+        $clientDto->identifier = $client->getIdentifier();
+        $clientDto->identifier = $client->getIdentifier();
+        $clientDto->secret = $client->getSecret();
+        $clientDto->redirectUris = $client->getRedirectUris();
+        $clientDto->grants = $client->getGrants();
+        $clientDto->scopes = $client->getScopes();
+        $clientDto->active = $client->isActive();
+        $clientDto->allowPlainTextPkce = $client->isPlainTextPkceAllowed();
+
+        //dd($clientDto);
+
+        $form = $this->createForm(OauthClientType::class, $clientDto);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var OauthClientDto $formData */
+            $formData = $form->getData();
+
+            $client->setActive($formData->active);
+            $client->setAllowPlainTextPkce($formData->allowPlainTextPkce);
+            $client->setRedirectUris(...array_map(static fn (string $redirectUri): RedirectUri => new RedirectUri($redirectUri), $formData->redirectUris));
+            //$client->setGrants($formData->grants);
+            //$client->setScopes($formData->scopes);
+
+            $clientManager->save($client);
+
+            $this->addFlash('success', 'oAuth client(' . $client->getName() . ') updated.');
+
+            return $this->redirectToRoute('iam_admin_oauth_client_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('@iam/administration/oauth/edit.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
     #[Route('/delete/{clientIdentifier}', name: 'iam_admin_oauth_client_delete', methods: ['POST'])]
     public function delete(Request $request, string $clientIdentifier, ClientManagerInterface $clientManager): Response
     {

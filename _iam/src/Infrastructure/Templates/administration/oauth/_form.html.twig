@@ -6,12 +6,41 @@
 
 
 <div class="form-row">
-    <div class="col-sm-12 col-md-6">
-        {{ form_row(form.name) }}
-    </div>
-    <div class="col-sm-12 col-md-6">
-        {{ form_row(form.identifier) }}
-    </div>
+
+    {% if app.current_route == 'iam_admin_oauth_client_edit' %}
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group  {% if form_errors(form.name) %}error{% endif %}">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name, { 'attr': { 'class': 'form-control', 'disabled': 'disabled'}}) }}
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group  {% if form_errors(form.identifier) %}error{% endif %}">
+                {{ form_label(form.identifier) }}
+                {{ form_widget(form.identifier, { 'attr': { 'class': 'form-control', 'disabled': 'disabled'}}) }}
+            </div>
+        </div>
+    {% else %}
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group  {% if form_errors(form.name) %}error{% endif %}">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name, { 'attr': { 'class': 'form-control'}}) }}
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group  {% if form_errors(form.identifier) %}error{% endif %}">
+                {{ form_label(form.identifier) }}
+                {{ form_widget(form.identifier, { 'attr': { 'class': 'form-control'}}) }}
+            </div>
+        </div>
+    {% endif %}
+
+{#    <div class="col-sm-12 col-md-6">#}
+{#        {{ form_row(form.name) }}#}
+{#    </div>#}
+{#    <div class="col-sm-12 col-md-6">#}
+{#        {{ form_row(form.identifier) }}#}
+{#    </div>#}
 </div>
 <div class="form-row">
     <div class="col-sm-12 col-md-6">
@@ -38,11 +67,3 @@
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
 {#{{ form_end(form, {'render_rest': false}) }}#}
-
-
-
-
-{#{{ form_start(form) }}#}
-{#    {{ form_widget(form) }}#}
-{#    <button class="btn">{{ button_label|default('Save') }}</button>#}
-{#{{ form_end(form) }}#}

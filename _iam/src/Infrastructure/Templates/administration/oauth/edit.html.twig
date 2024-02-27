@@ -1,0 +1,75 @@
+{% extends '@iam/layout-base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block main %}
+<main class="flex-sm-shrink-1 flex-md-shrink-1 flex-lg-shrink-0 flex-xl-shrink-0">
+    <div class="container mt-0">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-6 text-center">
+                <h1>Edit Oauth clients</h1>
+                <p class="text-muted">
+                </p>
+            </div>
+        </div>
+        <div class="row mt-5 justify-content-end">
+            <div class="col-auto justify-content-center border">
+                HERE ACTION BAR
+            </div>
+        </div>
+        <div class="row mt-0 justify-content-center">
+            <div class="col-sm-12 col-6 justify-content-center">
+{#                {% include '@iam/administration/oauth/_form.html.twig' %}#}
+
+                {{ include('@iam/administration/oauth/_form.html.twig', {'button_label': 'Update'}) }}
+
+                <a href="{{ path('iam_admin_oauth_client_index') }}">back to list</a>
+
+            </div>
+        </div>
+
+        <div class="row mt-0 justify-content-center">
+            <div class="col-sm-12 col-6 justify-content-center border">
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        const addTagLink = document.createElement('a')
+        addTagLink.classList.add('add_tag_list')
+        addTagLink.href='#'
+        addTagLink.innerText='Add a redirect uri'
+        addTagLink.dataset.collectionHolderClass='redirect-uris'
+
+        const newLinkLi = document.createElement('li').append(addTagLink)
+
+        const collectionHolder = document.querySelector('ul.redirect-uris')
+        collectionHolder.appendChild(addTagLink)
+
+        const addFormToCollection = (e) => {
+            const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
+
+            const item = document.createElement('li');
+
+            item.innerHTML = collectionHolder
+                .dataset
+                .prototype
+                .replace(
+                    /__name__/g,
+                    collectionHolder.dataset.index
+                );
+
+            collectionHolder.appendChild(item);
+
+            collectionHolder.dataset.index++;
+        }
+
+        addTagLink.addEventListener("click", addFormToCollection)
+    </script>
+{% endblock %}
