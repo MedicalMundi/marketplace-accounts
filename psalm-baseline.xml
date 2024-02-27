@@ -4,6 +4,10 @@
     <MixedArgument>
       <code><![CDATA[$form->getData()]]></code>
     </MixedArgument>
+    <PossiblyNullArgument>
+      <code><![CDATA[$dto->identifier]]></code>
+      <code><![CDATA[$dto->name]]></code>
+    </PossiblyNullArgument>
     <PossiblyNullPropertyAssignmentValue>
       <code><![CDATA[$client->getSecret()]]></code>
     </PossiblyNullPropertyAssignmentValue>
