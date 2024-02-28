@@ -7,6 +7,10 @@ controllers:
 iam_admin_index_controller:
     resource: IdentityAccess\AdapterForWeb\AdminIndexController
     type: attribute
+#TODO: remove
+iam_admin_com_controller:
+    resource: IdentityAccess\AdapterForWeb\ExternalSystemCommunicationController
+    type: attribute
 
 iam_admin_account_controllers:
     resource:

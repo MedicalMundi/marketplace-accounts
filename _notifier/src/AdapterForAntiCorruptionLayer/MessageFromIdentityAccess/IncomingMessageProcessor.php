@@ -18,14 +18,18 @@ namespace Notifier\AdapterForAntiCorruptionLayer\MessageFromIdentityAccess;
 use Ecotone\Messaging\Attribute\Parameter\Headers;
 use Ecotone\Messaging\Attribute\Parameter\Payload;
 use Ecotone\Modelling\Attribute\EventHandler;
+use Ecotone\Modelling\CommandBus;
+use Notifier\Core\UserRecipient\CreateUserRecipient;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
+use Ramsey\Uuid\Uuid;
 
 class IncomingMessageProcessor
 {
     public function __construct(
+        private readonly CommandBus $commandBus,
+        private readonly CacheItemPoolInterface $cacheItemPool,
         private readonly LoggerInterface $logger,
-        private readonly CacheItemPoolInterface $cacheItemPool
     ) {
     }
 
@@ -41,6 +45,13 @@ class IncomingMessageProcessor
             // call domain command createUserRecipient
             // or
             // create own projections from external events.
+
+            $command = new CreateUserRecipient();
+            $command->id = Uuid::fromString((string) $event['userId']);
+            $command->email = (string) $event['userEmail'];
+            $command->isVerified = false;
+
+            $this->commandBus->send($command);
 
             $isAlreadyProcessed->set([
                 'processed' => true,

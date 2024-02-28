@@ -15,30 +15,12 @@
 
 namespace Notifier\Core\UserRecipient;
 
-use Ecotone\Modelling\Attribute\Aggregate;
-use Ecotone\Modelling\Attribute\CommandHandler;
-use Ecotone\Modelling\Attribute\Identifier;
-use Ecotone\Modelling\WithEvents;
 use Ramsey\Uuid\UuidInterface;
 
-#[Aggregate]
-class UserRecipient
+class UserRecipientWasCreated
 {
-    use WithEvents;
-
     public function __construct(
-        #[Identifier] private readonly UuidInterface $id,
-        private readonly string $email,
-        private readonly bool $isVerified
+        public UuidInterface $id
     ) {
-    }
-
-    #[CommandHandler]
-    public static function register(CreateUserRecipient $command): self
-    {
-        $userRecipient = new self($command->id, $command->email, $command->isVerified);
-        $userRecipient->recordThat(new UserRecipientWasCreated($command->id));
-
-        return $userRecipient;
     }
 }
