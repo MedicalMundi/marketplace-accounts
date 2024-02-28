@@ -32,9 +32,8 @@ class IncomingMessageProcessor
     #[EventHandler(listenTo: 'iam.new-user-registration-was-accepted')]
     public function handle(#[payload] array $event, #[headers] array $headers): void
     {
-
         $isAlreadyProcessed = $this->cacheItemPool->getItem('already-processed-message.' . (string) $headers['id']);
-        if (!$isAlreadyProcessed->isHit()) {
+        if (! $isAlreadyProcessed->isHit()) {
             // ... item does not exist in the cache
             $this->logger->info('---------------------- precess external message ----------------------');
             //TODO:
@@ -43,9 +42,11 @@ class IncomingMessageProcessor
             // or
             // create own projections from external events.
 
-            $isAlreadyProcessed->set(['processed' => true]);
+            $isAlreadyProcessed->set([
+                'processed' => true,
+            ]);
             $this->cacheItemPool->save($isAlreadyProcessed);
-        }else{
+        } else {
             $this->logger->info('---------------------- SKIPPED ALREADY PROCESSED MESSAGE ----------------------');
         }
     }

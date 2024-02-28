@@ -35,7 +35,6 @@ class ExternalSystemNotifier
      *  Eventi interni:
      *  user.* (ex: user.created, user.disabled/enabled)
      *  oauth.* (ex: oauth.client.created, oauth.consent.revoked, oauth.client.scope.updated)
-     *
      */
     public function internalMessageListener(object $event): void
     {

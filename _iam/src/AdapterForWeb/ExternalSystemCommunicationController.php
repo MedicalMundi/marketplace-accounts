@@ -16,7 +16,6 @@
 namespace IdentityAccess\AdapterForWeb;
 
 use IdentityAccess\Core\ExternalSystemNotifier;
-use IdentityAccess\Core\ShowUnverifiedAccounts;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
