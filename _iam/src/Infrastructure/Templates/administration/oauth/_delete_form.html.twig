@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('iam_admin_oauth_client_delete', {'clientIdentifier': client.identifier}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.identifier) }}">
+    <button class="btn">Delete</button>
+</form>

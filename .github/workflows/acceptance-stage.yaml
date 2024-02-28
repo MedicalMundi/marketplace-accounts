@@ -204,7 +204,7 @@ jobs:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
 
       - name: Run integration testsuite
-        run: ./bin/phpunit --testsuite integration
+        run: ./bin/phpunit --testsuite integration --colors=always
         env:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
 
@@ -301,6 +301,6 @@ jobs:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
 
       - name: Run functional testsuite
-        run: ./bin/phpunit --testsuite functional
+        run: ./bin/phpunit --testsuite functional --colors=always
         env:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4

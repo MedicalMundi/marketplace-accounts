@@ -23,7 +23,7 @@
         {
             "fqcn": "IdentityAccess\\AdapterForReadingAccounts\\AccountsDataProvider",
             "line": 26,
-            "error": "depends on App\\Repository\\UserRepository, but should not depend on classes outside namespace IdentityAccess\\Core because we want isolate our identity access Adapters from ever growing dependencies."
+            "error": "depends on App\\Repository\\UserRepository, but should not depend on classes outside namespace IdentityAccess\\Core because or namespaces in whitelist we want isolate our identity access Adapters from ever growing dependencies."
         },
         {
             "fqcn": "Notifier\\AdapterForAntiCorruptionLayer\\MessageFromIdentityAccess\\IncomingMessageProcessor",
