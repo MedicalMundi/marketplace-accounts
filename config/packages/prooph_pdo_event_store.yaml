@@ -18,3 +18,26 @@ services:
 
     app.event_store.postgres.persistence_strategy:
         class: Prooph\EventStore\Pdo\PersistenceStrategy\PostgresSingleStreamStrategy
+
+########
+
+
+
+    notifier.event_store.default:
+        class: Prooph\EventStore\Pdo\MariaDbEventStore
+        arguments:
+            #TODO: ectone message factory?
+            - '@prooph_event_store.message_factory'
+            - '@notifier.event_store.pdo_connection.mariadb'
+            - '@notifier.event_store.postgres.persistence_strategy'
+
+    notifier.event_store.pdo_connection.mariadb:
+        class: \PDO
+        arguments:
+            - '%env(DATABASE_URL)%'
+            #- '%env(EVENT_STORE_USER)%'
+            #- '%env(EVENT_STORE_PASSWORD)%'
+
+    notifier.event_store.postgres.persistence_strategy:
+        class: Prooph\EventStore\Pdo\PersistenceStrategy\MariaDbSingleStreamStrategy
+

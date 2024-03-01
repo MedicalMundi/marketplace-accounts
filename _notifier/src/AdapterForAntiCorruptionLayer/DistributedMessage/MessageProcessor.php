@@ -13,8 +13,9 @@
  * @license https://github.com/MedicalMundi/marketplace-accounts/blob/main/LICENSE MIT
  */
 
-namespace Notifier\AdapterForAntiCorruptionLayer\MessageFromIdentityAccess;
+namespace Notifier\AdapterForAntiCorruptionLayer\DistributedMessage;
 
+use Ecotone\Messaging\Attribute\Asynchronous;
 use Ecotone\Messaging\Attribute\Parameter\Headers;
 use Ecotone\Messaging\Attribute\Parameter\Payload;
 use Ecotone\Modelling\Attribute\EventHandler;
@@ -24,7 +25,8 @@ use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
 use Ramsey\Uuid\Uuid;
 
-class IncomingMessageProcessor
+#[Asynchronous("notifier_distributed")]
+class MessageProcessor
 {
     public function __construct(
         private readonly CommandBus $commandBus,
@@ -33,19 +35,15 @@ class IncomingMessageProcessor
     ) {
     }
 
-    #[EventHandler(listenTo: 'iam.new-user-registration-was-accepted')]
-    public function handle(#[payload] array $event, #[headers] array $headers): void
+    #[EventHandler(listenTo: 'iam.*', endpointId: "notifier_distributed_message_processor")]
+    public function handleAllExternalEvents(#[payload] array $event, #[headers] array $headers): void
     {
         $isAlreadyProcessed = $this->cacheItemPool->getItem('already-processed-message.' . (string) $headers['id']);
         if (! $isAlreadyProcessed->isHit()) {
             // ... item does not exist in the cache
             $this->logger->info('---------------------- precess external message ----------------------');
             //TODO:
-            // create new UserRecipient
-            // call domain command createUserRecipient
-            // or
-            // create own projections from external events.
-
+            // check for unique Id and email before creation
             $command = new CreateUserRecipient();
             $command->id = Uuid::fromString((string) $event['userId']);
             $command->email = (string) $event['userEmail'];

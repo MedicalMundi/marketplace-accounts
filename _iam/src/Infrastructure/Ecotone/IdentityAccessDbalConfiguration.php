@@ -13,16 +13,17 @@
  * @license https://github.com/MedicalMundi/marketplace-accounts/blob/main/LICENSE MIT
  */
 
-namespace Notifier\Infrastructure\Ecotone;
+namespace IdentityAccess\Infrastructure\Ecotone;
 
-use Ecotone\Dbal\DbalBackedMessageChannelBuilder;
+use Ecotone\Dbal\Configuration\DbalConfiguration;
 use Ecotone\Messaging\Attribute\ServiceContext;
 
-class NotifierMessagingConfiguration
+class IdentityAccessDbalConfiguration
 {
-    #[ServiceContext]
-    public function notifierDistributedChannel(): DbalBackedMessageChannelBuilder
-    {
-        return DbalBackedMessageChannelBuilder::create("notifier_distributed");
-    }
+    //    #[ServiceContext]
+    //    public function getDbalConfiguration(): DbalConfiguration
+    //    {
+    //        return DbalConfiguration::createWithDefaults()
+    //            ->withDocumentStore(initializeDatabaseTable: true, enableDocumentStoreAggregateRepository: true);
+    //    }
 }

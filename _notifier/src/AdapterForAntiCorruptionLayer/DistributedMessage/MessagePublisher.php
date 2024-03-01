@@ -13,16 +13,18 @@
  * @license https://github.com/MedicalMundi/marketplace-accounts/blob/main/LICENSE MIT
  */
 
-namespace Notifier\Infrastructure\Ecotone;
+namespace Notifier\AdapterForAntiCorruptionLayer\DistributedMessage;
 
-use Ecotone\Dbal\DbalBackedMessageChannelBuilder;
-use Ecotone\Messaging\Attribute\ServiceContext;
+use Ecotone\Messaging\Attribute\Asynchronous;
+use Ecotone\Modelling\CommandBus;
+use Psr\Log\LoggerInterface;
 
-class NotifierMessagingConfiguration
+#[Asynchronous("notifier_distributed")]
+class MessagePublisher
 {
-    #[ServiceContext]
-    public function notifierDistributedChannel(): DbalBackedMessageChannelBuilder
-    {
-        return DbalBackedMessageChannelBuilder::create("notifier_distributed");
+    public function __construct(
+        private readonly CommandBus $commandBus,
+        private readonly LoggerInterface $logger,
+    ) {
     }
 }
