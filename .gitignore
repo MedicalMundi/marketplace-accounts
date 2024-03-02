@@ -42,4 +42,4 @@ public/hard.lock
 ###< league/oauth2-server-bundle ###
 
 
-/src/Command/BootstrapCommand.php
+#/src/Command/BootstrapCommand.php
