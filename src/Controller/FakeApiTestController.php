@@ -28,6 +28,7 @@ class FakeApiTestController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
         return $this->json([
+            'id' => '45567780',
             'message' => 'You successfully authenticated!',
             'email' => $user->getEmail(),
         ]);

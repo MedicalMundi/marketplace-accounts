@@ -15,6 +15,9 @@ security:
         api_token:
             pattern: ^/api/token$
             security: false
+#        token:
+#            pattern: ^/token$
+#            security: false
         api:
             pattern: ^/api
             security: true
@@ -36,7 +39,7 @@ security:
                 path: app_logout
                 target: app_index
 
-            login_throttling: true
+            #login_throttling: true
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
