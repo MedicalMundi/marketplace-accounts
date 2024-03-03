@@ -21,6 +21,16 @@
             "error": "depends on App\\Repository\\UserRepository, but should not depend on these namespaces: App\\Controller\\*, App\\Service\\*, App\\Repository\\* because of component architecture"
         },
         {
+            "fqcn": "IdentityAccess\\AdapterForCli\\CreateMarketplaceOauthClientCommand",
+            "line": 88,
+            "error": "depends on App\\Entity\\OAuth2ClientProfile, but should not depend on classes outside namespace IdentityAccess\\Core because or namespaces in whitelist we want isolate our identity access Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "IdentityAccess\\AdapterForCli\\CreateStageMarketplaceOauthClientCommand",
+            "line": 88,
+            "error": "depends on App\\Entity\\OAuth2ClientProfile, but should not depend on classes outside namespace IdentityAccess\\Core because or namespaces in whitelist we want isolate our identity access Adapters from ever growing dependencies."
+        },
+        {
             "fqcn": "IdentityAccess\\AdapterForReadingAccounts\\AccountsDataProvider",
             "line": 26,
             "error": "depends on App\\Repository\\UserRepository, but should not depend on classes outside namespace IdentityAccess\\Core because or namespaces in whitelist we want isolate our identity access Adapters from ever growing dependencies."

@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
+  <file src="_iam/src/AdapterForCli/CreateMarketplaceOauthClientCommand.php">
+    <ArgumentTypeCoercion>
+      <code>$oAuthClient</code>
+    </ArgumentTypeCoercion>
+    <LessSpecificReturnStatement>
+      <code><![CDATA[$client
+            ->setRedirectUris(...array_map(static fn (string $redirectUri): RedirectUri => new RedirectUri($redirectUri), $redirectUriStrings))
+            ->setGrants(...array_map(static fn (string $grant): Grant => new Grant($grant), $grantStrings))
+            ->setScopes(...array_map(static fn (string $scope): Scope => new Scope($scope), $scopeStrings))]]></code>
+    </LessSpecificReturnStatement>
+    <MissingReturnType>
+      <code>createOauthClientForMarketplaceEngine</code>
+    </MissingReturnType>
+    <MoreSpecificReturnType>
+      <code>AbstractClient</code>
+    </MoreSpecificReturnType>
+  </file>
+  <file src="_iam/src/AdapterForCli/CreateStageMarketplaceOauthClientCommand.php">
+    <ArgumentTypeCoercion>
+      <code>$oAuthClient</code>
+    </ArgumentTypeCoercion>
+    <LessSpecificReturnStatement>
+      <code><![CDATA[$client
+            ->setRedirectUris(...array_map(static fn (string $redirectUri): RedirectUri => new RedirectUri($redirectUri), $redirectUriStrings))
+            ->setGrants(...array_map(static fn (string $grant): Grant => new Grant($grant), $grantStrings))
+            ->setScopes(...array_map(static fn (string $scope): Scope => new Scope($scope), $scopeStrings))]]></code>
+    </LessSpecificReturnStatement>
+    <MissingReturnType>
+      <code>createOauthClientForMarketplaceEngine</code>
+    </MissingReturnType>
+    <MoreSpecificReturnType>
+      <code>AbstractClient</code>
+    </MoreSpecificReturnType>
+  </file>
   <file src="_iam/src/AdapterForWeb/Administration/OauthClient/OauthClientController.php">
     <MixedArgument>
       <code><![CDATA[$form->getData()]]></code>
