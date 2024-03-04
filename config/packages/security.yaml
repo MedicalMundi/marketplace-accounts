@@ -14,29 +14,20 @@ security:
             security: false
         api:
             pattern: ^/api
-            security: false
+            security: true
             stateless: true
             oauth2: true
         main:
-#            login_throttling:
-#                max_attempts: 3
-#                interval: '5 minutes'
+            login_throttling:
+                max_attempts: 6
+                interval: '5 minutes'
             lazy: true
             provider: app_user_provider
             custom_authenticators:
                 - App\Security\Authenticator\OeModulesLoginFormAuthenticator
-                #- Symfony\Component\Security\Http\Authenticator\FormAuthenticator
-#            form_login:
-#                login_path: app_login
-#                check_path: app_login
-#                enable_csrf: true
-#                default_target_path: app_index
-#                use_referer: true
             logout:
                 path: app_logout
                 target: app_index
-
-            #login_throttling: true
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -62,7 +53,7 @@ security:
         - { path: ^/.well-known, roles: PUBLIC_ACCESS }
         - { path: ^/register, roles: PUBLIC_ACCESS }
         - { path: ^/verify, roles: PUBLIC_ACCESS }
-        #- { path: ^/api, role: ROLE_OAUTH2_EMAIL }
+        - { path: ^/api, role: ROLE_OAUTH2_EMAIL }
         - { path: ^/, role: ROLE_USER }
 
 when@test:
