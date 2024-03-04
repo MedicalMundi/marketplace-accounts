@@ -1,4 +1,14 @@
 {
+    "api_auth_connect_me": {
+        "path": "\/api\/v1\/auth\/connect\/me",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForApi\\Auth\\ConnectMeController::index"
+        },
+        "methods": [
+            "GET"
+        ]
+    },
     "app_api_security_index": {
         "path": "\/api\/security\/test",
         "requirements": [],

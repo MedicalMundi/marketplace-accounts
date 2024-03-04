@@ -23,3 +23,10 @@ iam_admin_oauth_client_controllers:
         path: ../_iam/src/AdapterForWeb/Administration/OauthClient/
         namespace: IdentityAccess\AdapterForWeb\Administration\OauthClient
     type: attribute
+
+
+api_auth_controllers:
+    resource:
+        path: ../_iam/src/AdapterForApi/Auth/
+        namespace: IdentityAccess\AdapterForApi\Auth
+    type: attribute

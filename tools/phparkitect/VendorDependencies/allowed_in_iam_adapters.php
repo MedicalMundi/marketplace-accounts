@@ -9,10 +9,13 @@ return [
     'League\Bundle\OAuth2ServerBundle',
 
     'Doctrine\DBAL\Connection',
+    'Doctrine\ORM\EntityManagerInterface',
 
     'Symfony\Bundle\FrameworkBundle\Controller\AbstractController',
     'Symfony\Component\HttpFoundation\Request',
     'Symfony\Component\HttpFoundation\Response',
+
+    'Symfony\Component\Console',
 
     'Symfony\Component\Form',
 
