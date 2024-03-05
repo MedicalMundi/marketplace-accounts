@@ -26,6 +26,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/admin/oauth/token')]
+#[IsGranted('ROLE_ADMIN')]
 class OauthTokenController extends AbstractController
 {
     public function __construct(
@@ -44,7 +45,6 @@ class OauthTokenController extends AbstractController
     }
 
     #[Route('/clear/expired/access-tokens', name: 'iam_admin_oauth_token_clear_expired_access_token', methods: 'GET')]
-    #[IsGranted('ROLE_ADMIN')]
     public function clearExpiredAccessTokens(AccessTokenManagerInterface $accessTokenManager): Response
     {
         $numOfClearedAccessTokens = $accessTokenManager->clearExpired();
@@ -63,7 +63,6 @@ class OauthTokenController extends AbstractController
     }
 
     #[Route('/clear/expired/refresh-tokens', name: 'iam_admin_oauth_token_clear_expired_refresh_token', methods: 'GET')]
-    #[IsGranted('ROLE_ADMIN')]
     public function clearExpiredRefreshTokens(RefreshTokenManagerInterface $refreshTokenManager): Response
     {
         $numOfClearedRefreshTokens = $refreshTokenManager->clearExpired();
@@ -82,7 +81,6 @@ class OauthTokenController extends AbstractController
     }
 
     #[Route('/clear/expired/auth-codes', name: 'iam_admin_oauth_token_clear_expired_auth_codes', methods: 'GET')]
-    #[IsGranted('ROLE_ADMIN')]
     public function clearExpiredAuthCodes(AuthorizationCodeManagerInterface $authorizationCodeManager): Response
     {
         $numOfClearedAuthCodes = $authorizationCodeManager->clearExpired();

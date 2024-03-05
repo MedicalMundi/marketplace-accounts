@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminIndexController extends AbstractController
 {
-    #[Route('/admin', name: 'iam_admin_index')]
+    #[Route('/admin', name: 'iam_admin_index', methods: 'GET')]
     public function index(): Response
     {
         return $this->render('@iam/administration/index.html.twig', []);

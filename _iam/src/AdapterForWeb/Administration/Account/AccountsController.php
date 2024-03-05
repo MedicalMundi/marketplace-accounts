@@ -21,7 +21,9 @@ use IdentityAccess\Core\ShowUnverifiedAccounts;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_ADMIN')]
 class AccountsController extends AbstractController
 {
     public function __construct(
@@ -29,7 +31,7 @@ class AccountsController extends AbstractController
     ) {
     }
 
-    #[Route('/admin/accounts', name: 'iam_admin_accounts_index')]
+    #[Route('/admin/accounts', name: 'iam_admin_accounts_index', methods: 'GET')]
     public function index(): Response
     {
         $allAccounts = (array) $this->queryBus->send(new ShowAllAccountsQuery());
@@ -39,7 +41,7 @@ class AccountsController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/accounts/unverified', name: 'iam_admin_accounts_unverified')]
+    #[Route('/admin/accounts/unverified', name: 'iam_admin_accounts_unverified', methods: 'GET')]
     public function unverifiedAccounts(): Response
     {
         $pendingRegistrations = (array) $this->queryBus->send(new ShowUnverifiedAccounts());
