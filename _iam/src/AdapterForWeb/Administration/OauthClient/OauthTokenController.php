@@ -18,6 +18,7 @@ namespace IdentityAccess\AdapterForWeb\Administration\OauthClient;
 use Ecotone\Modelling\QueryBus;
 use IdentityAccess\Core\ShowAllOauthAccessTokenQuery;
 use League\Bundle\OAuth2ServerBundle\Manager\AccessTokenManagerInterface;
+use League\Bundle\OAuth2ServerBundle\Manager\AuthorizationCodeManagerInterface;
 use League\Bundle\OAuth2ServerBundle\Manager\RefreshTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -74,6 +75,25 @@ class OauthTokenController extends AbstractController
                 'Cleared %d expired refresh token%s.',
                 $numOfClearedRefreshTokens,
                 1 === $numOfClearedRefreshTokens ? '' : 's'
+            ));
+        }
+
+        return $this->redirectToRoute('iam_admin_oauth_token_index');
+    }
+
+    #[Route('/clear/expired/auth-codes', name: 'iam_admin_oauth_token_clear_expired_auth_codes', methods: 'GET')]
+    #[IsGranted('ROLE_ADMIN')]
+    public function clearExpiredAuthCodes(AuthorizationCodeManagerInterface $authorizationCodeManager): Response
+    {
+        $numOfClearedAuthCodes = $authorizationCodeManager->clearExpired();
+
+        if (0 === $numOfClearedAuthCodes) {
+            $this->addFlash('info', 'There are not expired auth codes');
+        } else {
+            $this->addFlash('success', sprintf(
+                'Cleared %d expired auth code%s.',
+                $numOfClearedAuthCodes,
+                1 === $numOfClearedAuthCodes ? '' : 's'
             ));
         }
 
