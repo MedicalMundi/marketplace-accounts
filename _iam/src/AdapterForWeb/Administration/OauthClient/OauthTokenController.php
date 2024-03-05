@@ -18,6 +18,7 @@ namespace IdentityAccess\AdapterForWeb\Administration\OauthClient;
 use Ecotone\Modelling\QueryBus;
 use IdentityAccess\Core\ShowAllOauthAccessTokenQuery;
 use League\Bundle\OAuth2ServerBundle\Manager\AccessTokenManagerInterface;
+use League\Bundle\OAuth2ServerBundle\Manager\RefreshTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -54,6 +55,25 @@ class OauthTokenController extends AbstractController
                 'Cleared %d expired access token%s.',
                 $numOfClearedAccessTokens,
                 1 === $numOfClearedAccessTokens ? '' : 's'
+            ));
+        }
+
+        return $this->redirectToRoute('iam_admin_oauth_token_index');
+    }
+
+    #[Route('/clear/expired/refresh-tokens', name: 'iam_admin_oauth_token_clear_expired_refresh_token', methods: 'GET')]
+    #[IsGranted('ROLE_ADMIN')]
+    public function clearExpiredRefreshTokens(RefreshTokenManagerInterface $refreshTokenManager): Response
+    {
+        $numOfClearedRefreshTokens = $refreshTokenManager->clearExpired();
+
+        if (0 === $numOfClearedRefreshTokens) {
+            $this->addFlash('info', 'There are not expired refresh tokens');
+        } else {
+            $this->addFlash('success', sprintf(
+                'Cleared %d expired refresh token%s.',
+                $numOfClearedRefreshTokens,
+                1 === $numOfClearedRefreshTokens ? '' : 's'
             ));
         }
 
