@@ -10,9 +10,6 @@
             ->setGrants(...array_map(static fn (string $grant): Grant => new Grant($grant), $grantStrings))
             ->setScopes(...array_map(static fn (string $scope): Scope => new Scope($scope), $scopeStrings))]]></code>
     </LessSpecificReturnStatement>
-    <MissingReturnType>
-      <code>createOauthClientForMarketplaceEngine</code>
-    </MissingReturnType>
     <MoreSpecificReturnType>
       <code>AbstractClient</code>
     </MoreSpecificReturnType>
@@ -27,9 +24,6 @@
             ->setGrants(...array_map(static fn (string $grant): Grant => new Grant($grant), $grantStrings))
             ->setScopes(...array_map(static fn (string $scope): Scope => new Scope($scope), $scopeStrings))]]></code>
     </LessSpecificReturnStatement>
-    <MissingReturnType>
-      <code>createOauthClientForMarketplaceEngine</code>
-    </MissingReturnType>
     <MoreSpecificReturnType>
       <code>AbstractClient</code>
     </MoreSpecificReturnType>
