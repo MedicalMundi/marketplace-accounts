@@ -13,17 +13,14 @@
  * @license https://github.com/MedicalMundi/marketplace-accounts/blob/main/LICENSE MIT
  */
 
-namespace IdentityAccess\AdapterForWeb;
+namespace IdentityAccess\Core;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-
-class AdminIndexController extends AbstractController
+class ShowAllOauthAccessTokenQuery
 {
-    #[Route('/admin', name: 'iam_admin_index', methods: 'GET')]
-    public function index(): Response
+    private int $limit = 1000;
+
+    public function getLimit(): int
     {
-        return $this->render('@iam/administration/index.html.twig', []);
+        return $this->limit;
     }
 }

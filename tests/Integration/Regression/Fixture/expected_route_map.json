@@ -1,4 +1,14 @@
 {
+    "api_auth_connect_me": {
+        "path": "\/api\/v1\/auth\/connect\/me",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForApi\\Auth\\ConnectMeController::index"
+        },
+        "methods": [
+            "GET"
+        ]
+    },
     "app_api_security_index": {
         "path": "\/api\/security\/test",
         "requirements": [],
@@ -92,7 +102,9 @@
         "defaults": {
             "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\Account\\AccountsController::index"
         },
-        "methods": []
+        "methods": [
+            "GET"
+        ]
     },
     "iam_admin_accounts_unverified": {
         "path": "\/admin\/accounts\/unverified",
@@ -100,7 +112,9 @@
         "defaults": {
             "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\Account\\AccountsController::unverifiedAccounts"
         },
-        "methods": []
+        "methods": [
+            "GET"
+        ]
     },
     "iam_admin_index": {
         "path": "\/admin",
@@ -108,7 +122,9 @@
         "defaults": {
             "_controller": "IdentityAccess\\AdapterForWeb\\AdminIndexController::index"
         },
-        "methods": []
+        "methods": [
+            "GET"
+        ]
     },
     "iam_admin_oauth_client_delete": {
         "path": "\/admin\/oauth\/client\/delete\/{clientIdentifier}",
@@ -157,6 +173,46 @@
         "requirements": [],
         "defaults": {
             "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\OauthClient\\OauthClientController::showClient"
+        },
+        "methods": [
+            "GET"
+        ]
+    },
+    "iam_admin_oauth_token_clear_expired_access_token": {
+        "path": "\/admin\/oauth\/token\/clear\/expired\/access-tokens",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\OauthClient\\OauthTokenController::clearExpiredAccessTokens"
+        },
+        "methods": [
+            "GET"
+        ]
+    },
+    "iam_admin_oauth_token_clear_expired_auth_codes": {
+        "path": "\/admin\/oauth\/token\/clear\/expired\/auth-codes",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\OauthClient\\OauthTokenController::clearExpiredAuthCodes"
+        },
+        "methods": [
+            "GET"
+        ]
+    },
+    "iam_admin_oauth_token_clear_expired_refresh_token": {
+        "path": "\/admin\/oauth\/token\/clear\/expired\/refresh-tokens",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\OauthClient\\OauthTokenController::clearExpiredRefreshTokens"
+        },
+        "methods": [
+            "GET"
+        ]
+    },
+    "iam_admin_oauth_token_index": {
+        "path": "\/admin\/oauth\/token\/",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\Administration\\OauthClient\\OauthTokenController::showAllOauthAccessToken"
         },
         "methods": [
             "GET"

@@ -17,9 +17,9 @@ namespace IdentityAccess\AdapterForWeb\Administration\OauthClient\Form\Dto;
 
 class OauthClientDto
 {
-    public ?string $name;
+    public ?string $name = null;
 
-    public ?string $identifier;
+    public ?string $identifier = null;
 
     public string $secret;
 

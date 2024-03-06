@@ -9,9 +9,8 @@ set('allow_anonymous_stats', false);
 set('repository', 'https://github.com/MedicalMundi/marketplace-accounts');
 
 add('shared_files', [
-    'config/jwt/private.pem',
-    'config/jwt/public.pem',
-    '.env.local'
+    'config/jwt/private.key',
+    'config/jwt/public.key',
 ]);
 add('shared_dirs', [
     'var/log',

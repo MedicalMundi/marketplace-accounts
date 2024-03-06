@@ -13,17 +13,27 @@
  * @license https://github.com/MedicalMundi/marketplace-accounts/blob/main/LICENSE MIT
  */
 
-namespace IdentityAccess\AdapterForWeb;
+namespace IdentityAccess\AdapterForApi\Auth;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-class AdminIndexController extends AbstractController
+#[Route('/api/v1/auth')]
+class ConnectMeController extends AbstractController
 {
-    #[Route('/admin', name: 'iam_admin_index', methods: 'GET')]
+    #[Route('/connect/me', name: 'api_auth_connect_me', methods: 'GET')]
+    #[IsGranted('ROLE_USER')]
     public function index(): Response
     {
-        return $this->render('@iam/administration/index.html.twig', []);
+        /** @var User $user */
+        $user = $this->getUser();
+
+        return $this->json([
+            'id' => $user->getId(),
+            'email' => $user->getEmail(),
+        ]);
     }
 }
