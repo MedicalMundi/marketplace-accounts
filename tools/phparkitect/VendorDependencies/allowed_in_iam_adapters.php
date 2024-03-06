@@ -14,6 +14,7 @@ return [
     'Symfony\Bundle\FrameworkBundle\Controller\AbstractController',
     'Symfony\Component\HttpFoundation\Request',
     'Symfony\Component\HttpFoundation\Response',
+    'Symfony\Component\Security\Http\Attribute\IsGranted',
 
     'Symfony\Component\Console',
 
