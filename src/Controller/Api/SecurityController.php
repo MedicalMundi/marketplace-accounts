@@ -24,7 +24,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class SecurityController extends AbstractController
 {
     #[Route('/api/security/test', name: 'app_api_security_index')]
-    #[isGranted('security_console')]
+    #[IsGranted('security_console')]
     public function index(): Response
     {
         /** @var User $user */

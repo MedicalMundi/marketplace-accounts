@@ -25,7 +25,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class ConnectMeController extends AbstractController
 {
     #[Route('/connect/me', name: 'api_auth_connect_me', methods: 'GET')]
-    #[isGranted('ROLE_USER')]
+    #[IsGranted('ROLE_USER')]
     public function index(): Response
     {
         /** @var User $user */
