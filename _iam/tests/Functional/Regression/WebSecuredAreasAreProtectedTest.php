@@ -52,9 +52,15 @@ class WebSecuredAreasAreProtectedTest extends WebTestCase
             ['iam_admin_accounts_unverified'],
 
             ['iam_admin_oauth_client_index'],
-            ['iam_admin_oauth_client_show', ['clientIdentifier' => 'fakeIdentifier']],
+            [
+                'iam_admin_oauth_client_show', [
+                    'clientIdentifier' => 'fakeIdentifier',
+                ]],
             ['iam_admin_oauth_client_new'],
-            ['iam_admin_oauth_client_edit', ['clientIdentifier' => 'fakeIdentifier']],
+            [
+                'iam_admin_oauth_client_edit', [
+                    'clientIdentifier' => 'fakeIdentifier',
+                ]],
 
             ['iam_admin_oauth_token_index'],
             ['iam_admin_oauth_token_clear_expired_access_token'],
