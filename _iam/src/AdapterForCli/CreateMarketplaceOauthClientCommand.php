@@ -61,7 +61,7 @@ class CreateMarketplaceOauthClientCommand extends Command
         return Command::SUCCESS;
     }
 
-    private function createOauthClientForMarketplaceEngine()
+    private function createOauthClientForMarketplaceEngine(): void
     {
         $clientName = 'Marketplace Engine Client';
         $clientId = 'marketplace-engine';

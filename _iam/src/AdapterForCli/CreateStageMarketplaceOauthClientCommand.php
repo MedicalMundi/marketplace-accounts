@@ -61,7 +61,7 @@ class CreateStageMarketplaceOauthClientCommand extends Command
         return Command::SUCCESS;
     }
 
-    private function createOauthClientForMarketplaceEngine()
+    private function createOauthClientForMarketplaceEngine(): void
     {
         $clientName = 'Stage Marketplace Engine Client';
         $clientId = 'stage-marketplace-engine';
