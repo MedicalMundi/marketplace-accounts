@@ -40,6 +40,13 @@
       <code><![CDATA[$client->getSecret()]]></code>
     </PossiblyNullPropertyAssignmentValue>
   </file>
+  <file src="_notifier/src/Core/UserRecipient/CreateUserRecipient.php">
+    <MissingConstructor>
+      <code>$email</code>
+      <code>$id</code>
+      <code>$isVerified</code>
+    </MissingConstructor>
+  </file>
   <file src="src/Command/OauthGenerateKeyCommand.php">
     <MixedArgument>
       <code>$publicKey</code>

@@ -36,7 +36,7 @@ class MessageProcessor
     }
 
     #[EventHandler(listenTo: 'iam.*', endpointId: "notifier_distributed_message_processor")]
-    public function handleAllExternalEvents(#[payload] array $event, #[headers] array $headers): void
+    public function handleAllExternalEvents(#[Payload] array $event, #[Headers] array $headers): void
     {
         $isAlreadyProcessed = $this->cacheItemPool->getItem('already-processed-message.' . (string) $headers['id']);
         if (! $isAlreadyProcessed->isHit()) {

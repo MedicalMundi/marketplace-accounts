@@ -27,7 +27,8 @@ class UserRecipient
     use WithEvents;
 
     public function __construct(
-        #[Identifier] private readonly UuidInterface $id,
+        #[Identifier]
+        private readonly UuidInterface $id,
         private readonly string $email,
         private readonly bool $isVerified
     ) {
