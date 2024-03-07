@@ -1,4 +1,17 @@
-<?php
+<?php declare(strict_types=1);
+
+/*
+ * This file is part of the medicalmundi/marketplace-accounts
+ *
+ * @copyright (c) 2023 MedicalMundi
+ *
+ * This software consists of voluntary contributions made by many individuals
+ * {@link https://github.com/medicalmundi/marketplace-accounts/graphs/contributors developer} and is licensed under the MIT license.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ * @license https://github.com/MedicalMundi/marketplace-accounts/blob/main/LICENSE MIT
+ */
 
 namespace App\Controller;
 
@@ -41,7 +54,7 @@ class ResetPasswordController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             return $this->processSendingPasswordResetEmail(
-                $form->get('email')->getData(),
+                (string) $form->get('email')->getData(),
                 $mailer
             );
         }
@@ -111,7 +124,7 @@ class ResetPasswordController extends AbstractController
             // Encode(hash) the plain password, and set it.
             $encodedPassword = $passwordHasher->hashPassword(
                 $user,
-                $form->get('plainPassword')->getData()
+                (string) $form->get('plainPassword')->getData()
             );
 
             $user->setPassword($encodedPassword);
@@ -135,7 +148,7 @@ class ResetPasswordController extends AbstractController
         ]);
 
         // Do not reveal whether a user account was found or not.
-        if (!$user) {
+        if (! $user) {
             return $this->redirectToRoute('app_check_email');
         }
 
@@ -146,11 +159,11 @@ class ResetPasswordController extends AbstractController
             // the lines below and change the redirect to 'app_forgot_password_request'.
             // Caution: This may reveal if a user is registered or not.
             //
-             $this->addFlash('reset_password_error', sprintf(
-                 '%s - %s',
-                 ResetPasswordExceptionInterface::MESSAGE_PROBLEM_HANDLE,
-                 $e->getReason()
-             ));
+            $this->addFlash('reset_password_error', sprintf(
+                '%s - %s',
+                ResetPasswordExceptionInterface::MESSAGE_PROBLEM_HANDLE,
+                $e->getReason()
+            ));
             return $this->redirectToRoute('app_forgot_password_request');
 
             //return $this->redirectToRoute('app_check_email');
@@ -158,7 +171,8 @@ class ResetPasswordController extends AbstractController
 
         $email = (new TemplatedEmail())
             ->from(new Address('sys@auth.oe-modules.com', 'Auth oe-modules.com'))
-            ->to($user->getEmail())
+            //->to($user->getEmail())
+            ->to($emailFormData)
             ->subject('Your password reset request')
             ->htmlTemplate('reset_password/email.html.twig')
             ->context([
