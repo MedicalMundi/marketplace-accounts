@@ -19,6 +19,7 @@
         "ecotone/symfony-bundle": "^1.105",
         "knplabs/knp-menu-bundle": "^3.3",
         "league/oauth2-server-bundle": "^0.6.0",
+        "nelmio/cors-bundle": "^2.4",
         "nyholm/psr7": "^1.8",
         "pagerfanta/doctrine-orm-adapter": "^4.3",
         "pagerfanta/twig": "^4.3",
