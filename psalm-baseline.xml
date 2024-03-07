@@ -121,9 +121,6 @@
     <NullableReturnStatement>
       <code><![CDATA[$this->user]]></code>
     </NullableReturnStatement>
-    <PropertyTypeCoercion>
-      <code>$user</code>
-    </PropertyTypeCoercion>
   </file>
   <file src="src/Entity/User.php">
     <InvalidNullableReturnType>
