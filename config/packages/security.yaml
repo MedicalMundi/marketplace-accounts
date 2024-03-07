@@ -29,7 +29,6 @@ security:
                 path: app_logout
                 target: app_index
             remember_me:
-
                 secret:   '%kernel.secret%'
                 lifetime: 604800 # 1 week in seconds
                 path:     /
@@ -59,6 +58,7 @@ security:
         - { path: ^/.well-known, roles: PUBLIC_ACCESS }
         - { path: ^/register, roles: PUBLIC_ACCESS }
         - { path: ^/verify, roles: PUBLIC_ACCESS }
+        - { path: ^/reset-password, roles: PUBLIC_ACCESS}
         - { path: ^/api, role: ROLE_OAUTH2_EMAIL }
         - { path: ^/, role: ROLE_USER }
 
