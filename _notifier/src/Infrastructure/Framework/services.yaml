@@ -25,6 +25,9 @@ services:
   # this creates a service per class whose id is the fully-qualified class name
   Notifier\:
     resource: '../../../../_notifier/src/'
+    exclude:
+      - '../../../../_notifier/src/Core/UserRecipient/'
+
 
 
   # add more service definitions when explicit configuration is needed
@@ -59,24 +62,26 @@ services:
 #      #- { name: 'monolog', channel: 'cache'}
 
 
-when@test:
-  services:
-    # default configuration for services in *this* file
-    _defaults:
-      autowire: true      # Automatically injects dependencies in your services.
-      autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
-      public: true
-
-      bind:
-        # Param for
-        # AdapterForSendingEmail service
-        $systemEmailAddress: '%notifier.setting.recipient.system.email%'
-        $systemEmailName: '%notifier.setting.recipient.system.name%'
-
-
-    # makes classes in src/ available to be used as services
-    # this creates a service per class whose id is the fully-qualified class name
-    Notifier\:
-      resource: '../../../../_notifier/src/'
+#when@test:
+#  services:
+#    # default configuration for services in *this* file
+#    _defaults:
+#      autowire: true      # Automatically injects dependencies in your services.
+#      autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+#      public: true
+#
+#      bind:
+#        # Param for
+#        # AdapterForSendingEmail service
+#        $systemEmailAddress: '%notifier.setting.recipient.system.email%'
+#        $systemEmailName: '%notifier.setting.recipient.system.name%'
+#
+#
+#    # makes classes in src/ available to be used as services
+#    # this creates a service per class whose id is the fully-qualified class name
+#    Notifier\:
+#      resource: '../../../../_notifier/src/'
+#      exclude:
+#        - '../../../../_notifier/src/Core/UserRecipient/'
 
 
