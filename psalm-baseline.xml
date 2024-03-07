@@ -60,6 +60,14 @@
       <code><![CDATA[$user->getEmail()]]></code>
     </PossiblyNullArgument>
   </file>
+  <file src="src/Controller/ResetPasswordController.php">
+    <ArgumentTypeCoercion>
+      <code>$user</code>
+    </ArgumentTypeCoercion>
+    <MixedMethodCall>
+      <code>setPassword</code>
+    </MixedMethodCall>
+  </file>
   <file src="src/Controller/Security/LogoutController.php">
     <MissingReturnType>
       <code>logout</code>
@@ -106,6 +114,14 @@
       <code>$scopes</code>
     </PossiblyNullPropertyAssignmentValue>
   </file>
+  <file src="src/Entity/ResetPasswordRequest.php">
+    <InvalidNullableReturnType>
+      <code>object</code>
+    </InvalidNullableReturnType>
+    <NullableReturnStatement>
+      <code><![CDATA[$this->user]]></code>
+    </NullableReturnStatement>
+  </file>
   <file src="src/Entity/User.php">
     <InvalidNullableReturnType>
       <code>string</code>
@@ -142,10 +158,5 @@
     <UndefinedInterfaceMethod>
       <code>getFirewallConfig</code>
     </UndefinedInterfaceMethod>
-  </file>
-  <file src="src/Form/RegistrationFormType.php">
-    <MissingTemplateParam>
-      <code>RegistrationFormType</code>
-    </MissingTemplateParam>
   </file>
 </files>

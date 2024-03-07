@@ -44,6 +44,11 @@
                 <directory name="src/Repository" />
             </errorLevel>
         </PossiblyUnusedMethod>
+        <MissingTemplateParam>
+            <errorLevel type="suppress">
+                <directory name="src/Form" />
+            </errorLevel>
+        </MissingTemplateParam>
     </issueHandlers>
 
     <plugins>
