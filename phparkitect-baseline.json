@@ -16,6 +16,11 @@
             "error": "depends on App\\Repository\\OAuth2UserConsentRepository, but should not depend on these namespaces: App\\Controller\\*, App\\Service\\*, App\\Repository\\* because of component architecture"
         },
         {
+            "fqcn": "App\\Entity\\ResetPasswordRequest",
+            "line": 23,
+            "error": "depends on App\\Repository\\ResetPasswordRequestRepository, but should not depend on these namespaces: App\\Controller\\*, App\\Service\\*, App\\Repository\\* because of component architecture"
+        },
+        {
             "fqcn": "App\\Entity\\User",
             "line": 27,
             "error": "depends on App\\Repository\\UserRepository, but should not depend on these namespaces: App\\Controller\\*, App\\Service\\*, App\\Repository\\* because of component architecture"
