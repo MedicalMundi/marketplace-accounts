@@ -25,6 +25,14 @@
         },
         "methods": []
     },
+    "app_check_email": {
+        "path": "\/reset-password\/check-email",
+        "requirements": [],
+        "defaults": {
+            "_controller": "App\\Controller\\ResetPasswordController::checkEmail"
+        },
+        "methods": []
+    },
     "app_consent": {
         "path": "\/consent",
         "requirements": [],
@@ -35,6 +43,14 @@
             "GET",
             "POST"
         ]
+    },
+    "app_forgot_password_request": {
+        "path": "\/reset-password",
+        "requirements": [],
+        "defaults": {
+            "_controller": "App\\Controller\\ResetPasswordController::request"
+        },
+        "methods": []
     },
     "app_index": {
         "path": "\/",
@@ -77,6 +93,15 @@
         "requirements": [],
         "defaults": {
             "_controller": "App\\Controller\\RegistrationController::register"
+        },
+        "methods": []
+    },
+    "app_reset_password": {
+        "path": "\/reset-password\/reset\/{token}",
+        "requirements": [],
+        "defaults": {
+            "token": null,
+            "_controller": "App\\Controller\\ResetPasswordController::reset"
         },
         "methods": []
     },
