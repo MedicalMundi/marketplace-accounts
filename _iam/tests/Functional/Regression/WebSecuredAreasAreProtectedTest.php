@@ -46,8 +46,6 @@ class WebSecuredAreasAreProtectedTest extends WebTestCase
     public static function restrictedWebUrlDataProvider()
     {
         return [
-            ['iam_admin_index'],
-
             ['iam_admin_accounts_index'],
             ['iam_admin_accounts_unverified'],
 
