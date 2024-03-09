@@ -36,6 +36,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class CreateStageMarketplaceOauthClientCommand extends Command
 {
+    private const CLIENT_IDENTIFIER = 'stagemarketplaceengine';
+
     public function __construct(
         private readonly ClientManagerInterface $clientManager,
         private readonly EntityManagerInterface $em,
@@ -64,7 +66,7 @@ class CreateStageMarketplaceOauthClientCommand extends Command
     private function createOauthClientForMarketplaceEngine(): void
     {
         $clientName = 'Stage Marketplace Engine Client';
-        $clientId = 'stage-marketplace-engine';
+        $clientId = self::CLIENT_IDENTIFIER;
         $clientSecret = 'stage-marketplace';
         $clientDescription = 'Stage Marketplace website';
         $scopes = ['email'];
@@ -108,9 +110,9 @@ class CreateStageMarketplaceOauthClientCommand extends Command
 
     private function checkDefaultOauthClientOrCreate(SymfonyStyle $io): void
     {
-        if (null === $this->clientManager->find('stage-marketplace-engine')) {
+        if (null === $this->clientManager->find(self::CLIENT_IDENTIFIER)) {
             $this->createOauthClientForMarketplaceEngine();
-            $io->success('Oauth Client with identifier \'stage-marketplace-engine\' was created');
+            $io->success('Oauth Client with identifier \'' . self::CLIENT_IDENTIFIER . '\' was created');
         }
     }
 }
