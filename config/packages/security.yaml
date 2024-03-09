@@ -60,7 +60,7 @@ security:
         - { path: ^/verify, roles: PUBLIC_ACCESS }
         - { path: ^/reset-password, roles: PUBLIC_ACCESS}
         - { path: ^/api, role: ROLE_OAUTH2_EMAIL }
-        - { path: ^/, role: ROLE_USER }
+        - { path: ^/, role: PUBLIC_ACCESS }
 
 when@test:
     security:
