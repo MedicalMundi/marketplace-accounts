@@ -15,7 +15,7 @@
         {% block javascripts %}
         {% endblock %}
     </head>
-    <body class="d-flex flex-column h-100">
+    <body {% block body_class %}class="d-flex flex-column h-100"{% endblock %}>
         {% block body %}{% endblock %}
     </body>
 </html>

@@ -47,7 +47,9 @@
         "defaults": {
             "_controller": "App\\Controller\\IndexController::index"
         },
-        "methods": []
+        "methods": [
+            "GET"
+        ]
     },
     "app_jwks": {
         "path": "\/.well-known\/jwks.json",
