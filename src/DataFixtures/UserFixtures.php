@@ -24,13 +24,13 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
 {
     public function load(ObjectManager $manager): void
     {
-        UserFactory::createMany(10);
+        UserFactory::new()->unverified()->create();
+        UserFactory::createMany(15);
+        UserFactory::new()->unverified()->create();
     }
 
     public static function getGroups(): array
     {
-        // TODO: fix Zenstruck error
-        //return ['dev', 'dev-user'];
-        return [];
+        return ['dev', 'dev-user'];
     }
 }

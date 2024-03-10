@@ -69,6 +69,13 @@ final class UserFactory extends ModelFactory
         ;
     }
 
+    public function unverified(): self
+    {
+        return $this->addState([
+            'is_verified' => 0,
+        ]);
+    }
+
     protected static function getClass(): string
     {
         return User::class;
