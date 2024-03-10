@@ -17,7 +17,7 @@ namespace IdentityAccess\Core;
 
 class ShowAllAccountsQuery
 {
-    private int $limit = 1000;
+    private int $limit = 500;
 
     public function getLimit(): int
     {
