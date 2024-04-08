@@ -1,15 +1,52 @@
 {% extends 'layout-base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('assets/tbs-532/dist/css_custom/homepage.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block title %}
     {{ parent() }}
 {% endblock %}
 
-{% block main %}
-    <main class="flex-shrink-0">
-        <div class="container mt-3">
-            <div class="row justify-content-center">
-                    <h1>auth.oe-modules.com</h1>
+{% block body_class %}class="d-flex h-100 text-center text-bg-dark"{% endblock %}
+
+{% block body %}
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h3 class="float-md-start mb-0">oe-modules.com</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+{#                    <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>#}
+{#                    <a class="nav-link fw-bold py-1 px-0" href="#">Features</a>#}
+                    <a class="nav-link fw-bold py-1 px-0" href="https://marketplace.oe-modules.com/en/contact" target="_blank">Contact</a>
+                    {% if is_granted('ROLE_USER') %}
+                        <a class="nav-link fw-bold py-1 px-0" href="{{ path('app_logout') }}">Log Out</a>
+                    {% endif %}
+                </nav>
             </div>
-        </div>
-    </main>
+        </header>
+
+        <main class="px-3">
+            <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+                <h1>Auth service</h1>
+{#            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>#}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <p class="lead">
+                        <a href="{{ path('iam_admin_index') }}" class="btn btn-lg btn-light fw-bold border-white bg-white">Administration</a>
+                    </p>
+                {% elseif is_granted('ROLE_ADMIN') %}
+
+                {% else %}
+                    <p class="lead">
+                        <a href="{{ path('app_login') }}" class="btn btn-lg btn-light fw-bold border-white bg-white">Log In</a>
+                    </p>
+                {% endif %}
+            </div>
+        </main>
+
+        <footer class="mt-auto text-white-50">
+            <p>Made by <a href="https://github.com/zerai/" class="text-white">@Z</a>.</p>
+        </footer>
+    </div>
 {% endblock %}

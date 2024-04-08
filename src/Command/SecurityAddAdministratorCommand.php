@@ -111,6 +111,7 @@ class SecurityAddAdministratorCommand extends Command
                 $password
             )
         );
+        $adminUser->setIsVerified(true);
 
         return $adminUser;
     }

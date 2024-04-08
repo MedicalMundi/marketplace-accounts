@@ -36,8 +36,11 @@ class AccountsDataProvider
     #[QueryHandler]
     public function showUnverifiedAccounts(ShowUnverifiedAccounts $query): array
     {
+        // TODO: add offset to query
         return $this->userRepository->findBy([
             'isVerified' => false,
-        ], orderBy: [], limit: $query->getLimit(), offset: $query->getOffset());
+        ], orderBy: [
+            'email' => 'ASC',
+        ], limit: $query->getLimit());
     }
 }

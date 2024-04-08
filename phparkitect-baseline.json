@@ -27,12 +27,12 @@
         },
         {
             "fqcn": "IdentityAccess\\AdapterForCli\\CreateMarketplaceOauthClientCommand",
-            "line": 88,
+            "line": 90,
             "error": "depends on App\\Entity\\OAuth2ClientProfile, but should not depend on classes outside namespace IdentityAccess\\Core because or namespaces in whitelist we want isolate our identity access Adapters from ever growing dependencies."
         },
         {
             "fqcn": "IdentityAccess\\AdapterForCli\\CreateStageMarketplaceOauthClientCommand",
-            "line": 88,
+            "line": 90,
             "error": "depends on App\\Entity\\OAuth2ClientProfile, but should not depend on classes outside namespace IdentityAccess\\Core because or namespaces in whitelist we want isolate our identity access Adapters from ever growing dependencies."
         },
         {

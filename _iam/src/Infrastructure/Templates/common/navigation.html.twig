@@ -7,7 +7,6 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarMainTop">
-            <div>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ path('iam_admin_index') }}">Admin</a>
@@ -36,18 +35,20 @@
                     </ul>
                 </li>
             </ul>
-            </div>
-
-{#            TODO: use ROLE_REMEMBER_ME#}
+{#            TODO: use ROLE_REMEMBER_ME #}
 {#            {% if is_granted('ROLE_REMEMBER_ME') %}#}
             {% if is_granted('ROLE_USER') %}
-            <div class="justify-content-end">
                 <ul class="navbar-nav  mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ path('app_logout') }}">Log Out</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">{{ app.user.email }}</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ path('app_logout') }}">Log Out</a></li>
+                        </ul>
                     </li>
                 </ul>
-            </div>
             {% endif %}
         </div>
     </div>

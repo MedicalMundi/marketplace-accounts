@@ -47,3 +47,11 @@ services:
     League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface:
         class: App\Repository\AccessTokenRepository
         decorates: 'League\Bundle\OAuth2ServerBundle\Repository\AccessTokenRepository'
+
+
+
+
+    App\Tests\Fixture\Factory\UserFactory:
+        arguments:
+            - '@security.user_password_hasher'
+        tags: ['foundry.factory']

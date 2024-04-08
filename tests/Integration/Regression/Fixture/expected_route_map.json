@@ -9,22 +9,6 @@
             "GET"
         ]
     },
-    "app_api_security_index": {
-        "path": "\/api\/security\/test",
-        "requirements": [],
-        "defaults": {
-            "_controller": "App\\Controller\\Api\\SecurityController::index"
-        },
-        "methods": []
-    },
-    "app_api_test": {
-        "path": "\/api\/test",
-        "requirements": [],
-        "defaults": {
-            "_controller": "App\\Controller\\FakeApiTestController::apiTest"
-        },
-        "methods": []
-    },
     "app_check_email": {
         "path": "\/reset-password\/check-email",
         "requirements": [],
@@ -63,7 +47,9 @@
         "defaults": {
             "_controller": "App\\Controller\\IndexController::index"
         },
-        "methods": []
+        "methods": [
+            "GET"
+        ]
     },
     "app_jwks": {
         "path": "\/.well-known\/jwks.json",

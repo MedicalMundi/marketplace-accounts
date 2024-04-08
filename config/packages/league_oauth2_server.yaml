@@ -60,11 +60,11 @@ league_oauth2_server:
             'profile',
             'blog_read',
             'blog_write',
-            'security_console',
-            'security_console:read',
-            'security_console:create',
-            'security_console:edit',
-            'security_console:delete'
+            'catalog',
+            'catalog:read',
+            'catalog:create',
+            'catalog:edit',
+            'catalog:delete'
         ]
 
         # Scopes that will be assigned when no scope given.
