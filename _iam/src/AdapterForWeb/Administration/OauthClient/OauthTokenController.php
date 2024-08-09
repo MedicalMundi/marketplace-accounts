@@ -52,7 +52,7 @@ class OauthTokenController extends AbstractController
         if (0 === $numOfClearedAccessTokens) {
             $this->addFlash('info', 'There are not expired access tokens');
         } else {
-            $this->addFlash('success', sprintf(
+            $this->addFlash('success', \sprintf(
                 'Cleared %d expired access token%s.',
                 $numOfClearedAccessTokens,
                 1 === $numOfClearedAccessTokens ? '' : 's'
@@ -70,7 +70,7 @@ class OauthTokenController extends AbstractController
         if (0 === $numOfClearedRefreshTokens) {
             $this->addFlash('info', 'There are not expired refresh tokens');
         } else {
-            $this->addFlash('success', sprintf(
+            $this->addFlash('success', \sprintf(
                 'Cleared %d expired refresh token%s.',
                 $numOfClearedRefreshTokens,
                 1 === $numOfClearedRefreshTokens ? '' : 's'
@@ -88,7 +88,7 @@ class OauthTokenController extends AbstractController
         if (0 === $numOfClearedAuthCodes) {
             $this->addFlash('info', 'There are not expired auth codes');
         } else {
-            $this->addFlash('success', sprintf(
+            $this->addFlash('success', \sprintf(
                 'Cleared %d expired auth code%s.',
                 $numOfClearedAuthCodes,
                 1 === $numOfClearedAuthCodes ? '' : 's'

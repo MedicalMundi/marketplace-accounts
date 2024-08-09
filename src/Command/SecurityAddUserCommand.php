@@ -80,7 +80,7 @@ class SecurityAddUserCommand extends Command
         }
 
         if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $io->error(sprintf('Invalid email: %s', $email));
+            $io->error(\sprintf('Invalid email: %s', $email));
             exit(Command::FAILURE);
         }
 

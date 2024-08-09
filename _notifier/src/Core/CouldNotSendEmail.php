@@ -23,7 +23,7 @@ class CouldNotSendEmail extends RuntimeException
     {
         return new self(
             //TODO: translate in eng, find better message
-            sprintf(
+            \sprintf(
                 'Errore nell\'invio mail: %s',
                 $message
             )
