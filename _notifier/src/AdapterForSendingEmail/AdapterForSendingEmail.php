@@ -45,7 +45,7 @@ class AdapterForSendingEmail implements ForSendingEmail
             // TODO: configure a replyTo
             //->replyTo($visitorAddress)
             ->subject(
-                sprintf('%s: ' . self::REGISTRATION_VERIFICATION_MESSAGE_SUBJECT, $this->systemEmailName)
+                \sprintf('%s: ' . self::REGISTRATION_VERIFICATION_MESSAGE_SUBJECT, $this->systemEmailName)
             )
             ->text($this->formatMessage($registrationSignedUrl))
             // TODO: add HTML Template
