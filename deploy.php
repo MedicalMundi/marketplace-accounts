@@ -2,6 +2,7 @@
 namespace Deployer;
 
 require 'recipe/symfony.php';
+require 'tools/deployer/recipes/marketplace-account.php';
 
 // Config
 set('allow_anonymous_stats', false);
@@ -79,29 +80,6 @@ host('stage')
     ->set('keep_releases', 2)
 ;
 
-///** Staging Application path on hosting server  */
-//set('application_path_stage', 'stage.accounts.oe-modules.com');
-//
-///** Staging Hosts configuration */
-//host('stage')
-//    ->setHostname('stage.accounts.oe-modules.com')
-//    ->set('stage', 'stage')
-//    ->set('deploy_path', '~/{{application_path_stage}}')
-//    ->set('http_user', 'ekvwxsme')
-//    ->set('writable_use_sudo', false)
-//    ->set('writable_mode', 'chmod')
-//    /** ssh settings */
-//    ->setRemoteUser('ekvwxsme')
-//    ->setPort(3508)
-//    //->set('identityFile', '~/.ssh/id_rsa_oe_modules_php_deployer')
-//    ->set('ssh_multiplexing', false)
-//    /** git & composer settings */
-//    ->set('branch', 'main')
-//    ->set('composer_options', ' --prefer-dist --no-progress --no-interaction --optimize-autoloader')
-//    ->set('keep_releases', 2)
-//;
-
-
 /**
  *  DEPLOYER HOOKS
  */
@@ -114,46 +92,12 @@ after('deploy', 'envvars:dump');
 after('deploy', 'database:migrate');
 
 
-/**
- * MAINTENANCE BUNDLE CONFIGURATION
- *
- *  LOCK
- * @see https://packagist.org/packages/corley/maintenance-bundle
- */
-desc('Maintenance on');
-task('maintenance:on', function () {
-    run('{{bin/console}} corley:maintenance:lock on');
-    info('Maintenance mode (hard-lock) successfully activated!');
-});
-
-desc('Maintenance off');
-task('maintenance:off', function () {
-    run('{{bin/console}} corley:maintenance:lock off');
-    info('Maintenance mode (hard-lock) was deactivated!');
-});
-
 
 /**
- * MAINTENANCE BUNDLE CONFIGURATION
  *
- *  SOFT-LOCK
- * @see https://packagist.org/packages/corley/maintenance-bundle
+ *  Gestione env vars
+ *
  */
-desc('Maintenance soft-lock on');
-task('maintenance:soft:on', function () {
-    run('{{bin/console}} corley:maintenance:soft-lock on');
-    info('Maintenance mode (soft-lock) successfully activated!');
-
-});
-
-desc('Maintenance soft-lock off');
-task('maintenance:soft:off', function () {
-    run('{{bin/console}} corley:maintenance:soft-lock off');
-    info('Maintenance mode (soft-lock) was deactivated!');
-});
-
-
-
 desc('Compiles .env files to .env.local.php.');
 task('envvars:dump', function () {
     if ('production' === get('labels')['env']){
