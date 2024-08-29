@@ -17,3 +17,38 @@ jobs:
     uses: medicalmundi/marketplace-accounts/.github/workflows/acceptance-stage.yaml@main
     with:
       triggering-sha: "${{ github.sha }}"
+
+  # add release here
+
+
+#  deploy-on-production-workflow:
+#    name: Deploy on Production server
+#    if: startsWith(github.event.ref, 'refs/tags/v') && ${{ vars.ENABLE_DEPLOY_ON_PRODUCTION  == '1' }}
+#    needs:
+#      - commit-stage-workflow
+#      - acceptance-stage-workflow
+#      #- release-stage-workflow
+#    # note: racchiudere l'intero if con ${{ }}
+#    # @see https://github.com/actions/runner/issues/491
+#    #if: ${{ vars.ENABLE_DEPLOY_ON_PRODUCTION  == '1' }}
+#    secrets: inherit
+#    uses: medicalmundi/marketplace-account/.github/workflows/deploy-on-production.yaml@main
+#    with:
+#      triggering-sha: "${{ github.sha }}"
+
+
+  deploy-on-stage-workflow:
+    name: Deploy on Staging server
+    needs:
+      - commit-stage-workflow
+      - acceptance-stage-workflow
+    # note: racchiudere l'intero if con ${{ }}
+    # @see https://github.com/actions/runner/issues/491
+    if: ${{ vars.ENABLE_DEPLOY_ON_STAGING  == '1' && github.ref_name == 'main' }}
+    secrets: inherit
+    uses: medicalmundi/marketplace-accounts/.github/workflows/deploy-on-staging.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
+
+
+
