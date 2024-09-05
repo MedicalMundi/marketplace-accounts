@@ -3,9 +3,6 @@
 docs/wip/
 /tools/**/vendor
 
-docker-compose.yml
-docker-compose.override.yml
-/docker
 psalm.xml
 
 .env.itroom.production
