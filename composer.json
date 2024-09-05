@@ -99,6 +99,7 @@
         },
         "symfony": {
             "allow-contrib": false,
+            "docker": true,
             "require": "6.4.*"
         }
     },
