@@ -21,7 +21,7 @@ concurrency:
 jobs:
   deploy:
     name: Deploy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     environment: stage
 
     steps:
@@ -49,19 +49,6 @@ jobs:
         with:
           secrets: ${{ toJSON(secrets) }}
 
-#      - name: Prepare env file for staging
-#        run: |
-#          touch .env.dev
-#          echo APP_ENV="$APP_ENV" >> .env.dev
-#          echo APP_SECRET="$APP_SECRET" >> .env.dev
-#          echo DATABASE_URL="$DATABASE_URL" >> .env.dev
-#          echo LOCK_DSN="$LOCK_DSN" >> .env.dev
-#          echo MAILER_DSN="$MAILER_DSN" >> .env.dev
-#          echo OAUTH_GITHUB_CLIENT_ID="$OAUTH_GITHUB_CLIENT_ID" >> .env.dev
-#          echo OAUTH_GITHUB_CLIENT_SECRET="$OAUTH_GITHUB_CLIENT_SECRET" >> .env.dev
-#          echo OAUTH_OEMODULES_CLIENT_ID="$OAUTH_OEMODULES_CLIENT_ID" >> .env.dev
-#          echo OAUTH_OEMODULES_CLIENT_SECRET="$OAUTH_OEMODULES_CLIENT_SECRET" >> .env.dev
-
       - name: Deploy
         uses: deployphp/action@v1
         with:
@@ -74,7 +61,7 @@ jobs:
   enable-maintenance-mode:
     name: Enable Maintenace mode
     if: ${{ vars.ENABLE_MAINTENANCE_MODE_AFTER_DEPLOY_ON_STAGING == '1'}}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs:
       - deploy
 
@@ -99,32 +86,11 @@ jobs:
           composer install --prefer-dist --no-progress --no-scripts --ansi
           composer bin deployer install
 
-
-#      - name: Deploy
-#        uses: deployphp/action@v1
-#        with:
-#          deployer-version: "7.3.3"
-#          dep: deploy stage -o branch=main
-#          private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
-#          deployer-binary: "./vendor/bin/dep"
-#        env:
-#          APP_ENV: ${{ secrets.APP_ENV}}
-#          APP_SECRET: ${{ secrets.APP_SECRET}}
-#          DATABASE_URL: ${{ secrets.DATABASE_URL}}
-#          LOCK_DSN: ${{ secrets.LOCK_DSN}}
-#          MAILER_DSN: ${{ secrets.MAILER_DSN}}
-#          OAUTH_GITHUB_CLIENT_ID: ${{ secrets.OAUTH_GITHUB_CLIENT_ID}}
-#          OAUTH_GITHUB_CLIENT_SECRET: ${{ secrets.OAUTH_GITHUB_CLIENT_SECRET}}
-#          OAUTH_OEMODULES_CLIENT_ID: ${{ secrets.OAUTH_OEMODULES_CLIENT_ID}}
-#          OAUTH_OEMODULES_CLIENT_SECRET: ${{ secrets.OAUTH_OEMODULES_CLIENT_SECRET}}
-
-
-
-#      - name: Enable Maintenance Mode after deploy
-#        if: ${{ vars.ENABLE_MAINTENANCE_MODE_AFTER_DEPLOY_ON_STAGING }}
-#        uses: deployphp/action@v1
-#        with:
-#          deployer-version: "7.3.3"
-#          dep: maintenance:on stage
-#          private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
-#          deployer-binary: "./vendor/bin/dep"
+      - name: Enable Maintenance Mode after deploy
+        if: ${{ vars.ENABLE_MAINTENANCE_MODE_AFTER_DEPLOY_ON_STAGING }}
+        uses: deployphp/action@v1
+        with:
+          deployer-version: "7.3.1"
+          dep: maintenance:on stage
+          private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
+          deployer-binary: "./vendor/bin/dep"
