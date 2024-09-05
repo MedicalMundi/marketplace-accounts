@@ -22,7 +22,7 @@ updates:
       include: "scope"
       prefix: "Tools - ecs "
     labels:
-      - "tool dependency"
+      - "Tool dependency"
 
   - package-ecosystem: "composer"
     target-branch: "main"
@@ -37,7 +37,7 @@ updates:
       include: "scope"
       prefix: "Tools - psalm "
     labels:
-      - "tool dependency"
+      - "Tool dependency"
 
   - package-ecosystem: "composer"
     target-branch: "main"
