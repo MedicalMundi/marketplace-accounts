@@ -45,7 +45,7 @@ jobs:
           composer install --prefer-dist --no-progress --no-scripts --ansi
           composer bin deployer install
 
-      - uses: oNaiPs/secrets-to-env-action@v1
+      - uses: oNaiPs/secrets-to-env-action@v1.5
         with:
           secrets: ${{ toJSON(secrets) }}
 
