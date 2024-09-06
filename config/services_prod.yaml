@@ -1,0 +1,12 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+
+  app.setting.is_user_registration_enabled: false
+  app.setting.is_user_password_recovery_enabled: false
+  app.setting.instance_domain: 'auth.oe-modules.com'
+  app.setting.instance_schema: 'https'
+
