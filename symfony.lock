@@ -54,7 +54,7 @@
         ]
     },
     "ecotone/symfony-bundle": {
-        "version": "1.105.0"
+        "version": "1.211.0"
     },
     "enqueue/dbal": {
         "version": "0.10",
@@ -173,19 +173,19 @@
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "main",
             "version": "1.0",
-            "ref": "efb318193e48384eb5c5aadff15396ed698f8ffc"
+            "ref": "0f18b4decdf5695d692c1d0dfd65516a07a6adf1"
         },
         "files": [
             "public/.htaccess"
         ]
     },
     "symfony/console": {
-        "version": "6.0",
+        "version": "6.4",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "5.3",
-            "ref": "da0c8be8157600ad34f10ff0c9cc91232522e047"
+            "ref": "1781ff40d8a17d87cf53f8d4cf0c8346ed2bb461"
         },
         "files": [
             "bin/console"
@@ -221,7 +221,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "6.4",
-            "ref": "a91c965766ad3ff2ae15981801643330eb42b6a5"
+            "ref": "32126346f25e1cee607cc4aa6783d46034920554"
         },
         "files": [
             "config/packages/cache.yaml",
@@ -365,7 +365,7 @@
         "version": "v1.14.0"
     },
     "twig/extra-bundle": {
-        "version": "v3.7.1"
+        "version": "v3.8.0"
     },
     "zenstruck/foundry": {
         "version": "1.36",

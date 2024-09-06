@@ -3,7 +3,7 @@
 /*
  * This file is part of the medicalmundi/marketplace-accounts
  *
- * @copyright (c) 2023 MedicalMundi
+ * @copyright (c) 2024 MedicalMundi
  *
  * This software consists of voluntary contributions made by many individuals
  * {@link https://github.com/medicalmundi/marketplace-accounts/graphs/contributors developer} and is licensed under the MIT license.
@@ -104,7 +104,7 @@ class ResetPasswordController extends AbstractController
         try {
             $user = $this->resetPasswordHelper->validateTokenAndFetchUser($token);
         } catch (ResetPasswordExceptionInterface $e) {
-            $this->addFlash('reset_password_error', sprintf(
+            $this->addFlash('reset_password_error', \sprintf(
                 '%s - %s',
                 ResetPasswordExceptionInterface::MESSAGE_PROBLEM_VALIDATE,
                 $e->getReason()
@@ -159,7 +159,7 @@ class ResetPasswordController extends AbstractController
             // the lines below and change the redirect to 'app_forgot_password_request'.
             // Caution: This may reveal if a user is registered or not.
             //
-            //            $this->addFlash('reset_password_error', sprintf(
+            //            $this->addFlash('reset_password_error', \sprintf(
             //                '%s - %s',
             //                ResetPasswordExceptionInterface::MESSAGE_PROBLEM_HANDLE,
             //                $e->getReason()
