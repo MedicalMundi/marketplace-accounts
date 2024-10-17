@@ -62,6 +62,16 @@ updates:
       prefix: "Tools - psalm "
     labels:
       - "Tool dependency"
+    groups:
+      psalm:
+        applies-to: "version-updates"
+        dependency-type: "development"
+        patterns:
+          - "vimeo/*"
+          - "psalm/plugin-*"
+        update-types:
+          - "minor"
+          - "patch"
 
   - package-ecosystem: "composer"
     target-branch: "main"
