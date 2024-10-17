@@ -37,7 +37,7 @@
         "symfony/http-client": "^6.0",
         "symfony/mailer": "6.4.*",
         "symfony/monolog-bundle": "^3.8",
-        "symfony/rate-limiter": "6.4.*",
+        "symfony/rate-limiter": "7.1.*",
         "symfony/runtime": "6.4.*",
         "symfony/security-bundle": "6.4.*",
         "symfony/twig-bundle": "6.4.*",
