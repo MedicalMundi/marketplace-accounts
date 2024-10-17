@@ -3,6 +3,26 @@
 version: 2
 
 updates:
+  - package-ecosystem: "composer"
+    target-branch: "main"
+    directory: "/"
+    versioning-strategy: "increase-if-necessary"
+    open-pull-requests-limit: 3
+    schedule:
+      interval: "weekly"
+      #day: "saturday"
+      #time: "14:00"
+      #timezone: Europe/Rome
+    assignees:
+      - "zerai"
+    commit-message:
+      include: "scope"
+      prefix: "composer"
+    labels:
+      - "php dependency"
+    ignore:
+      - dependency-name: "symfony/*-bundle"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
 
   ########################################################################################################################
   #
