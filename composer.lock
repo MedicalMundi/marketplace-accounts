@@ -11309,21 +11309,22 @@
         },
         {
             "name": "twig/markdown-extra",
-            "version": "v3.8.0",
+            "version": "v3.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/markdown-extra.git",
-                "reference": "b6e4954ab60030233df5d293886b5404558daac8"
+                "reference": "25f23c02936f8c7157a8413154c06a462c9c20d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/markdown-extra/zipball/b6e4954ab60030233df5d293886b5404558daac8",
-                "reference": "b6e4954ab60030233df5d293886b5404558daac8",
+                "url": "https://api.github.com/repos/twigphp/markdown-extra/zipball/25f23c02936f8c7157a8413154c06a462c9c20d3",
+                "reference": "25f23c02936f8c7157a8413154c06a462c9c20d3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "twig/twig": "^3.0"
+                "php": ">=8.0.2",
+                "symfony/deprecation-contracts": "^2.5|^3",
+                "twig/twig": "^3.13|^4.0"
             },
             "require-dev": {
                 "erusev/parsedown": "^1.7",
@@ -11334,6 +11335,9 @@
             },
             "type": "library",
             "autoload": {
+                "files": [
+                    "Resources/functions.php"
+                ],
                 "psr-4": {
                     "Twig\\Extra\\Markdown\\": ""
                 },
@@ -11361,7 +11365,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/twigphp/markdown-extra/tree/v3.8.0"
+                "source": "https://github.com/twigphp/markdown-extra/tree/v3.13.0"
             },
             "funding": [
                 {
@@ -11373,7 +11377,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-21T14:02:01+00:00"
+            "time": "2024-09-03T20:17:35+00:00"
         },
         {
             "name": "twig/string-extra",
