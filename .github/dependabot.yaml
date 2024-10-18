@@ -22,17 +22,17 @@ updates:
       - "php dependency"
     groups:
       symfony_dev:
-            applies-to: "version-updates"
-            dependency-type: "development"
-            patterns:
-                - "symfony/stopwatch"
-                - "symfony/browser-kit"
-                - "symfony/debug-bundle"
-                - "symfony/css-selector"
-                - "symfony/phpunit-bridge"
-                - "symfony/web-profiler-bundle"
-            update-types:
-                - "patch"
+        applies-to: "version-updates"
+        dependency-type: "development"
+        patterns:
+            - "symfony/stopwatch"
+            - "symfony/browser-kit"
+            - "symfony/debug-bundle"
+            - "symfony/css-selector"
+            - "symfony/phpunit-bridge"
+            - "symfony/web-profiler-bundle"
+        update-types:
+            - "patch"
       symfony_prod:
         applies-to: "version-updates"
         dependency-type: "production"
@@ -67,6 +67,12 @@ updates:
           - "minor"
           - "patch"
     ignore:
+      - dependency-name: "symfony/*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor" ]
+      - dependency-name: "doctrine/*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor" ]
+      - dependency-name: "ecotone/*"
+        update-types: [ "version-update:semver-major" ]
       - dependency-name: "league/oauth2-server-bundle"
         update-types: ["version-update:semver-major", "version-update:semver-minor"]
 
