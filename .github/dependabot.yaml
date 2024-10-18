@@ -37,6 +37,9 @@ updates:
         update-types: ["version-update:semver-major", "version-update:semver-minor"]
       - dependency-name: "ecotone/*"
         update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      - dependency-name: "league/oauth2-server-bundle"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+
 
   ########################################################################################################################
   #
