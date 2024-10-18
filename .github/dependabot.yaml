@@ -40,8 +40,9 @@ updates:
               - "symfony/phpunit-bridge"
               - "symfony/web-profiler-bundle"
           update-types:
-              #- "minor"
-              - "patch"
+              - "major"
+              - "minor"
+              #- "patch"
       doctrine:
         applies-to: "version-updates"
         dependency-type: "production"
