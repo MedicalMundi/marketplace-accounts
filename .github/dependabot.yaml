@@ -45,6 +45,14 @@ updates:
         update-types:
             #- "minor"
             - "patch"
+      ecotone:
+          applies-to: "version-updates"
+          dependency-type: "production"
+          patterns:
+              - "ecotone/*"
+          update-types:
+              - "minor"
+              - "patch"
       pagerfanta:
         applies-to: "version-updates"
         dependency-type: "production"
