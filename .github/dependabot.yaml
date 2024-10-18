@@ -10,9 +10,9 @@ updates:
     open-pull-requests-limit: 5
     schedule:
       interval: "weekly"
-      #day: "saturday"
-      #time: "14:00"
-      #timezone: Europe/Rome
+      day: "sunday"
+      time: "01:00"
+      timezone: "Europe/Rome"
     assignees:
       - "zerai"
     commit-message:
