@@ -21,6 +21,18 @@ updates:
     labels:
       - "php dependency"
     groups:
+      symfony_dev:
+            applies-to: "version-updates"
+            dependency-type: "development"
+            patterns:
+                - "symfony/stopwatch"
+                - "symfony/browser-kit"
+                - "symfony/debug-bundle"
+                - "symfony/css-selector"
+                - "symfony/phpunit-bridge"
+                - "symfony/web-profiler-bundle"
+            update-types:
+                - "patch"
       symfony_prod:
         applies-to: "version-updates"
         dependency-type: "production"
@@ -29,19 +41,6 @@ updates:
         update-types:
             #- "minor"
             - "patch"
-      symfony_dev:
-          applies-to: "version-updates"
-          dependency-type: "development"
-          patterns:
-              - "symfony/*"
-              - "symfony/browser-kit"
-              - "symfony/debug-bundle"
-              - "symfony/css-selector"
-              - "symfony/phpunit-bridge"
-              - "symfony/web-profiler-bundle"
-          update-types:
-              #- "minor"
-              - "patch"
       doctrine:
         applies-to: "version-updates"
         dependency-type: "production"
