@@ -21,6 +21,22 @@ updates:
     labels:
       - "php dependency"
     groups:
+      symfony_prod:
+        applies-to: "version-updates"
+        dependency-type: "production"
+        patterns:
+            - "symfony/*"
+        update-types:
+            #- "minor"
+            - "patch"
+      symfony_dev:
+          applies-to: "version-updates"
+          dependency-type: "development"
+          patterns:
+              - "symfony/*"
+          update-types:
+              #- "minor"
+              - "patch"
       doctrine:
         applies-to: "version-updates"
         dependency-type: "production"
