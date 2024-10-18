@@ -7,7 +7,7 @@ updates:
     target-branch: "main"
     directory: "/"
     versioning-strategy: "increase-if-necessary"
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 5
     schedule:
       interval: "weekly"
       #day: "saturday"
