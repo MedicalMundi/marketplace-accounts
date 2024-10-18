@@ -34,6 +34,11 @@ updates:
           dependency-type: "development"
           patterns:
               - "symfony/*"
+              - "symfony/browser-kit"
+              - "symfony/debug-bundle"
+              - "symfony/css-selector"
+              - "symfony/phpunit-bridge"
+              - "symfony/web-profiler-bundle"
           update-types:
               #- "minor"
               - "patch"
