@@ -28,7 +28,7 @@ updates:
           - "babdev/pagerfanta-bundle"
           - "pagerfanta/*"
         update-types:
-          #- "minor"
+          - "minor"
           - "patch"
     ignore:
       - dependency-name: "symfony/*"
