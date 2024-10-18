@@ -21,6 +21,14 @@ updates:
     labels:
       - "php dependency"
     groups:
+      doctrine:
+        applies-to: "version-updates"
+        dependency-type: "production"
+        patterns:
+            - "doctrine/*"
+        update-types:
+            #- "minor"
+            - "patch"
       pagerfanta:
         applies-to: "version-updates"
         dependency-type: "production"
