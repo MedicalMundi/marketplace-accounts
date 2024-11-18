@@ -75,7 +75,7 @@ jobs:
 
       - name: Upload coverage results to Codecov
         if: ${{ (steps.download-unit-test-coverage-artifact.outcome == 'success') }}
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ${{ vars.UNIT_TEST_CLOVER_FILENAME }}
