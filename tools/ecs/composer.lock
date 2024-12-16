@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ec7faf18d8befaf1219e90e5187a938",
+    "content-hash": "28f37be54e04fc3903317e34ee1e9178",
     "packages": [],
     "packages-dev": [
         {
             "name": "symplify/easy-coding-standard",
-            "version": "12.4.0",
+            "version": "12.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/easy-coding-standard/easy-coding-standard.git",
-                "reference": "54d26710fc05c733cbd788a23a709e7815ab0a67"
+                "reference": "5673ecbc03eef9d7b2f563819c80e8e1ce0161be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/easy-coding-standard/easy-coding-standard/zipball/54d26710fc05c733cbd788a23a709e7815ab0a67",
-                "reference": "54d26710fc05c733cbd788a23a709e7815ab0a67",
+                "url": "https://api.github.com/repos/easy-coding-standard/easy-coding-standard/zipball/5673ecbc03eef9d7b2f563819c80e8e1ce0161be",
+                "reference": "5673ecbc03eef9d7b2f563819c80e8e1ce0161be",
                 "shasum": ""
             },
             "require": {
@@ -54,7 +54,7 @@
             ],
             "support": {
                 "issues": "https://github.com/easy-coding-standard/easy-coding-standard/issues",
-                "source": "https://github.com/easy-coding-standard/easy-coding-standard/tree/12.4.0"
+                "source": "https://github.com/easy-coding-standard/easy-coding-standard/tree/12.5.4"
             },
             "funding": [
                 {
@@ -66,7 +66,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-03T12:53:56+00:00"
+            "time": "2024-12-12T15:36:04+00:00"
         }
     ],
     "aliases": [],
