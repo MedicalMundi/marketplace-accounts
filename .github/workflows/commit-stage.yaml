@@ -137,12 +137,15 @@ jobs:
           matrix:
               php:
                   - '8.1'
+                  - '8.2'
+                  - '8.3'
+                  - '8.4'
               is-php-experimental: [false]
-              generate-coverage-report: [true]
+              generate-coverage-report: [false]
               include:
-                - php: '8.2'
+                - php: '8.1'
                   is-php-experimental: false
-                  generate-coverage-report: false
+                  generate-coverage-report: true
                 # php-8.3 support issues with laminas/laminas-zendframework-bridge & laminas/laminas-code
                 #- php: '8.3'
                   #is-php-experimental: false
