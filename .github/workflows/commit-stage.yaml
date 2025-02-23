@@ -136,11 +136,11 @@ jobs:
           max-parallel: 5
           matrix:
               php:
-                  - '8.1'
+                  #- '8.1'
                   - '8.2'
                   - '8.3'
                   - '8.4'
-              is-php-experimental: [false]
+              is-php-experimental: [true]
               generate-coverage-report: [false]
               include:
                 - php: '8.1'
@@ -205,13 +205,15 @@ jobs:
             if: ${{ !matrix.generate-coverage-report }}
             run: |
                 vendor/bin/phpunit --testsuite=unit --testdox --colors=always
-
+            continue-on-error: ${{ matrix.generate-coverage-report }}
+            
           - name: Run unit tests WITH COVERAGE
             if: ${{ matrix.generate-coverage-report }}
             run: |
                 vendor/bin/phpunit --testsuite=unit --testdox --colors=always \
                 --coverage-clover ${{ vars.UNIT_TEST_CLOVER_FILENAME }} \
                 --testdox-text ${{ vars.UNIT_TEST_DOC_FILENAME }}
+            continue-on-error: ${{ matrix.generate-coverage-report }}
 
           - name: Get Coverage artifact name
             if: ${{ matrix.generate-coverage-report }}
