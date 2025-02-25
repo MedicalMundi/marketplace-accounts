@@ -30,11 +30,11 @@ add('writable_dirs', [
 
 
 /** Production Application path on hosting server  */
-set('application_path_production', 'mvp.openemrmarketplace.com');
+set('application_path_production', 'auth.openemrmarketplace.com');
 
 /** Production Hosts configuration */
 host('production')
-    ->setHostname('mvp.openemrmarketplace.com')
+    ->setHostname('auth.openemrmarketplace.com')
     ->set('stage', 'production')
     ->setLabels([
         'env' => 'production',
@@ -46,7 +46,7 @@ host('production')
     /** ssh settings */
     ->setRemoteUser('urkqihid')
     ->setPort(3508)
-    ->set('identityFile', '~/.ssh/id_rsa_mvp_openemrmarketplace_com')
+    ->set('identityFile', '~/.ssh/id_rsa_account_openemrmarketplace_com')
     ->set('ssh_multiplexing', false)
     /** git & composer settings */
     ->set('branch', 'main')
@@ -55,21 +55,21 @@ host('production')
 ;
 
 /** Staging Application path on hosting server  */
-set('application_path_stage', 'stage.auth.oe-modules.com');
+set('application_path_stage', 'stage.auth.openemrmarketplace.com');
 
 /** Staging Hosts configuration */
 host('stage')
-    ->setHostname('stage.auth.oe-modules.com')
+    ->setHostname('stage.auth.openemrmarketplace.com')
     ->set('stage', 'stage')
     ->setLabels([
         'env' => 'stage',
     ])
     ->set('deploy_path', '~/{{application_path_stage}}')
-    ->set('http_user', 'ekvwxsme')
+    ->set('http_user', 'urkqihid')
     ->set('writable_use_sudo', false)
     ->set('writable_mode', 'chmod')
     /** ssh settings */
-    ->setRemoteUser('ekvwxsme')
+    ->setRemoteUser('urkqihid')
     ->setPort(3508)
     //->set('identityFile', '~/.ssh/id_rsa_oe_modules_php_deployer')
     //->set('forwardAgent', true)
@@ -85,7 +85,7 @@ host('stage')
  */
 
 after('deploy:failed', 'deploy:unlock');
-after('deploy', 'envvars:dump');
+before('deploy:vendors', 'envvars:dump');
 // Enable db migration
 // Migrate database before symlink new release.
 //before('deploy:symlink', 'database:migrate');
