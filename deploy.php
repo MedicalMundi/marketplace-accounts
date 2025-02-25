@@ -30,23 +30,23 @@ add('writable_dirs', [
 
 
 /** Production Application path on hosting server  */
-set('application_path_production', 'auth.oe-modules.com');
+set('application_path_production', 'mvp.openemrmarketplace.com');
 
 /** Production Hosts configuration */
 host('production')
-    ->setHostname('auth.oe-modules.com')
+    ->setHostname('mvp.openemrmarketplace.com')
     ->set('stage', 'production')
     ->setLabels([
         'env' => 'production',
     ])
     ->set('deploy_path', '~/{{application_path_production}}')
-    ->set('http_user', 'ekvwxsme')
+    ->set('http_user', 'urkqihid')
     ->set('writable_use_sudo', false)
     ->set('writable_mode', 'chmod')
     /** ssh settings */
-    ->setRemoteUser('ekvwxsme')
+    ->setRemoteUser('urkqihid')
     ->setPort(3508)
-    ->set('identityFile', '~/.ssh/id_rsa_oe_modules_php_deployer')
+    ->set('identityFile', '~/.ssh/id_rsa_mvp_openemrmarketplace_com')
     ->set('ssh_multiplexing', false)
     /** git & composer settings */
     ->set('branch', 'main')
