@@ -121,10 +121,10 @@ class RegistrationController extends AbstractController
     private function sendConfirmationEmail(MailerInterface $mailer, string $signedUrl, string $userEmail): void
     {
         $email = (new Email())
-            ->from('sys@stage.accounts.oe-modules.com')
+            ->from('system@auth.openemrmarketplace.com')
             ->to($userEmail)
             ->priority(Email::PRIORITY_HIGH)
-            ->subject('Auth oe-modules.com: please confirm your registration')
+            ->subject('Auth openemrmarketplace.com: please confirm your registration')
             ->text('Confirm your email at: ' . $signedUrl)
             ->html('<p> Confirm your email at: ' . $signedUrl . '</p>');
 

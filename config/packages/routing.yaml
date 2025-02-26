@@ -9,6 +9,6 @@ framework:
 when@prod:
     framework:
         router:
-            default_uri: https://auth.oe-modules.com
+            default_uri: https://auth.openemrmarketplace.com
             strict_requirements: null
 
