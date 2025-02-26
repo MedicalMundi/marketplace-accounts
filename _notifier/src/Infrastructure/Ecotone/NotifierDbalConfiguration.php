@@ -24,6 +24,6 @@ class NotifierDbalConfiguration
     public function getDbalConfiguration(): DbalConfiguration
     {
         return DbalConfiguration::createWithDefaults()
-            ->withDocumentStore(initializeDatabaseTable: true, enableDocumentStoreAggregateRepository: true);
+            ->withDocumentStore(initializeDatabaseTable: true, enableDocumentStoreStandardRepository: true);
     }
 }
