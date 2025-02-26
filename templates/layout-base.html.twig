@@ -8,8 +8,21 @@
 
 {% block stylesheets %}
     {{ parent() }}
+
+    {#
+        see docs: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload#including_media
+        see example: https://github.com/mdn/html-examples/tree/main/link-rel-preload/js-and-css
+    #}
+    <link rel="preload" href="{{ asset('assets/tbs-532/dist/css/bootstrap.min.css') }}" as="style" type="text/css">
+    <link rel="preload" href="{{ asset('/assets/tbs-532/dist/css_custom/sticky-footer-navbar.css') }}" as="style" type="text/css">
+    <link rel="preload" href="{{ asset('assets/tbs-532/dist/js/bootstrap.bundle.js') }}" as="script">
+    <link rel="preload" href="{{ asset('assets/htmx-196/dist/htmx.min.js') }}" as="script">
+
     <link href="{{ asset('assets/tbs-532/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/tbs-532/dist/css_custom/sticky-footer-navbar.css') }}" rel="stylesheet">
+
+
+
 {% endblock %}
 
 {% block javascripts %}

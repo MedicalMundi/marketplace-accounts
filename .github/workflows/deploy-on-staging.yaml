@@ -35,7 +35,7 @@ jobs:
         uses: crazy-max/ghaction-dump-context@v2
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@2.31.1
+        uses: shivammathur/setup-php@2.32.0
         with:
           php-version: '8.1'
           tools: composer
@@ -57,6 +57,15 @@ jobs:
           private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
           deployer-binary: "./vendor/bin/dep"
 
+#      - name: Enable Maintenance Mode after deploy
+#        #if: ${{ vars.ENABLE_MAINTENANCE_MODE_AFTER_DEPLOY_ON_STAGING == '1'}}
+#        uses: deployphp/action@v1
+#        with:
+#            deployer-version: "7.3.1"
+#            dep: maintenance:on stage
+#            private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
+#            deployer-binary: "./vendor/bin/dep"
+
 
   enable-maintenance-mode:
     name: Enable Maintenace mode
@@ -76,7 +85,7 @@ jobs:
         uses: crazy-max/ghaction-dump-context@v2
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@2.31.1
+        uses: shivammathur/setup-php@2.32.0
         with:
           php-version: '8.1'
           tools: composer
@@ -87,7 +96,7 @@ jobs:
           composer bin deployer install
 
       - name: Enable Maintenance Mode after deploy
-        if: ${{ vars.ENABLE_MAINTENANCE_MODE_AFTER_DEPLOY_ON_STAGING }}
+        if: ${{ vars.ENABLE_MAINTENANCE_MODE_AFTER_DEPLOY_ON_STAGING == '1'}}
         uses: deployphp/action@v1
         with:
           deployer-version: "7.3.1"
