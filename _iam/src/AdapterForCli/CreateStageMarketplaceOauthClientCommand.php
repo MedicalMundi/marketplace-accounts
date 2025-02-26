@@ -71,7 +71,7 @@ class CreateStageMarketplaceOauthClientCommand extends Command
         $clientDescription = 'Stage Marketplace website';
         $scopes = ['email'];
         $grantTypes = ['authorization_code', 'refresh_token'];
-        $redirectUris = ['https://stage.marketplace.oe-modules.com/connect/oemodules/check'];
+        $redirectUris = ['https://stage.modules.openemrmarketplace.com/connect/oemodules/check'];
 
         $oAuthClient = $this
             ->buildOauthClient(

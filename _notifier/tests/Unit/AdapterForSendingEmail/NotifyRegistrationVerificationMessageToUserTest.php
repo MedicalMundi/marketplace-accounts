@@ -27,9 +27,9 @@ use Symfony\Component\Mailer\MailerInterface;
 #[CoversClass(AdapterForSendingEmail::class)]
 class NotifyRegistrationVerificationMessageToUserTest extends TestCase
 {
-    private const SYSTEM_EMAIL_ADDRESS = 'sys@auth.oe-modules.com';
+    private const SYSTEM_EMAIL_ADDRESS = 'system@auth.openemrmarketplace.com';
 
-    private const SYSTEM_EMAIL_NAME = 'auth.oe-modules.com';
+    private const SYSTEM_EMAIL_NAME = 'auth.openemrmarketplace.com';
 
     private const EXPECTED_EMAIL_SUBJECT = self::SYSTEM_EMAIL_NAME . ': verify your email address';
 

@@ -5,7 +5,7 @@ when@prod:
             environment: '%kernel.environment%'
             sample_rate: 0.5
             traces_sample_rate: 0.5
-            server_name: "auth.oe-modules.com"
+            server_name: "auth.openemrmarketplace.com"
             send_attempts: 4
             release: '%release.version%'
 

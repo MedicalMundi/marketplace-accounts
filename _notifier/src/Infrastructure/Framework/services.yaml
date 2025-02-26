@@ -5,8 +5,8 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
   notifier.setting.recipient.admin: 'teclaizerai@gmail.com'
-  notifier.setting.recipient.system.email: 'sys@auth.oe-modules.com'
-  notifier.setting.recipient.system.name: 'auth.oe-modules.com'
+  notifier.setting.recipient.system.email: 'system@auth.openemrmarketplace.com'
+  notifier.setting.recipient.system.name: 'auth.openemr.com'
 
 services:
   # default configuration for services in *this* file
