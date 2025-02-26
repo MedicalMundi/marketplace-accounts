@@ -170,7 +170,7 @@ class ResetPasswordController extends AbstractController
         }
 
         $email = (new TemplatedEmail())
-            ->from(new Address('sys@auth.oe-modules.com', 'Auth oe-modules.com'))
+            ->from(new Address('system@auth.openemrmarketplace.com', 'Auth openemrmarketplace.com'))
             ->to($emailFormData)
             ->subject('Your password reset request')
             ->htmlTemplate('reset_password/email.html.twig')

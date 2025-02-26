@@ -71,7 +71,7 @@ class CreateMarketplaceOauthClientCommand extends Command
         $clientDescription = 'Marketplace website';
         $scopes = ['email'];
         $grantTypes = ['authorization_code', 'refresh_token'];
-        $redirectUris = ['https://marketplace.oe-modules.com/connect/oemodules/check'];
+        $redirectUris = ['https://modules.openemrmarketplace.com/connect/oemodules/check'];
 
         $oAuthClient = $this
             ->buildOauthClient(
