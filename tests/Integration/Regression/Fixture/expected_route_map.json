@@ -135,6 +135,14 @@
             "GET"
         ]
     },
+    "iam_admin_bc_com_index": {
+        "path": "\/admin\/com",
+        "requirements": [],
+        "defaults": {
+            "_controller": "IdentityAccess\\AdapterForWeb\\ExternalSystemCommunicationController::index"
+        },
+        "methods": []
+    },
     "iam_admin_index": {
         "path": "\/admin",
         "requirements": [],
