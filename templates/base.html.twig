@@ -2,8 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="oe-modules.com service">
-        <meta name="keywords" content="oe-modules.com, marketplace.oe-modules.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="openemrmarketplace.com service">
+        <meta name="keywords" content="openemrmarketplace.com, openemr marketplace">
         <meta name="author" content="MedicalMundi.com">
         <meta name="robots" content="noindex">
 
@@ -12,10 +13,11 @@
         {% block stylesheets %}
         {% endblock %}
 
+    </head>
+    <body {% block body_class %}class="d-flex flex-column h-100"{% endblock %}>
+        {% block body %}{% endblock %}
+
         {% block javascripts %}
         {% endblock %}
-    </head>
-    <body class="d-flex flex-column h-100">
-        {% block body %}{% endblock %}
     </body>
 </html>

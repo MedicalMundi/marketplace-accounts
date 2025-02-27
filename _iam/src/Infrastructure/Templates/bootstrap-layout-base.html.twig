@@ -1,0 +1,46 @@
+{# @see https://getbootstrap.com/docs/5.3/examples/sticky-footer-navbar/ #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    openemr marketplace
+{% endblock %}
+
+{# @see https://twig.symfony.com/doc/3.x/tags/use.html #}
+{% use "@iam/blocks.bootstrap-532.html.twig" with stylesheets as parent_stylesheets %}
+{% use "@iam/blocks.bootstrap-532.html.twig" with javascripts as parent_javascripts %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ block('parent_stylesheets') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ block('parent_javascripts') }}
+{% endblock %}
+
+
+{% block body %}
+
+    {% block navigation %}
+        {% include '@iam/common/navigation.html.twig' %}
+    {% endblock %}
+
+    {% include '@iam/common/_flash_messages.html.twig' %}
+
+    {% block main %}
+        <main class="flex-shrink-0">
+            <div class="container">
+                <h1 class="mt-5">Sticky footer with fixed navbar</h1>
+                <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code class="small">padding-top: 60px;</code> on the <code class="small">main &gt; .container</code>.</p>
+                <p>Back to <a href="/docs/5.3/examples/sticky-footer/">the default sticky footer</a> minus the navbar.</p>
+            </div>
+        </main>
+    {% endblock %}
+
+    {% block footer %}
+        {% include '@iam/common/footer.html.twig' %}
+    {% endblock %}
+
+{% endblock %}

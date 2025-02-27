@@ -3,7 +3,7 @@
 /*
  * This file is part of the medicalmundi/marketplace-accounts
  *
- * @copyright (c) 2023 MedicalMundi
+ * @copyright (c) 2024 MedicalMundi
  *
  * This software consists of voluntary contributions made by many individuals
  * {@link https://github.com/medicalmundi/marketplace-accounts/graphs/contributors developer} and is licensed under the MIT license.
@@ -80,7 +80,7 @@ class SecurityAddAdministratorCommand extends Command
         }
 
         if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $io->error(sprintf('Invalid email: %s', $email));
+            $io->error(\sprintf('Invalid email: %s', $email));
             exit;
         }
 
@@ -111,6 +111,7 @@ class SecurityAddAdministratorCommand extends Command
                 $password
             )
         );
+        $adminUser->setIsVerified(true);
 
         return $adminUser;
     }

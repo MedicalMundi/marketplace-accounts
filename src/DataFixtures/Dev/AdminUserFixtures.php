@@ -3,7 +3,7 @@
 /*
  * This file is part of the medicalmundi/marketplace-accounts
  *
- * @copyright (c) 2023 MedicalMundi
+ * @copyright (c) 2024 MedicalMundi
  *
  * This software consists of voluntary contributions made by many individuals
  * {@link https://github.com/medicalmundi/marketplace-accounts/graphs/contributors developer} and is licensed under the MIT license.
@@ -45,7 +45,7 @@ class AdminUserFixtures extends Fixture implements FixtureGroupInterface
 
         $superAdminUser = (new User())
             ->setEmail('superadmin@example.com')
-            ->setRoles(['ROLE_ADMIN'])
+            ->setRoles(['ROLE_SUPER_ADMIN'])
             ->setUuid(new UuidV4())
             ->setIsVerified(true);
 

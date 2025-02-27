@@ -10,7 +10,7 @@ imports:
 parameters:
     release.version: 'v0.1.x'
     setting.is_user_registration_enabled: false
-    setting.is_user_password_recovery_enabled: false
+    setting.is_user_password_recovery_enabled: true
 
 services:
     # default configuration for services in *this* file
@@ -44,3 +44,11 @@ services:
     League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface:
         class: App\Repository\AccessTokenRepository
         decorates: 'League\Bundle\OAuth2ServerBundle\Repository\AccessTokenRepository'
+
+
+
+
+    App\Tests\Fixture\Factory\UserFactory:
+        arguments:
+            - '@security.user_password_hasher'
+        tags: ['foundry.factory']

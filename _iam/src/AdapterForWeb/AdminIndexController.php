@@ -3,7 +3,7 @@
 /*
  * This file is part of the medicalmundi/marketplace-accounts
  *
- * @copyright (c) 2023 MedicalMundi
+ * @copyright (c) 2024 MedicalMundi
  *
  * This software consists of voluntary contributions made by many individuals
  * {@link https://github.com/medicalmundi/marketplace-accounts/graphs/contributors developer} and is licensed under the MIT license.
@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminIndexController extends AbstractController
 {
-    #[Route('/admin', name: 'iam_admin_index')]
+    #[Route('/admin', name: 'iam_admin_index', methods: 'GET')]
     public function index(): Response
     {
         return $this->render('@iam/administration/index.html.twig', []);

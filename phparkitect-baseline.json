@@ -16,14 +16,29 @@
             "error": "depends on App\\Repository\\OAuth2UserConsentRepository, but should not depend on these namespaces: App\\Controller\\*, App\\Service\\*, App\\Repository\\* because of component architecture"
         },
         {
+            "fqcn": "App\\Entity\\ResetPasswordRequest",
+            "line": 23,
+            "error": "depends on App\\Repository\\ResetPasswordRequestRepository, but should not depend on these namespaces: App\\Controller\\*, App\\Service\\*, App\\Repository\\* because of component architecture"
+        },
+        {
             "fqcn": "App\\Entity\\User",
             "line": 27,
             "error": "depends on App\\Repository\\UserRepository, but should not depend on these namespaces: App\\Controller\\*, App\\Service\\*, App\\Repository\\* because of component architecture"
         },
         {
+            "fqcn": "IdentityAccess\\AdapterForCli\\CreateMarketplaceOauthClientCommand",
+            "line": 90,
+            "error": "depends on App\\Entity\\OAuth2ClientProfile, but should not depend on classes outside namespace IdentityAccess\\Core because or namespaces in whitelist we want isolate our identity access Adapters from ever growing dependencies."
+        },
+        {
+            "fqcn": "IdentityAccess\\AdapterForCli\\CreateStageMarketplaceOauthClientCommand",
+            "line": 90,
+            "error": "depends on App\\Entity\\OAuth2ClientProfile, but should not depend on classes outside namespace IdentityAccess\\Core because or namespaces in whitelist we want isolate our identity access Adapters from ever growing dependencies."
+        },
+        {
             "fqcn": "IdentityAccess\\AdapterForReadingAccounts\\AccountsDataProvider",
             "line": 26,
-            "error": "depends on App\\Repository\\UserRepository, but should not depend on classes outside namespace IdentityAccess\\Core because we want isolate our identity access Adapters from ever growing dependencies."
+            "error": "depends on App\\Repository\\UserRepository, but should not depend on classes outside namespace IdentityAccess\\Core because or namespaces in whitelist we want isolate our identity access Adapters from ever growing dependencies."
         }
     ],
     "stopOnFailure": false

@@ -3,7 +3,7 @@
 /*
  * This file is part of the medicalmundi/marketplace-accounts
  *
- * @copyright (c) 2023 MedicalMundi
+ * @copyright (c) 2024 MedicalMundi
  *
  * This software consists of voluntary contributions made by many individuals
  * {@link https://github.com/medicalmundi/marketplace-accounts/graphs/contributors developer} and is licensed under the MIT license.
@@ -21,11 +21,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
 {
-    #[Route('/', name: 'app_index')]
+    #[Route('/', name: 'app_index', methods: 'GET')]
     public function index(): Response
     {
-        return $this->render('index/index.html.twig', [
-            'controller_name' => 'IndexController',
-        ]);
+        return $this->render('index/index.html.twig');
     }
 }

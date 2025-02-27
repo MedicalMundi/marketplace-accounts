@@ -3,7 +3,7 @@
 /*
  * This file is part of the medicalmundi/marketplace-accounts
  *
- * @copyright (c) 2023 MedicalMundi
+ * @copyright (c) 2024 MedicalMundi
  *
  * This software consists of voluntary contributions made by many individuals
  * {@link https://github.com/medicalmundi/marketplace-accounts/graphs/contributors developer} and is licensed under the MIT license.
@@ -13,7 +13,7 @@
  * @license https://github.com/MedicalMundi/marketplace-accounts/blob/main/LICENSE MIT
  */
 
-namespace IdentityAccess\AdapterForWeb;
+namespace IdentityAccess\AdapterForWeb\Administration\Account;
 
 use Ecotone\Modelling\QueryBus;
 use IdentityAccess\Core\ShowAllAccountsQuery;
@@ -21,7 +21,9 @@ use IdentityAccess\Core\ShowUnverifiedAccounts;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_ADMIN')]
 class AccountsController extends AbstractController
 {
     public function __construct(
@@ -29,7 +31,7 @@ class AccountsController extends AbstractController
     ) {
     }
 
-    #[Route('/admin/accounts', name: 'iam_admin_accounts_index')]
+    #[Route('/admin/accounts', name: 'iam_admin_accounts_index', methods: 'GET')]
     public function index(): Response
     {
         $allAccounts = (array) $this->queryBus->send(new ShowAllAccountsQuery());
@@ -39,7 +41,7 @@ class AccountsController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/accounts/unverified', name: 'iam_admin_accounts_unverified')]
+    #[Route('/admin/accounts/unverified', name: 'iam_admin_accounts_unverified', methods: 'GET')]
     public function unverifiedAccounts(): Response
     {
         $pendingRegistrations = (array) $this->queryBus->send(new ShowUnverifiedAccounts());

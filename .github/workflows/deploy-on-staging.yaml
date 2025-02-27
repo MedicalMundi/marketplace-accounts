@@ -1,0 +1,105 @@
+# @see https://github.com/deployphp/action
+# @see https://deployer.org/docs/7.x/getting-started
+
+name: deploy
+
+on:
+  workflow_call:
+    # Map the workflow outputs to job outputs
+    inputs:
+      triggering-sha:
+        required: true
+        type: string
+
+# It is important to specify "concurrency" for the workflow,
+# to prevent concurrency between different deploys.
+# @see https://docs.github.com/en/actions/using-jobs/using-concurrency
+concurrency:
+  group: stage_environment
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-22.04
+    environment: stage
+
+    steps:
+      - name: Checkout on SHA-${{ inputs.triggering-sha }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.triggering-sha }}
+
+      - name: Show CI job info (dump context)
+        if: ${{ vars.DUMP_GHA_CONTEXT == '1'}}
+        uses: crazy-max/ghaction-dump-context@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.32.0
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      - name: Install Composer dependencies
+        run: |
+          composer install --prefer-dist --no-progress --no-scripts --ansi
+          composer bin deployer install
+
+      - uses: oNaiPs/secrets-to-env-action@v1.5
+        with:
+          secrets: ${{ toJSON(secrets) }}
+
+      - name: Deploy
+        uses: deployphp/action@v1
+        with:
+          deployer-version: "7.3.1"
+          dep: deploy stage -o branch=main
+          private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
+          deployer-binary: "./vendor/bin/dep"
+
+#      - name: Enable Maintenance Mode after deploy
+#        #if: ${{ vars.ENABLE_MAINTENANCE_MODE_AFTER_DEPLOY_ON_STAGING == '1'}}
+#        uses: deployphp/action@v1
+#        with:
+#            deployer-version: "7.3.1"
+#            dep: maintenance:on stage
+#            private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
+#            deployer-binary: "./vendor/bin/dep"
+
+
+  enable-maintenance-mode:
+    name: Enable Maintenace mode
+    if: ${{ vars.ENABLE_MAINTENANCE_MODE_AFTER_DEPLOY_ON_STAGING == '1'}}
+    runs-on: ubuntu-22.04
+    needs:
+      - deploy
+
+    steps:
+      - name: Checkout on SHA-${{ inputs.triggering-sha }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.triggering-sha }}
+
+      - name: Show CI job info (dump context)
+        if: ${{ vars.SHOW_WORKFLOW_INFO == '1'}}
+        uses: crazy-max/ghaction-dump-context@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.32.0
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      - name: Install Composer dependencies
+        run: |
+          composer install --prefer-dist --no-progress --no-scripts --ansi
+          composer bin deployer install
+
+      - name: Enable Maintenance Mode after deploy
+        if: ${{ vars.ENABLE_MAINTENANCE_MODE_AFTER_DEPLOY_ON_STAGING == '1'}}
+        uses: deployphp/action@v1
+        with:
+          deployer-version: "7.3.1"
+          dep: maintenance:on stage
+          private-key: ${{ secrets.DEPLOYER_PRIVATE_SSH_KEY }}
+          deployer-binary: "./vendor/bin/dep"

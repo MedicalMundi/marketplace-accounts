@@ -1,0 +1,85 @@
+name: Publish metrics
+
+on:
+  workflow_run:
+    workflows:
+      - CD/CI
+    types:
+      - completed
+    branches-ignore:
+      - 'dependabot/**'
+      - 'renovate/**'
+
+jobs:
+  on-cdci-workflow-success:
+    runs-on: ubuntu-latest
+    name: Detect 'Success' Event for 'CD/CI' workflow
+    if: ${{ github.event.workflow.name == 'CD/CI' && github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout on branch ${{ github.event.workflow_run.head_branch }}|SHA-${{ github.event.workflow_run.head_commit.id }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_commit.id }}
+
+      - name: Dump GHA Context
+        if: ${{ vars.DUMP_GHA_CONTEXT == '1' }}
+        uses: crazy-max/ghaction-dump-context@v2
+
+
+
+  show-workflow-info:
+    runs-on: ubuntu-latest
+    name: Workflow info for SHA-${{ github.event.workflow_run.head_commit.id }}
+    if: ${{ vars.SHOW_WORKFLOW_INFO == '1' }}
+    steps:
+      - name: Checkout on branch ${{ github.event.workflow_run.head_branch }}|SHA-${{ github.event.workflow_run.head_commit.id }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_commit.id }}
+
+      - name: Workflow info - branch name ${{ github.event.workflow_run.head_branch }}
+        run: echo current branch ${{ github.event.workflow_run.head_branch }}
+
+      - name: Workflow info - SHA ${{ github.event.workflow_run.head_commit.id }}
+        run: echo current SHA ${{ github.event.workflow_run.head_commit.id }}
+
+      - name: Workflow info - commit message
+        run: echo current commit message '${{ github.event.workflow_run.head_commit.message }}'
+
+      - name: Workflow info - author '${{ github.event.workflow_run.head_commit.author.name }}' -'${{ github.event.workflow_run.head_commit.author.email }}'
+        run: echo current author '${{ github.event.workflow_run.head_commit.author.name }}' - author email '${{ github.event.workflow_run.head_commit.author.email }}'
+
+
+
+  publish-unit-test-report:
+    name: Publish unit test report
+    runs-on: ubuntu-22.04
+    needs: [on-cdci-workflow-success]
+    steps:
+      - name: Checkout on branch ${{ github.event.workflow_run.head_branch }}|SHA-${{ github.event.workflow_run.head_commit.id }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_commit.id }}
+
+      # NOTE:
+      # NON USARE action/download anche con il token
+      # non funziona se l'upload viene fatto in un diverso
+      # workflow o un workflow in un diverso repository
+      #
+      - name: Download unit test coverage artifact
+        id: download-unit-test-coverage-artifact
+        run: |
+          gh run download -n ${{ vars.ARTIFATC_NAME_FOR_UNIT_TESTS_COVERAGE }}-${{ github.event.workflow_run.head_commit.id }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_API_ARTIFACT_ACTION }}
+
+      - name: Upload coverage results to Codecov
+        if: ${{ (steps.download-unit-test-coverage-artifact.outcome == 'success') }}
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ${{ vars.UNIT_TEST_CLOVER_FILENAME }}
+          name: Unit test
+          #flags: unit-test
+          fail_ci_if_error: false
+        continue-on-error: true

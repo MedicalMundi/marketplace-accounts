@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="OpenEmr modules marketplace">
-        <meta name="keywords" content="OpenEmr module, openemr module, openemr, oe-modules, openEmr marketplace">
+        <meta name="keywords" content="openEmr marketplace, openEmr module, openemr modules, openemr">
         <meta name="author" content="MedicalMundi.com">
 
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -13,11 +13,14 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+
     </head>
     <body class="d-flex flex-column h-100">
         {% block body %}{% endblock %}
+
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </body>
 </html>

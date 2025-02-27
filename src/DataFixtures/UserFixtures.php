@@ -3,7 +3,7 @@
 /*
  * This file is part of the medicalmundi/marketplace-accounts
  *
- * @copyright (c) 2023 MedicalMundi
+ * @copyright (c) 2024 MedicalMundi
  *
  * This software consists of voluntary contributions made by many individuals
  * {@link https://github.com/medicalmundi/marketplace-accounts/graphs/contributors developer} and is licensed under the MIT license.
@@ -24,7 +24,9 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
 {
     public function load(ObjectManager $manager): void
     {
-        UserFactory::createMany(10);
+        UserFactory::new()->unverified()->create();
+        UserFactory::createMany(15);
+        UserFactory::new()->unverified()->create();
     }
 
     public static function getGroups(): array

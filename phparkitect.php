@@ -78,7 +78,7 @@ return static function (Config $config): void {
         //->except('IdentityAccess\AdapterForReadingAccounts', 'IdentityAccess\AdapterForReadingAccounts')
         ->that(new ResideInOneOfTheseNamespaces('IdentityAccess\Adapter*'))
         ->should(new NotHaveDependencyOutsideNamespace('IdentityAccess\Core', $allowedDependenciesInIdentityAccessAdapters))
-        ->because('we want isolate our identity access Adapters from ever growing dependencies.');
+        ->because('or namespaces in whitelist we want isolate our identity access Adapters from ever growing dependencies.');
 
     $config->add($identityAccessClassSet, $identityAccessCoreIsolationRule, $identityAccessAdaptersIsolationRule, ...$identityAccessPortAndAdapterArchitectureRules);
 
@@ -120,4 +120,5 @@ return static function (Config $config): void {
         ->because('we want isolate our notifier Adapters from ever growing dependencies.');
 
     $config->add($notifierClassSet, $notifierCoreIsolationRule, $notifierAdaptersIsolationRule, ...$notifierPortAndAdapterArchitectureRules);
+
 };

@@ -21,6 +21,11 @@
     </projectFiles>
 
     <issueHandlers>
+        <MissingConstructor>
+            <errorLevel type="suppress">
+                <directory name="_iam/src/AdapterForWeb/**/Form/Dto/" />
+            </errorLevel>
+        </MissingConstructor>
         <UnusedClass>
             <errorLevel type="suppress">
                 <file name="src/Controller/**/*Controller.php" />
@@ -39,6 +44,11 @@
                 <directory name="src/Repository" />
             </errorLevel>
         </PossiblyUnusedMethod>
+        <MissingTemplateParam>
+            <errorLevel type="suppress">
+                <directory name="src/Form" />
+            </errorLevel>
+        </MissingTemplateParam>
     </issueHandlers>
 
     <plugins>

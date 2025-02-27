@@ -3,7 +3,7 @@
 /*
  * This file is part of the medicalmundi/marketplace-accounts
  *
- * @copyright (c) 2023 MedicalMundi
+ * @copyright (c) 2024 MedicalMundi
  *
  * This software consists of voluntary contributions made by many individuals
  * {@link https://github.com/medicalmundi/marketplace-accounts/graphs/contributors developer} and is licensed under the MIT license.
@@ -33,7 +33,7 @@ use Symfony\Component\Routing\RouterInterface;
 #[Group('regression')]
 class RouterConfigurationSnapShotTest extends KernelTestCase
 {
-    public function testRouterConfigurationEndPoint(): void
+    public function testRouterConfigurationEndpoint(): void
     {
         /** @var ContainerInterface $container */
         $container = self::getContainer();
@@ -50,7 +50,7 @@ class RouterConfigurationSnapShotTest extends KernelTestCase
         $expectedRouteMapFile = __DIR__ . '/Fixture/expected_route_map.json';
 
         if ((bool) getenv('UT')) {
-            (new FileSystem())->dumpFile($expectedRouteMapFile, $currentRouteMapJson);
+            (new Filesystem())->dumpFile($expectedRouteMapFile, $currentRouteMapJson);
         }
 
         self::assertJsonStringEqualsJsonFile(

@@ -3,7 +3,7 @@
 /*
  * This file is part of the medicalmundi/marketplace-accounts
  *
- * @copyright (c) 2023 MedicalMundi
+ * @copyright (c) 2024 MedicalMundi
  *
  * This software consists of voluntary contributions made by many individuals
  * {@link https://github.com/medicalmundi/marketplace-accounts/graphs/contributors developer} and is licensed under the MIT license.
@@ -121,10 +121,10 @@ class RegistrationController extends AbstractController
     private function sendConfirmationEmail(MailerInterface $mailer, string $signedUrl, string $userEmail): void
     {
         $email = (new Email())
-            ->from('sys@stage.accounts.oe-modules.com')
+            ->from('system@auth.openemrmarketplace.com')
             ->to($userEmail)
             ->priority(Email::PRIORITY_HIGH)
-            ->subject('Auth oe-modules.com: please confirm your registration')
+            ->subject('Auth openemrmarketplace.com: please confirm your registration')
             ->text('Confirm your email at: ' . $signedUrl)
             ->html('<p> Confirm your email at: ' . $signedUrl . '</p>');
 
