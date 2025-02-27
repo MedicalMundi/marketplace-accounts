@@ -25,6 +25,10 @@ services:
 
 ####> doctrine/doctrine-bundle ###
   mysql:
+    volumes:
+      - ./sys/docker/mariaDb:/docker-entrypoint-initdb.d
     ports:
       - "3306:3306"
+    environment:
+      - MYSQL_MULTIPLE_DATABASES=marketplace-accounts-db_test
 ####< doctrine/doctrine-bundle ###
