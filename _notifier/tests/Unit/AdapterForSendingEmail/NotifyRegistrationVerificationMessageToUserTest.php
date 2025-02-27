@@ -3,11 +3,7 @@
 /*
  * This file is part of the medicalmundi/marketplace-accounts
  *
-<<<<<<< HEAD
- * @copyright (c) 2023 MedicalMundi
-=======
  * @copyright (c) 2024 MedicalMundi
->>>>>>> main
  *
  * This software consists of voluntary contributions made by many individuals
  * {@link https://github.com/medicalmundi/marketplace-accounts/graphs/contributors developer} and is licensed under the MIT license.
