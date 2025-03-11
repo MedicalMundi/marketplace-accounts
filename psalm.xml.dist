@@ -16,6 +16,7 @@
         <directory name="_notifier/src"/>
         <ignoreFiles>
             <directory name="vendor"/>
+            <file name="src/Security/EmailVerifier.php" />
         </ignoreFiles>
 
     </projectFiles>
