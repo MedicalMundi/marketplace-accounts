@@ -55,8 +55,7 @@
   </file>
   <file src="src/Controller/RegistrationController.php">
     <PossiblyNullArgument>
-      <code><![CDATA[$user->getEmail()]]></code>
-      <code><![CDATA[$user->getEmail()]]></code>
+      <code><![CDATA[$this->getUser()]]></code>
       <code><![CDATA[$user->getEmail()]]></code>
     </PossiblyNullArgument>
   </file>
