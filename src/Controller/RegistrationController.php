@@ -17,7 +17,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
-use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -37,7 +36,7 @@ use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 class RegistrationController extends AbstractController
 {
     public function __construct(
-        private EmailVerifier $emailVerifier
+        private readonly EmailVerifier $emailVerifier
     ) {
     }
 
@@ -69,26 +68,11 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-
-            // deprecated
-            //            $signatureComponent = $verifyEmailHelper->generateSignature(
-            //                'app_verify_email',
-            //                (string) $user->getId(),
-            //                $user->getEmail(),
-            //                [
-            //                    'id' => (string) $user->getId(),
-            //                ]
-            //            );
-
-            // deprecated
-            //$this->sendConfirmationEmail($mailer, $signatureComponent->getSignedUrl(), $user->getEmail());
-
-            // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation(
                 'app_verify_email',
                 $user,
                 (new TemplatedEmail())
-                    ->from(new Address('mailer@openemrmarketplace.com', 'OpenemrMarketplaceMailBot'))
+                    ->from(new Address('system@auth.openemrmarketplace.com', 'OpenemrMarketplaceMailBot'))
                     ->to($user->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
@@ -103,43 +87,12 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
-    //  deprecated
-    //    #[Route('/verify', name: 'app_verify_email')]
-    //    public function verifyUserEmail(Request $request, VerifyEmailHelperInterface $verifyEmailHelper, UserRepository $userRepository, EntityManagerInterface $entityManager): Response
-    //    {
-    //        $user = $userRepository->find($request->query->get('id'));
-    //
-    //        if (! $user) {
-    //            throw $this->createNotFoundException();
-    //        }
-    //
-    //        try {
-    //            $verifyEmailHelper->validateEmailConfirmation(
-    //                $request->getUri(),
-    //                (string) $user->getId(),
-    //                $user->getEmail()
-    //            );
-    //        } catch (VerifyEmailExceptionInterface $e) {
-    //            $this->addFlash('error', $e->getReason());
-    //
-    //            return $this->redirectToRoute('app_register');
-    //        }
-    //
-    //        $user->setIsVerified(true);
-    //
-    //        $entityManager->flush();
-    //
-    //        $this->addFlash('success', 'Account verified! You can now login.');
-    //
-    //        return $this->redirectToRoute('app_login');
-    //    }
 
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        // validate email confirmation link, sets User::isVerified=true and persists
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
         } catch (VerifyEmailExceptionInterface $exception) {
@@ -151,7 +104,7 @@ class RegistrationController extends AbstractController
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
 
-        return $this->redirectToRoute('app_register');
+        return $this->redirectToRoute('app_login');
     }
 
     #[Route('/verify/resend', name: 'app_verify_resend_email')]
@@ -161,6 +114,7 @@ class RegistrationController extends AbstractController
         return $this->render('registration/resend_verify_email.html.twig');
     }
 
+    /**TODO: remove the logic is moved in Security/EmailVerifier */
     private function sendConfirmationEmail(MailerInterface $mailer, string $signedUrl, string $userEmail): void
     {
         $email = (new Email())
