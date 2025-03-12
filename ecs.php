@@ -21,8 +21,8 @@ return function (ECSConfig $ecsConfig): void {
         __DIR__ . '/tests',
         __DIR__ . '/context/iam/src',
         __DIR__ . '/context/iam/tests',
-        __DIR__ . '/_notifier/src',
-        __DIR__ . '/_notifier/tests',
+        __DIR__ . '/context/notifier/src',
+        __DIR__ . '/context/notifier/tests',
         __DIR__ . '/rector.php',
     ]);
 
