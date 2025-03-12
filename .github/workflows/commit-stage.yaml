@@ -109,7 +109,7 @@ jobs:
 
       #
       # Additional checks, they are precondition before
-      # 'acceptance stage' fase of the CI
+      # 'acceptance stage' phase of the CI
       #
 
       - name: Run yml linter on configurations files
