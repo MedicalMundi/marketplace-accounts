@@ -12,7 +12,7 @@
 >
     <projectFiles>
         <directory name="src"/>
-        <directory name="_iam/src"/>
+        <directory name="context/iam/src"/>
         <directory name="_notifier/src"/>
         <ignoreFiles>
             <directory name="vendor"/>
@@ -24,7 +24,7 @@
     <issueHandlers>
         <MissingConstructor>
             <errorLevel type="suppress">
-                <directory name="_iam/src/AdapterForWeb/**/Form/Dto/" />
+                <directory name="context/iam/src/AdapterForWeb/**/Form/Dto/" />
             </errorLevel>
         </MissingConstructor>
         <UnusedClass>
