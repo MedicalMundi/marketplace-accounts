@@ -19,9 +19,10 @@ composer.lock text eol=lf merge=ours
 
 /.github export-ignore
 /tests export-ignore
-/_iam/tests export-ignore
+/context/iam/tests export-ignore
 /tools export-ignore
 /src/DataFixtures export-ignore
+/sys export-ignore
 
 .dockerignore export-ignore
 .editorconfig export-ignore

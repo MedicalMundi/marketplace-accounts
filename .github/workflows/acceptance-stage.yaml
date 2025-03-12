@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 10
     services:
       mysql:
-        image: mariadb:10.6.16
+        image: mariadb:10.6.20
         env:
           MYSQL_ROOT_PASSWORD: test
           MYSQL_USER: test
@@ -81,7 +81,9 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
-          path: ${{ steps.composer-cache.outputs.dir }}
+          path: |
+            ${{ steps.composer-cache.outputs.dir }}
+            vendor
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
 
@@ -92,24 +94,24 @@ jobs:
         if: ${{ github.ref_name == 'main' }}
         run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.20-MariaDB&charset=utf8mb4
 
       - name: Show database migrations list
         if: ${{ github.ref_name == 'main' }}
         run: ./bin/console doctrine:migrations:list -e test --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.20-MariaDB&charset=utf8mb4
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
         run: ./bin/console doctrine:schema:update -e test --force --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.20-MariaDB&charset=utf8mb4
 
       - name: Run database schema validate
         run: ./bin/console doctrine:schema:validate -e test --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.20-MariaDB&charset=utf8mb4
 
 
   integration-test:
@@ -118,7 +120,7 @@ jobs:
     timeout-minutes: 10
     services:
       mysql:
-        image: mariadb:10.6.16
+        image: mariadb:10.6.20
         env:
           MYSQL_ROOT_PASSWORD: test
           MYSQL_USER: test
@@ -179,7 +181,9 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
-          path: ${{ steps.composer-cache.outputs.dir }}
+          path: |
+            ${{ steps.composer-cache.outputs.dir }}
+            vendor
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
 
@@ -190,23 +194,23 @@ jobs:
         if: ${{ github.ref_name == 'main' }}
         run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.20-MariaDB&charset=utf8mb4
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
         run: ./bin/console doctrine:schema:update -e test --force --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.20-MariaDB&charset=utf8mb4
 
       - name: Run database schema validate
         run: ./bin/console doctrine:schema:validate -e test --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.20-MariaDB&charset=utf8mb4
 
       - name: Run integration testsuite
         run: ./bin/phpunit --testsuite integration --colors=always
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.20-MariaDB&charset=utf8mb4
 
 
   functional-test:
@@ -276,7 +280,9 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
-          path: ${{ steps.composer-cache.outputs.dir }}
+          path: |
+            ${{ steps.composer-cache.outputs.dir }}
+            vendor
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
 
@@ -287,20 +293,20 @@ jobs:
         if: ${{ github.ref_name == 'main' }}
         run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.20-MariaDB&charset=utf8mb4
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
         run: ./bin/console doctrine:schema:update -e test --force --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.20-MariaDB&charset=utf8mb4
 
       - name: Run database schema validate
         run: ./bin/console doctrine:schema:validate -e test --ansi
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.20-MariaDB&charset=utf8mb4
 
       - name: Run functional testsuite
         run: ./bin/phpunit --testsuite functional --colors=always
         env:
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=10.6.20-MariaDB&charset=utf8mb4

@@ -7,7 +7,7 @@ services:
       MERCURE_PUBLISHER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
       MERCURE_SUBSCRIBER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
       # Run "composer require symfony/orm-pack" to install and configure Doctrine ORM
-      DATABASE_URL: mysql://${MARIADB_USER:-marketplace_accounts_user}:${MARIADB_PASSWORD:-marketplace_accounts_pwd}@mysql:3306/${MARIADB_DB:-marketplace-accounts-db}?serverVersion=10.6.14-MariaDB&charset=utf8mb4
+      DATABASE_URL: mysql://${MARIADB_USER:-marketplace_accounts_user}:${MARIADB_PASSWORD:-marketplace_accounts_pwd}@mysql:3306/${MARIADB_DB:-marketplace-accounts-db}?serverVersion=10.6.20-MariaDB&charset=utf8mb4
       # Run "composer require symfony/mercure-bundle" to install and configure the Mercure integration
       MERCURE_URL: ${CADDY_MERCURE_URL:-http://php/.well-known/mercure}
       MERCURE_PUBLIC_URL: ${CADDY_MERCURE_PUBLIC_URL:-https://${SERVER_NAME:-localhost}/.well-known/mercure}
@@ -35,7 +35,7 @@ services:
 
 ###> doctrine/doctrine-bundle ###
   mysql:
-    image: mariadb:${MARIADB_VERSION:-10.6.16}
+    image: mariadb:${MARIADB_VERSION:-10.6.20}
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: 'marketplace'

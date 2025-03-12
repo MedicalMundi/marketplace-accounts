@@ -4,7 +4,7 @@ twig:
     paths:
         # directories are relative to the project root dir (but you
         # can also use absolute directories)
-        '_iam/src/Infrastructure/Templates': 'iam'
+        'context/iam/src/Infrastructure/Templates': 'iam'
 
     form_themes:
         - 'bootstrap_5_layout.html.twig'

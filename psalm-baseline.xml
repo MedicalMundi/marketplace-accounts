@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.15.0@5c774aca4746caf3d239d9c8cadb9f882ca29352">
-  <file src="_iam/src/AdapterForCli/CreateMarketplaceOauthClientCommand.php">
+  <file src="context/iam/src/AdapterForCli/CreateMarketplaceOauthClientCommand.php">
     <ArgumentTypeCoercion>
       <code>$oAuthClient</code>
     </ArgumentTypeCoercion>
@@ -14,7 +14,7 @@
       <code>AbstractClient</code>
     </MoreSpecificReturnType>
   </file>
-  <file src="_iam/src/AdapterForCli/CreateStageMarketplaceOauthClientCommand.php">
+  <file src="context/iam/src/AdapterForCli/CreateStageMarketplaceOauthClientCommand.php">
     <ArgumentTypeCoercion>
       <code>$oAuthClient</code>
     </ArgumentTypeCoercion>
@@ -28,7 +28,7 @@
       <code>AbstractClient</code>
     </MoreSpecificReturnType>
   </file>
-  <file src="_iam/src/AdapterForWeb/Administration/OauthClient/OauthClientController.php">
+  <file src="context/iam/src/AdapterForWeb/Administration/OauthClient/OauthClientController.php">
     <MixedArgument>
       <code><![CDATA[$form->getData()]]></code>
     </MixedArgument>
@@ -47,6 +47,18 @@
       <code>$isVerified</code>
     </MissingConstructor>
   </file>
+  <file src="context/iam/src/Infrastructure/Framework/Extension/IdentityAccessModuleExtension.php">
+    <MixedMethodCall>
+      <code>booleanNode</code>
+      <code>defaultValue</code>
+      <code>end</code>
+      <code>end</code>
+      <code>info</code>
+    </MixedMethodCall>
+    <UndefinedMethod>
+      <code>children</code>
+    </UndefinedMethod>
+  </file>
   <file src="src/Command/OauthGenerateKeyCommand.php">
     <MixedArgument>
       <code>$publicKey</code>
@@ -62,8 +74,7 @@
   </file>
   <file src="src/Controller/RegistrationController.php">
     <PossiblyNullArgument>
-      <code><![CDATA[$user->getEmail()]]></code>
-      <code><![CDATA[$user->getEmail()]]></code>
+      <code><![CDATA[$this->getUser()]]></code>
       <code><![CDATA[$user->getEmail()]]></code>
     </PossiblyNullArgument>
   </file>

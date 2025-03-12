@@ -21,8 +21,8 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
         __DIR__ . '/src',
         __DIR__ . '/tests',
-        __DIR__ . '/_iam/src',
-        __DIR__ . '/_iam/tests',
+        __DIR__ . '/context/iam/src',
+        __DIR__ . '/context/iam/tests',
         __DIR__ . '/_notifier/src',
         __DIR__ . '/_notifier/tests',
     ]);
