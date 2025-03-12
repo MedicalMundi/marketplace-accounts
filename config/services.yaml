@@ -1,5 +1,4 @@
 imports:
-    - { resource: ../context/iam/src/Infrastructure/Framework/services.yaml }
     - { resource: ../_notifier/src/Infrastructure/Framework/services.yaml }
 
 # This file is the entry point to configure your own services.

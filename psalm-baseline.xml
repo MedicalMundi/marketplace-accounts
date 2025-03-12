@@ -40,6 +40,18 @@
       <code><![CDATA[$client->getSecret()]]></code>
     </PossiblyNullPropertyAssignmentValue>
   </file>
+  <file src="context/iam/src/Infrastructure/Framework/Extension/IdentityAccessModuleExtension.php">
+    <MixedMethodCall>
+      <code>booleanNode</code>
+      <code>defaultValue</code>
+      <code>end</code>
+      <code>end</code>
+      <code>info</code>
+    </MixedMethodCall>
+    <UndefinedMethod>
+      <code>children</code>
+    </UndefinedMethod>
+  </file>
   <file src="src/Command/OauthGenerateKeyCommand.php">
     <MixedArgument>
       <code>$publicKey</code>
