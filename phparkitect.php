@@ -49,7 +49,7 @@ return static function (Config $config): void {
      *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
      */
 
-    $identityAccessClassSet = ClassSet::fromDir(__DIR__ . '/_iam/src');
+    $identityAccessClassSet = ClassSet::fromDir(__DIR__ . '/context/iam/src');
 
     $allowedPhpDependencies = require_once __DIR__ . '/tools/phparkitect/PhpDependencies/allowed_always.php';
     $allowedVendorDependenciesInIdentityAccessCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_iam_core.php';
