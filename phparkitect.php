@@ -92,7 +92,7 @@ return static function (Config $config): void {
      *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
      */
 
-    $notifierClassSet = ClassSet::fromDir(__DIR__ . '/_notifier/src');
+    $notifierClassSet = ClassSet::fromDir(__DIR__ . '/context/notifier/src');
 
     $allowedVendorDependenciesInNotifierCore = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_notifier_core.php';
     $allowedVendorDependenciesInNotifierAdapters = require_once __DIR__ . '/tools/phparkitect/VendorDependencies/allowed_in_notifier_adapters.php';

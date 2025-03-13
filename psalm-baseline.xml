@@ -52,6 +52,18 @@
       <code>children</code>
     </UndefinedMethod>
   </file>
+  <file src="context/notifier/src/Infrastructure/Framework/Extension/NotifierModuleExtension.php">
+    <MixedMethodCall>
+      <code>booleanNode</code>
+      <code>defaultValue</code>
+      <code>end</code>
+      <code>end</code>
+      <code>info</code>
+    </MixedMethodCall>
+    <UndefinedMethod>
+      <code>children</code>
+    </UndefinedMethod>
+  </file>
   <file src="src/Command/OauthGenerateKeyCommand.php">
     <MixedArgument>
       <code>$publicKey</code>
