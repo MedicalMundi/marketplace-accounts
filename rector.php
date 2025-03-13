@@ -23,8 +23,8 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/tests',
         __DIR__ . '/context/iam/src',
         __DIR__ . '/context/iam/tests',
-        __DIR__ . '/_notifier/src',
-        __DIR__ . '/_notifier/tests',
+        __DIR__ . '/context/notifier/src',
+        __DIR__ . '/context/notifier/tests',
     ]);
 
     // register a single rule

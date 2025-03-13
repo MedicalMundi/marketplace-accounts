@@ -40,14 +40,19 @@
       <code><![CDATA[$client->getSecret()]]></code>
     </PossiblyNullPropertyAssignmentValue>
   </file>
-  <file src="_notifier/src/Core/UserRecipient/CreateUserRecipient.php">
-    <MissingConstructor>
-      <code>$email</code>
-      <code>$id</code>
-      <code>$isVerified</code>
-    </MissingConstructor>
-  </file>
   <file src="context/iam/src/Infrastructure/Framework/Extension/IdentityAccessModuleExtension.php">
+    <MixedMethodCall>
+      <code>booleanNode</code>
+      <code>defaultValue</code>
+      <code>end</code>
+      <code>end</code>
+      <code>info</code>
+    </MixedMethodCall>
+    <UndefinedMethod>
+      <code>children</code>
+    </UndefinedMethod>
+  </file>
+  <file src="context/notifier/src/Infrastructure/Framework/Extension/NotifierModuleExtension.php">
     <MixedMethodCall>
       <code>booleanNode</code>
       <code>defaultValue</code>

@@ -24,10 +24,9 @@ services:
   # makes classes in src/ available to be used as services
   # this creates a service per class whose id is the fully-qualified class name
   Notifier\:
-    resource: '../../../../_notifier/src/'
+    resource: '../../../../../context/notifier/src/'
     exclude:
-      - '../../../../_notifier/src/Core/UserRecipient/'
-
+        - '../../../../../context/notifier/src/Core/UserRecipient/'
 
 
   # add more service definitions when explicit configuration is needed
@@ -85,9 +84,8 @@ when@test:
     #
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    Notifier\:
-      resource: '../../../../_notifier/src/'
-      exclude:
-        - '../../../../_notifier/src/Core/UserRecipient/'
-
+      Notifier\:
+          resource: '../../../../../context/notifier/src/'
+          exclude:
+              - '../../../../../context/notifier/src/Core/UserRecipient/'
 

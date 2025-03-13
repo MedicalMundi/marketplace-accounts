@@ -24,22 +24,22 @@
         <testsuite name="omnia">
             <directory>tests</directory>
             <directory>context/iam/tests</directory>
-            <directory>_notifier/tests</directory>
+            <directory>context/notifier/tests</directory>
         </testsuite>
         <testsuite name="unit">
             <directory>tests/Unit</directory>
             <directory>context/iam/tests/Unit</directory>
-            <directory>_notifier/tests/Unit</directory>
+            <directory>context/notifier/tests/Unit</directory>
         </testsuite>
         <testsuite name="integration">
             <directory>tests/Integration</directory>
             <directory>context/iam/tests/Integration</directory>
-            <directory>_notifier/tests/Integration</directory>
+            <directory>context/notifier/tests/Integration</directory>
         </testsuite>
         <testsuite name="functional">
             <directory>tests/Functional</directory>
             <directory>context/iam/tests/Functional</directory>
-            <directory>_notifier/tests/Functional</directory>
+            <directory>context/notifier/tests/Functional</directory>
         </testsuite>
     </testsuites>
 
@@ -47,7 +47,7 @@
         <include>
             <directory>src</directory>
             <directory>context/iam/src</directory>
-            <directory>_notifier/src</directory>
+            <directory>context/notifier/src</directory>
         </include>
     </source>
 </phpunit>
