@@ -3,7 +3,12 @@
 return [
     'Notifier\Core',
 
+    'Psr\Log\LoggerInterface',
+    'Psr\Cache\CacheItemPoolInterface',
+
     'Ecotone\Modelling\QueryBus',
+    'Ecotone\Messaging\Attribute\Asynchronous',
+    'Ecotone\Modelling\CommandBus',
 
     'Doctrine\DBAL\Connection',
 
