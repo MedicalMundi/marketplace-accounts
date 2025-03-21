@@ -13,25 +13,34 @@ inputs:
     extensions-cache-key:
         description: 'The key used to cache PHP extensions'
         required: true
-
+    use_php_extensions-cache:
+        description: 'Enable or disable cache for PHP extensions'
+        required: false
+        default: true
+    use_composer-cache:
+        description: 'Enable or disable cache for composer dependencies'
+        required: false
+        default: true
 runs:
     using: composite
     steps:
         - name: Setup cache environment
-          if: ${{ vars.USE_PHP_EXTENSION_CACHE }}
+          if: ${{ inputs.use_php_extensions-cache }}
           id: extcache
           uses: shivammathur/cache-extensions@v1
           with:
               php-version: ${{ inputs.php-version }}
               extensions: ${{ inputs.php-extensions }}
               key: ${{ inputs.extensions-cache-key }}
+        
         - name: Cache extensions
-          if: ${{ vars.USE_PHP_EXTENSION_CACHE }}
-          uses: actions/cache@v2
+          if: ${{ inputs.use_php_extensions-cache }}
+          uses: actions/cache@v4
           with:
               path: ${{ steps.extcache.outputs.dir }}
               key: ${{ steps.extcache.outputs.key }}
               restore-keys: ${{ steps.extcache.outputs.key }}
+        
         - name: Use PHP
           uses: shivammathur/setup-php@2.32.0
           with:
@@ -40,6 +49,26 @@ runs:
               extensions: ${{ inputs.php-extensions }}
               coverage: pcov
               ini-values: pcov.directory=module
+        
+        - name: Set Composer Cache Directory
+          if: ${{ inputs.use_composer-cache }}
+          id: composer-cache
+          shell: bash   
+          run: |
+            echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+        - name: Cache Composer dependencies
+          uses: actions/cache@v4
+          if: ${{ inputs.use_composer-cache }}
+          with:
+              path: |
+                  ${{ steps.composer-cache.outputs.dir }}
+                  vendor
+              key: composer-deps-${{ runner.os }}-php-${{ inputs.php-version }}-composer-${{ hashFiles('**/composer.lock') }}
+              restore-keys: |
+                  composer-deps-${{ runner.os }}-php-${{ inputs.php-version }}-composer-
+
+        
         - name: Install dependencies
-          run: composer install --no-interaction --prefer-dist
+          run: composer install --no-interaction --prefer-dist --no-progress --ansi
           shell: bash
