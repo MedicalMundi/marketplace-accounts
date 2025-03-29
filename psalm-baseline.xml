@@ -52,6 +52,13 @@
       <code>children</code>
     </UndefinedMethod>
   </file>
+  <file src="context/notifier/src/Core/UserRecipient/CreateUserRecipient.php">
+    <MissingConstructor>
+      <code>$email</code>
+      <code>$id</code>
+      <code>$isVerified</code>
+    </MissingConstructor>
+  </file>
   <file src="context/notifier/src/Infrastructure/Framework/Extension/NotifierModuleExtension.php">
     <MixedMethodCall>
       <code>booleanNode</code>

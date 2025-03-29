@@ -11,8 +11,8 @@ twig:
 
     globals:
         release_version: '%release.version%'
-        is_user_registration_enabled: '%setting.is_user_registration_enabled%'
-        is_user_password_recovery_enabled: '%setting.is_user_password_recovery_enabled%'
+        is_user_registration_enabled: '%app.setting.is_user_registration_enabled%'
+        is_user_password_recovery_enabled: '%app.setting.is_user_password_recovery_enabled%'
 
 when@test:
     twig:

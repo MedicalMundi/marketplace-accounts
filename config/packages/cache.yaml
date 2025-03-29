@@ -17,3 +17,10 @@ framework:
         # Namespaced pools use the above "app" backend by default
         #pools:
             #my.dedicated.cache: null
+
+        # Namespaced pools use the above "app" backend by default
+        pools:
+            _notifier.anti_corruption_layer.incoming_message_processor.cache:
+                default_lifetime: 0  #the default lifetime (in seconds) for cache items, with a value 0 causing items to be stored indefinitely until the files are deleted)
+                adapters:
+                    - 'cache.adapter.filesystem'
