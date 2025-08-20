@@ -38,7 +38,7 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ inputs.triggering-sha }}
 
@@ -107,7 +107,7 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ inputs.triggering-sha }}
 
@@ -174,7 +174,7 @@ jobs:
       fail-fast: false
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ inputs.triggering-sha }}
 
