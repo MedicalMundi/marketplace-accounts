@@ -495,6 +495,7 @@
                     "type": "tidelift"
                 }
             ],
+            "abandoned": true,
             "time": "2022-05-20T20:07:39+00:00"
         },
         {
@@ -676,16 +677,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "3.10.2",
+            "version": "3.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "c6c16cf787eaba3112203dfcd715fa2059c62282"
+                "reference": "65edaca19a752730f290ec2fb89d593cb40afb43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/c6c16cf787eaba3112203dfcd715fa2059c62282",
-                "reference": "c6c16cf787eaba3112203dfcd715fa2059c62282",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/65edaca19a752730f290ec2fb89d593cb40afb43",
+                "reference": "65edaca19a752730f290ec2fb89d593cb40afb43",
                 "shasum": ""
             },
             "require": {
@@ -701,14 +702,14 @@
             },
             "require-dev": {
                 "doctrine/cache": "^1.11|^2.0",
-                "doctrine/coding-standard": "13.0.1",
+                "doctrine/coding-standard": "14.0.0",
                 "fig/log-test": "^1",
                 "jetbrains/phpstorm-stubs": "2023.1",
-                "phpstan/phpstan": "2.1.22",
+                "phpstan/phpstan": "2.1.30",
                 "phpstan/phpstan-strict-rules": "^2",
-                "phpunit/phpunit": "9.6.23",
-                "slevomat/coding-standard": "8.16.2",
-                "squizlabs/php_codesniffer": "3.13.1",
+                "phpunit/phpunit": "9.6.29",
+                "slevomat/coding-standard": "8.24.0",
+                "squizlabs/php_codesniffer": "4.0.0",
                 "symfony/cache": "^5.4|^6.0|^7.0",
                 "symfony/console": "^4.4|^5.4|^6.0|^7.0"
             },
@@ -770,7 +771,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/3.10.2"
+                "source": "https://github.com/doctrine/dbal/tree/3.10.3"
             },
             "funding": [
                 {
@@ -786,7 +787,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-09-04T23:51:27+00:00"
+            "time": "2025-10-09T09:05:12+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -1576,16 +1577,16 @@
         },
         {
             "name": "doctrine/persistence",
-            "version": "3.4.1",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "23069c8cfc19d7825e9fbe3341227d8c51eff2bc"
+                "reference": "06a5956bc86e36bd667a382a16b36a3712361e05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/23069c8cfc19d7825e9fbe3341227d8c51eff2bc",
-                "reference": "23069c8cfc19d7825e9fbe3341227d8c51eff2bc",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/06a5956bc86e36bd667a382a16b36a3712361e05",
+                "reference": "06a5956bc86e36bd667a382a16b36a3712361e05",
                 "shasum": ""
             },
             "require": {
@@ -1597,11 +1598,11 @@
                 "doctrine/common": "<2.10"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^12",
+                "doctrine/coding-standard": "^12 || ^14",
                 "doctrine/common": "^3.0",
-                "phpstan/phpstan": "1.12.7",
-                "phpstan/phpstan-phpunit": "^1",
-                "phpstan/phpstan-strict-rules": "^1.1",
+                "phpstan/phpstan": "^1 || 2.1.30",
+                "phpstan/phpstan-phpunit": "^1 || ^2",
+                "phpstan/phpstan-strict-rules": "^1 || ^2",
                 "phpunit/phpunit": "^8.5.38 || ^9.5",
                 "symfony/cache": "^4.4 || ^5.4 || ^6.0 || ^7.0"
             },
@@ -1652,7 +1653,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/persistence/issues",
-                "source": "https://github.com/doctrine/persistence/tree/3.4.1"
+                "source": "https://github.com/doctrine/persistence/tree/3.4.2"
             },
             "funding": [
                 {
@@ -1668,7 +1669,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-09-29T06:33:58+00:00"
+            "time": "2025-10-16T19:46:07+00:00"
         },
         {
             "name": "doctrine/sql-formatter",
@@ -4030,16 +4031,16 @@
         },
         {
             "name": "pagerfanta/core",
-            "version": "v4.7.1",
+            "version": "v4.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Pagerfanta/core.git",
-                "reference": "829eaa9737b3cfae1406f67a4e9ee36e0e37caf9"
+                "reference": "8809e9cfccf2f468a102f2ca4483f030b3c7e15c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Pagerfanta/core/zipball/829eaa9737b3cfae1406f67a4e9ee36e0e37caf9",
-                "reference": "829eaa9737b3cfae1406f67a4e9ee36e0e37caf9",
+                "url": "https://api.github.com/repos/Pagerfanta/core/zipball/8809e9cfccf2f468a102f2ca4483f030b3c7e15c",
+                "reference": "8809e9cfccf2f468a102f2ca4483f030b3c7e15c",
                 "shasum": ""
             },
             "require": {
@@ -4067,22 +4068,22 @@
                 "pagerfanta"
             ],
             "support": {
-                "source": "https://github.com/Pagerfanta/core/tree/v4.7.1"
+                "source": "https://github.com/Pagerfanta/core/tree/v4.7.2"
             },
-            "time": "2024-12-13T15:05:37+00:00"
+            "time": "2025-10-02T15:54:19+00:00"
         },
         {
             "name": "pagerfanta/doctrine-orm-adapter",
-            "version": "v4.7.1",
+            "version": "v4.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Pagerfanta/doctrine-orm-adapter.git",
-                "reference": "b3be49948e84b67c023c820abc54ea574a100d5d"
+                "reference": "a5f621411dff6168c12944dabb8ea62ae8502074"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Pagerfanta/doctrine-orm-adapter/zipball/b3be49948e84b67c023c820abc54ea574a100d5d",
-                "reference": "b3be49948e84b67c023c820abc54ea574a100d5d",
+                "url": "https://api.github.com/repos/Pagerfanta/doctrine-orm-adapter/zipball/a5f621411dff6168c12944dabb8ea62ae8502074",
+                "reference": "a5f621411dff6168c12944dabb8ea62ae8502074",
                 "shasum": ""
             },
             "require": {
@@ -4114,22 +4115,22 @@
                 "pagerfanta"
             ],
             "support": {
-                "source": "https://github.com/Pagerfanta/doctrine-orm-adapter/tree/v4.7.1"
+                "source": "https://github.com/Pagerfanta/doctrine-orm-adapter/tree/v4.7.2"
             },
-            "time": "2024-11-30T19:18:10+00:00"
+            "time": "2025-07-03T22:36:13+00:00"
         },
         {
             "name": "pagerfanta/twig",
-            "version": "v4.7.1",
+            "version": "v4.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Pagerfanta/twig.git",
-                "reference": "f3eb17928c61fe6f72abc822825e1006afae6257"
+                "reference": "28a9b75cabd246bd27c266ba62b742d45a4183f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Pagerfanta/twig/zipball/f3eb17928c61fe6f72abc822825e1006afae6257",
-                "reference": "f3eb17928c61fe6f72abc822825e1006afae6257",
+                "url": "https://api.github.com/repos/Pagerfanta/twig/zipball/28a9b75cabd246bd27c266ba62b742d45a4183f9",
+                "reference": "28a9b75cabd246bd27c266ba62b742d45a4183f9",
                 "shasum": ""
             },
             "require": {
@@ -4158,9 +4159,9 @@
                 "pagerfanta"
             ],
             "support": {
-                "source": "https://github.com/Pagerfanta/twig/tree/v4.7.1"
+                "source": "https://github.com/Pagerfanta/twig/tree/v4.7.2"
             },
-            "time": "2024-12-13T15:11:13+00:00"
+            "time": "2025-03-08T02:17:34+00:00"
         },
         {
             "name": "paragonie/random_compat",
